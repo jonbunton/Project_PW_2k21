@@ -1,0 +1,415 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container
+{
+    width: 100%;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    background-color: black;
+}
+
+.header{
+   
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo{
+    height: 8vh;
+}
+.nav{
+    padding: 0;
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, 1);
+    z-index: 1
+}
+
+.header a {
+    color: #ffffff;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size:20px;
+    line-height: 42px;
+}
+.nav a {
+    color: #ffffff;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size:20px;
+    line-height: 42px;
+}
+.ar:hover {
+    color:rgba(224, 180, 108, 0.767);
+}
+
+.login{
+    width: 1280px;
+    height: 94vh;
+    background-color: #bddbe8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.login a{
+    color:cornflowerblue;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size:16px;
+    line-height: 42px;
+
+}
+.login a:hover{
+    color: crimson;
+}
+
+.foot{
+    height:6vh;
+    width: 100%;
+    background-color: #000000;;
+    display: flex;
+    justify-content: space-between;
+    color: whitesmoke;
+    line-height: 50px;
+    text-align: center;;
+}
+
+.copy{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product{
+    width: 100%;
+    height: 94vh;
+    background-image: url(gallery/Background.jpg);
+    background-blend-mode:overlay;
+    background-size:100%, 100%;
+    background-repeat:repeat-y;
+    padding: 12vh;
+}
+
+.login1{
+    width: 100%;
+    height: 94vh;
+    background-color: rgba(0, 0, 0, 1);
+    padding: 5vh;
+    animation: move 30s infinite ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.log{
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.698);
+    margin-top: 8vh;
+    padding: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+
+.h{
+    font-size: 35px;
+    color: rgb(255, 255, 255);
+}
+
+.p{
+    font-size: 15px;
+    color: dimgray;
+}
+
+.cards{
+    width: 100%;
+    height: 60vh;
+    padding: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.tempMenu{
+    width: 100%;
+    height: 60vh;
+    padding: 3vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 1);
+    overflow-y: scroll;
+}
+
+/* MENU DIBAWAH*/
+.menue{
+    background-color: coral;
+    width: 250px;
+    height: 300px;
+    margin: 2vh;
+}
+
+.mup{
+    background-color: rgb(194, 245, 193);
+    width: 250px;
+    height: 200px;
+}
+
+.mdown{
+    background-color: rgb(189, 235, 243);
+    width: 250px;
+    height: 100px;
+    display:flex;
+    align-items: stretch;
+}
+.mdleft{
+    background-color: cornsilk;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-grow: 2;
+}
+.mname{
+    background-color: rgb(180, 150, 32);
+    flex-grow: 1;
+}
+.mdes{
+    background-color: rgb(114, 173, 240);
+    flex-grow: 2;
+}
+
+.mdright{
+    background-color: rgb(243, 192, 230);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-grow: 1;
+}
+
+.harga{
+    background-color: rgb(3, 189, 80);
+    flex-grow: 2;
+}
+.addcart{
+    background-color: rgb(150, 33, 111);
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* MENU DI ATAS */
+
+
+.circle{
+    border-radius:50px;
+    width: 250px;
+    height: 50vh;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    display: flex;
+    padding-top:7vh ;
+    flex-direction: column;
+    z-index: 0;
+    align-items: center;
+    background-color: ivory;
+    animation: fadeOut 0s alternate;
+}
+
+.p1{
+    background-image: url(gallery/sushic.jpg);
+    background-repeat: no-repeat;
+}
+
+.p2{
+    background-image: url(gallery/ramenc.jpg);
+    background-repeat: no-repeat;
+}
+
+.p3{
+    background-image: url(gallery/ricec.jpg);
+    background-repeat: no-repeat;
+}
+.p4{
+    background-image: url(gallery/sakec.jpg);
+    background-repeat: no-repeat;
+}
+.p5{
+    background-image: url(gallery/mochir.jpg);
+    background-repeat: no-repeat;
+}
+
+.tag{
+    /* background-color: rgba(92, 92, 92, 0.616); */
+    width: 20%;
+    height: 30px;
+    font-size:30px;
+    color: #ffffff;
+   text-align: center;
+    font-weight: bold;
+}
+.tag1{
+    width: 20%;
+    height: 30px;
+    font-size:30px;
+    color: #ffffff;
+   text-align: center;
+    font-weight: bold;
+}
+
+.circle p{
+    background-color: rgba(92, 92, 92, 0.376);
+    color: white;
+    font-size: larger;
+    text-align: center; 
+    z-index: 1;
+    /* border-radius: 2%; */
+}
+.circle a{
+    font-size: 15px; 
+    background-color: rgba(255, 255, 255, 1); 
+    text-decoration: none; 
+    width: 50%; 
+    text-align: center; 
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    
+}
+
+.circle a:hover{
+    text-decoration: underline;
+    animation: bounce 1s alternate infinite;
+}
+
+.isi{
+    width: 1280px;
+    height: 115vh;
+    background-color: #bddbe8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.banner{
+    background-color: lightslategray;
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    background-position-y: -200px;
+    background-image: url(gallery/kiyo.jpg);
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: honeydew;
+    text-shadow: 1px 2px darkslategray;
+    padding: 10vh;
+}
+.banner h1{
+    animation: shake 1s infinite alternate;
+    font-size: 80px;
+}
+
+.dtls{
+    background-color: rgb(240, 241, 243);
+    width: 50%;
+    height: 20vh;
+    padding: 20px;
+    color: rgb(88, 87, 87);
+    overflow: scroll;
+    margin: 10px;
+}
+.back a{
+    text-decoration: none;
+    color: snow;
+}
+
+.back a:hover{
+    animation: roll 5s infinite;
+}
+.back{
+    /* background-color: slategray; */
+    width: 10vh;
+    height: 10vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 1vh;
+}
+.error
+{
+  color: red;
+  size: 80%
+}
+.hidden
+{
+  display:none;
+}
+
+
+@keyframes fadeOut { 
+    0%{ opacity: 0;; }
+    100% {opacity: 1; }
+}
+
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes move {
+    0% {
+      left: 0;
+      background-image: url(gallery/1c.jpg);
+      opacity: 0.7;
+    }
+    25% {
+        left: 100%;
+        background-image: url(gallery/2c.jpg);
+        opacity: 0.7;
+      }
+    50% {
+        left: 100%;
+        background-image: url(gallery/3c.jpg);
+        opacity: 0.7;
+      }
+      75% {
+        left: 100%;
+        background-image: url(gallery/4c.jpg);
+        opacity: 0.7;
+      }
+    100% {
+      left: 100%;
+      background-image: url(gallery/1c.jpg);
+      opacity: 0.7;
+    }
+  }
