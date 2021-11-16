@@ -12,6 +12,12 @@
         //index 0 = object product,index 1 = jumlah
         $_SESSION["cart"][] = array($product_cart,1); 
     } 
+    if(isset($_POST['logout']))
+    {
+        unset($_SESSION["login"]);
+        unset($_SESSION["cart"]);
+        header("location:login.php");
+    }
     if(isset($_SESSION["login"]))
     {
         $user=$_SESSION["login"];
@@ -39,6 +45,9 @@
                                 <a class="ar" href="sushi.php">Menu</a>
                                 <a class="ar" href="cart.php">Cart</a>
                                 <a class="ar" href="#top">About Us</a>
+                                <form action="" method="post">
+                                    <button name="logout">Logout</button>
+                                </form>
                                 <?php
                                     if($user!=null){
                                 ?>

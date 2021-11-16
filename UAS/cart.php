@@ -23,6 +23,12 @@
     }else{
         $user=[];
     }
+    if(isset($_POST['logout']))
+    {
+        unset($_SESSION["login"]);
+        unset($_SESSION["cart"]);
+        header("location:login.php");
+    }
     if(isset($_POST["btn_cart"]))
     {
         //ini untuk add jumlah product otomatis
@@ -132,6 +138,9 @@
                         <a class="ar" href="sushi.php">Menu</a>
                         <a class="ar" href="cart.php">Cart</a>
                         <a class="ar" href="#top">About Us</a>
+                        <form action="" method="post">
+                            <button name="logout">Logout</button>
+                        </form>
                         <?php
                             if($user!=null){
                         ?>
