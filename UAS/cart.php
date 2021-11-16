@@ -57,14 +57,14 @@
     {
             $size=sizeof($_SESSION["cart"]);
             $subtot=0;
-            $subjum=0;
+            // $subjum=0;
             for($i=0;$i<$size;$i++){ 
                 $sum=0;
                 
                 $price =$_SESSION["cart"][$i][0]["harga"]; 
                 $jum =  $_SESSION["cart"][$i][1]; 
                 $sum=$price*$jum;
-                $subjum+=$jum;
+                // $subjum+=$jum;
                 $subtot+=$sum;
             }
  
@@ -75,8 +75,8 @@
                 $email = $user["email"];
                 try{
                     $pdo->beginTransaction();  
-                    $stmt = $pdo->prepare("INSERT INTO htrans(email,jumlah,total) values(?,?,?)");
-                    $result = $stmt->execute([$email,$subjum,$subtot]);
+                    $stmt = $pdo->prepare("INSERT INTO htrans(email,total) values(?,?)");
+                    $result = $stmt->execute([$email,$subtot]);
                     $h_trans_id = $pdo->lastInsertId();
                     foreach ($carts as $key => $value) {
                       $nama=$carts[$key][0]["nama"];
