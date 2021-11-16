@@ -59,22 +59,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazake</title>
-    <link rel="stylesheet" href="mycss.css">
+    <link href="mycss.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
-    <h1>test github</h1>
-    <div class="container">
-             <div class="product<!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Amazake</title>
-                    <link rel="stylesheet" href="css2.css">
-                </head>
-                <body>
                     <div class="container">
                 
                         <div class="header" id="top">    
@@ -105,6 +93,8 @@
                                 </div>
                             </div>
                             
+                            <div class="container">
+                            </div>
                 
                              <div class="foot">
                                 <p class="copy">Amazake social media</p>
