@@ -136,6 +136,10 @@ form{
     font-size: 35px;
     color: rgb(255, 255, 255);
 }
+.horder{
+    font-size: 35px;
+    color: rgb(172, 172, 172);
+}
 
 .p{
     font-size: 15px;
@@ -154,7 +158,7 @@ form{
 .tempMenu{
     width: 100%;
     height: 60vh;
-    padding: 3vh;
+    padding: 1vh;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -169,7 +173,7 @@ form{
     background-color: coral;
     width: 250px;
     height: 300px;
-    margin: 2vh;
+    margin: 3vh;
 }
 
 .mup{
@@ -190,15 +194,15 @@ form{
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    flex-grow: 2;
+    width: 65%;
 }
 .mname{
     background-color: rgb(180, 150, 32);
-    flex-grow: 1;
+    height: 35%;
 }
 .mdes{
     background-color: rgb(114, 173, 240);
-    flex-grow: 2;
+    height: 65%;
 }
 
 .mdright{
@@ -206,22 +210,54 @@ form{
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    flex-grow: 1;
+    width: 35%;
 }
 
 .harga{
     background-color: rgb(3, 189, 80);
-    flex-grow: 2;
+    height: 60%;
 }
 .addcart{
     background-color: rgb(150, 33, 111);
-    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 40%;
 }
 /* MENU DI ATAS */
 
+/* CART DI BAWAH */
+.tempCart{
+    width: 100%;
+    height: 60vh;
+    padding: 2vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+}
+table th{
+    border-bottom:1px solid ;
+    color: gainsboro;
+}
+
+.cleft{
+    background-color: rgb(100, 95, 96);
+    padding: 5vh;
+    flex-grow: 2;
+    height: 56vh;
+}
+
+.cright{
+    background-color: dimgrey;
+    padding: 1vh;
+    flex-grow: 1;
+    height: 56vh;
+}
+
+/*CART SAMPAI SINI*/
 
 .circle{
     border-radius:50px;
@@ -263,7 +299,6 @@ form{
 }
 
 .tag{
-    /* background-color: rgba(92, 92, 92, 0.616); */
     width: 20%;
     height: 30px;
     font-size:30px;
