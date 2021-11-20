@@ -1,17 +1,8 @@
 <?php
     require_once("connection.php");
 
-    if(isset($_GET["keyword"])){
-        
-        $stmt = $pdo->prepare("SELECT * FROM user WHERE Nama like ?");
-        $keyword = "%".$_GET["keyword"]."%";
-        $stmt->execute([$keyword]);
-        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
-     }
-     else{
-       $stmt = $pdo->query("SELECT * FROM user");
+     $stmt = $pdo->query("SELECT * FROM product");
        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
-     }
 ?>
 
 <!DOCTYPE html>
@@ -38,15 +29,6 @@
                         <a class="ar" href="login.php">Login / Register</a>
                 </div>
             </div>
-    
-            <div class="product">
-                <form action="#" method="get">
-                    <h2 class="ar">Search User</h2> 
-                    <br>
-                    <input type="text" name="keyword" id="" class="search"> <br>
-                    <button  class="searchbtn">Search</button>
-                </form>
-                <br>
             
                 <h2 class="ar">List User</h2>
                 <br>
