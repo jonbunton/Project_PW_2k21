@@ -3,14 +3,14 @@
 
     if(isset($_GET["keyword"])){
         
-        $stmt = $pdo->prepare("SELECT * FROM user WHERE email like ?");
+        $stmt = $pdo->prepare("SELECT * FROM history WHERE email like ?");
         $keyword = "%".$_GET["keyword"]."%";
         $stmt->execute([$keyword]);
-        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
      else{
-       $stmt = $pdo->query("SELECT * FROM user");
-       $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+       $stmt = $pdo->query("SELECT * FROM history");
+       $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
 ?>
 
@@ -41,26 +41,26 @@
     
             <div class="product">
                 <form action="#" method="get">
-                    <h2 class="ar">Search User</h2> 
+                    <h2 class="ar">Search email</h2> 
                     <br>
                     <input type="text" name="keyword" id="" class="search"> <br>
                     <button  class="searchbtn">Search</button>
                 </form>
                 <br>
             
-                <h2 class="ar">List User</h2>
+                <h2 class="ar">History Top Up</h2>
                 <br>
                 <div class="table100 ver3 m-b-110">
 					<div class="table100-head">
 						<table>
 							<thead>
 								<tr class="row100 head">
-									<th class="cell100 column1">No.</th>
-									<th class="cell100 column2">Nama</th>
-									<th class="cell100 column3">Email</th>
-                                    <th class="cell100 column4">Alamat</th>
-									<th class="cell100 column5">Kota</th>
-									<th class="cell100 column6">Saldo</th>
+									<th class="cell100 column1">ID</th>
+									<th class="cell100 column2">Email</th>
+									<th class="cell100 column3">Waktu</th>
+                                    <th class="cell100 column4">tanggal</th>
+									<th class="cell100 column5">Saldo</th>
+                                    <th class="cell100 column6">Cancel</th>
 								</tr>
 							</thead>
 						</table>
@@ -70,27 +70,30 @@
 						<table>
 							<tbody>
                                 <?php
-                                    if ($user !== null) {
+                                    if ($hist !== null) {
                                         $idx=1;
-                                        foreach ($user as $key => $value) {
+                                        foreach ($hist as $key => $value) {
                                     ?>
                                         <tr class="row100 body">
-                                            <td class="cell100 column1"><?php echo $idx ?></td>
-                                            <td class="cell100 column2"><?= $value['nama']?></td>
-                                            <td class="cell100 column3"><?= $value['email']?></td>
-                                            <td class="cell100 column4"><?= $value['alamat']?></td>
-                                            <td class="cell100 column5"><?= $value['kota']?></td>
-                                            <td class="cell100 column6"><?= $value['saldo']?></td>
-                                            
+                                            <td class="cell100 column1"><?= $value['id_history']?></td>
+                                            <td class="cell100 column2"><?= $value['email']?></td>
+                                            <td class="cell100 column3"><?= $value['waktu']?></td>
+                                            <td class="cell100 column4"><?= $value['tanggal']?></td>
+                                            <td class="cell100 column5"><?= $value['saldo']?></td>
+                                            <td class="cell100 column6 detailbtn">
+                                                <a href="./Detail_tran.php/?notaid=<?=$value['id_htrans']?>" >
+                                                    <button>Cancel</button>
+                                                </a>
+                                            </td>
                                         </tr>
                                     <?php
                                     $idx++;
                                         }
                                     }
                                 ?>
-								
                                 </tbody>
 						</table>
+
 					</div>
 				</div>
             </div>
