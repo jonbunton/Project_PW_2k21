@@ -42,7 +42,7 @@
                             <div class="nav">
                                 <img class="logo" src="gallery/logo.png" alt="">
                                 <a class="ar" href="#top">Home</a>
-                                <a class="ar" href="sushi.php">Menu</a>
+                                <a class="ar" href="menu.php">Menu</a>
                                 <a class="ar" href="cart.php">Cart</a>
                                 <a class="ar" href="#top">About Us</a>
                                 <form action="" method="post">
@@ -67,8 +67,10 @@
                 
                              <div class="product">
                                  <center>
-                                <p class="h">Pick Your Favourite Sushi</p><br>
-                                <hr>
+                                 <div class="htop">
+                                        <p>Pick Your Favorite Sushi</p>
+                                 </div>
+                                <div class ="path"></div>
                                 <br>
                                 </center>
                                 <br>

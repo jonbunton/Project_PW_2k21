@@ -25,14 +25,14 @@
                 
                              <div class="product">
                                  <center>
-                                <p class="h">Pick Category</p><br>
-                                <hr>
-                                <br>
-                                </center>
-                                <br>
-                
+                                     <div class="htop">
+                                        <p>Pick Category</p>
+                                     </div>
+                                    <div class ="path"></div>
+                                    
                                 <div class="cards">
-                                    <div class="circle p1">
+                                    <a href="sushi.php" style="text-decoration:none;">
+                                        <div class="circle p1">
                                         
                                         <div class="tag">S</div>
                                         <div class="tag">U</div>
@@ -41,10 +41,10 @@
                                         <div class="tag">I</div>
                                         <div class="tag1"></div>
                                         <div class="tag1"></div>
-                                        <br><br><br><br><br>
-                                        <a href="jp.html">Order</a>
                                         
-                                    </div>
+                                        </div>
+                                    </a>
+
                                     <div class="circle p2">
                                         
                                         <div class="tag">R</div>
@@ -54,9 +54,7 @@
                                         <div class="tag">N</div>
                                         <div class="tag1"></div>
                                         <div class="tag1"></div>
-                                        <br><br><br><br><br>
                                         
-                                        <a href="jp.html">Order</a>
                                         
                                     </div>
                                     <div class="circle p3">
@@ -68,9 +66,7 @@
                                         <div class="tag1"></div>
                                         <div class="tag1"></div>
                                         <div class="tag1"></div>
-                                        <br><br><br><br><br>
                                         
-                                        <a href="jp.html">Order</a>
                                         
                                     </div>
                                     <div class="circle p4">
@@ -82,9 +78,6 @@
                                         <div class="tag">K</div>
                                         <div class="tag1"></div>
                                         <div class="tag1"></div>
-                                        <br><br><br><br><br>
-                                        
-                                        <a href="jp.html">Order</a>
                                         
                                     </div>
                                     <div class="circle p5">
@@ -96,14 +89,12 @@
                                         <div class="tag">E</div>
                                         <div class="tag">R</div>
                                         <div class="tag">T</div>
-                                        <br><br><br><br><br>
-                                        
-                                        <a href="jp.html">Order</a>
+
                                         
                                     </div>
                 
                                 </div>
-                
+                                </center>
                             </div>
                 
                              <div class="foot">
