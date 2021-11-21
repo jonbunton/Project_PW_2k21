@@ -42,12 +42,9 @@
                             <div class="nav">
                                 <img class="logo" src="gallery/logo.png" alt="">
                                 <a class="ar" href="#top">Home</a>
+                                <a class="ar" href="#top">About Us</a>
                                 <a class="ar" href="menu.php">Menu</a>
                                 <a class="ar" href="cart.php">Cart</a>
-                                <a class="ar" href="#top">About Us</a>
-                                <form action="" method="post">
-                                    <button name="logout">Logout</button>
-                                </form>
                                 <?php
                                     if($user!=null){
                                 ?>
@@ -76,7 +73,7 @@
                                 <br>
 
                                 <!-- menu -->
-                                <div class="tempMenu">
+                                <div class="tempMenu with-border-image">
                                     <!-- tempMakanan -->
                                     <?php
                                         if($products!=null)
@@ -107,6 +104,9 @@
                                     <!-- tempMakanan -->
                                 </div>
                                  <!-- menu -->
+                                 <form action="" method="post">
+                                    <button name="logout">Logout</button>
+                                </form>
                 
                             </div>
                                         
