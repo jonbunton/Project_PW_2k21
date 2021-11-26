@@ -4,15 +4,22 @@
     $stmt = $pdo->query("SELECT * FROM product");
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $user_login=$_SESSION["login"];
-    $stmt = $pdo->prepare("SELECT * FROM user WHERE email = ?");
-    $stmt->execute([$user_login["email"]]);
-    $user =$stmt->fetch(PDO::FETCH_ASSOC);
-
-    $saldo=$user["saldo"];
+    if(isset($_SESSION["login"]))
+    {
+        $user_login=$_SESSION["login"];
+        $stmt = $pdo->prepare("SELECT * FROM user WHERE email = ?");
+        $stmt->execute([$user_login["email"]]);
+        $user =$stmt->fetch(PDO::FETCH_ASSOC);
+        //$saldo=$user["saldo"];
+    }
+    
+    
+   
 
     if(isset($_SESSION["cart"])){
-        $carts=$_SESSION["cart"];
+        //ini untuk add jumlah product otomatis
+        require_once("refreshcart.php");  
+        $carts=$_SESSION["cart"]; 
     }
     else{
         $carts=[];
@@ -28,37 +35,7 @@
         unset($_SESSION["login"]);
         unset($_SESSION["cart"]);
         header("location:login.php");
-    }
-    if(isset($_POST["btn_cart"]))
-    {
-        //ini untuk add jumlah product otomatis
-        if(isset($_SESSION["cart"]))
-        {
-            $size=sizeof($_SESSION["cart"]);
-            $carts = $_SESSION['cart']; 
-            for($i=0;$i<$size;$i++){
-                $id1=$_SESSION["cart"][$i][0]["id_product"]; 
-                for($j=$size-1;$j>$i;$j--)
-                {
-                    $id2=$_SESSION["cart"][$j][0]["id_product"];   
-                    if($id1==$id2) 
-                    { 
-                        unset($_SESSION["cart"][$j]); 
-                        $_SESSION['cart']=array_values($_SESSION['cart']);
-                        $size=sizeof($_SESSION["cart"]);
-                        $j=$size;
-                        $jum= $_SESSION["cart"][$i][1];
-                        $_SESSION["cart"][$i][1]=$jum+1;
-                    }
-                }
-            }
-            header("Location: cart.php");
-        }
-        //  echo "<pre>";
-        // var_dump($_SESSION["cart"]);
-        // echo "</pre>";
-    }
-
+    } 
     if(isset($_POST["order"]))
     {
             $size=sizeof($_SESSION["cart"]);
@@ -143,7 +120,7 @@
                             if($user!=null){
                         ?>
                             <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                            <p class="h">saldo anda <?= $saldo?></p>
+                            <!-- <p class="h">saldo anda <?= $saldo?></p> -->
                             
                         <?php
                             }else{
@@ -168,21 +145,31 @@
                                     {
                             ?>
                                 <div class="menue">
-                                <form action="" method="post">
-                                    <input type="hidden" name="id" value=<?=$values[0]["id_product"]?>>
-                                    <div class="mup">ini gambar</div>
-                                    <div class="mdown">
-                                        <div class="mdleft">
-                                            <div class="mname"><?=$values[0]["nama"]?></div>
-                                            <div class="mdes"><?=$values[0]["deskripsi"]?></div>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="id" value=<?=$values[0]["id_product"]?>>
+                                        <div class="mup">ini gambar</div>
+                                        <div class="mdown">
+                                            <div class="mdleft">
+                                                <div class="mname"><?=$values[0]["nama"]?></div>
+                                                <div class="mdes"><?=$values[0]["deskripsi"]?></div>
+                                            </div>
+                                            <div class="mdright">
+                                                <div class="addcart">Jumlah Order: <?=$values[1]?> </div>
+                                                <div class="harga">Total :Rp. <?=$values[0]["harga"]*$values[1]?></div>
+
+                                            </div>
                                         </div>
-                                        <div class="mdright">
-                                            <div class="addcart">Jumlah Order: <?=$values[1]?></div>
-                                            <div class="harga">Total :Rp. <?=$values[0]["harga"]*$values[1]?></div>
-                                            
-                                        </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                    <form action="Control.php" method="post">
+                                        <input type="hidden" name="action" value="minorder">
+                                        <input type="hidden" name="key" value="<?=$key?>">
+                                        <button name="btn_cart">-</button>
+                                    </form>
+                                    <form action="Control.php" method="post">
+                                        <input type="hidden" name="action" value="plusorder">
+                                        <input type="hidden" name="key" value="<?=$key?>">
+                                        <button name="btn_cart">+</button>
+                                    </form>
                                 </div> 
                             <?php
                                     }
