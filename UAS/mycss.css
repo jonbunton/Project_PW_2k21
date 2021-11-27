@@ -109,14 +109,7 @@ form{
     background-size:100%, 100%;
     background-repeat:repeat-y;
     padding: 12vh;
-    color: #98825b;
-}
-
-.bgSushi{
-  background-image: url(gallery/bgsushi2.jpg);
-  background-blend-mode:overlay;
-  background-size:100%, 100%;
-  background-repeat:repeat-y;
+    color: whitesmoke;
 }
 
 .path{
@@ -125,24 +118,6 @@ form{
   background-color: white;
   animation: line 1s alternate;
   overflow: hidden;
-}
-
-.path2{
-  height: 3px;
-  width: 100%;
-  background-color: rgb(67, 62, 55);
-  animation: line2 1s alternate;
-  overflow: hidden;
-}
-
-@keyframes line2{
-  0%{
-    width: 0%;
-    background-color: none;
-  }100%{
-    width: 100%;
-    background-color: rgb(67, 62, 55);
-  }
 }
 
 @keyframes line{
@@ -177,20 +152,14 @@ form{
     color: white;
 }
 
-.blur {
-  backdrop-filter: blur(5px);  
-}
-
 
 .htop{
     font-size: 35px;
     height: 50px;
     line-height: 50px;
-    color: #ffffffbe;
+    color: rgb(255, 255, 255);
+    z-index: 0;
     overflow: hidden;
-}
-.color{
-  color: #31302dbe;
 }
 
 .htop p{
@@ -208,56 +177,6 @@ form{
       transform: translateY( 0px);
       opacity: 1;
     }
-}
-
-@-webkit-keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes tracking-out-expand {
-  0% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0.8;
-  }
-  100% {
-    letter-spacing: 1em;
-    opacity: 0;
-  }
-}
-@keyframes tracking-out-expand {
-  0% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0.8;
-  }
-  100% {
-    letter-spacing: 1em;
-    opacity: 0;
-  }
 }
 
 .horder{
@@ -279,47 +198,15 @@ form{
     justify-content: center;
     overflow: hidden;
 }
-/* cart */
-.cart{
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #98825bd0;
-  background-position: center;
-  background-repeat:repeat-y;
-  background-size: auto; 
-  overflow-y: scroll;
-  animation: open 1s ease-in-out alternate;
-  animation-delay: 1s;
-  animation-fill-mode: both;
-  border-left: 2px solid brown;
-  border-right: 2px solid brown;
-}
-
-.cart::-webkit-scrollbar{
-  background:transparent;
-}
-.cart::-webkit-scrollbar-thumb{
-  background-color: rgba(2, 2, 2, 0.554);
-  border-radius: 5px;
-  height: 50px;
-}
-
-
-
-/* cart */
 .tempMenu{
     width: 100%;
-    height: 70vh;
+    height: 60vh;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items:flex-start;
     justify-content: center;
-    background-image: url(./gallery/BgSushi3.jpg);
+    background-image: url(./gallery/BgSushi.jpg);
     background-position: center;
     background-repeat:repeat-y;
     background-size: auto;
@@ -354,21 +241,11 @@ form{
   }
 }
 
-@keyframes open{
-  0%{
-    width: 0%;
-  }
-  100%{
-    width: 100%;
-  }
-}
-
 /* MENU DIBAWAH*/
 .menue{
     width: 250px;
     height: 300px;
     margin: 3vh;
-    color: #c7b7a3;
 }
 
 .mup{
@@ -390,11 +267,11 @@ form{
     width: 65%;
 }
 .mname{
-    background-color: rgba(36, 36, 36, 0.431);
+    background-color: rgba(133, 131, 131, 0.431);
     height: 35%;
 }
 .mdes{
-    background-color: rgba(36, 36, 36, 0.431);
+    background-color: rgba(133, 131, 131, 0.431);
     height: 65%;
 }
 
@@ -406,11 +283,11 @@ form{
 }
 
 .harga{
-    background-color: rgba(36, 36, 36, 0.431);
+    background-color: rgba(133, 132, 131, 0.431);
     height: 60%;
 }
 .addcart{
-    background-color: rgba(36, 36, 36, 0.431);
+    background-color: rgba(133, 131, 131, 0.431);
     justify-content: center;
     align-items: center;
     height: 40%;

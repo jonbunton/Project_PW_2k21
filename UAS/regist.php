@@ -76,8 +76,8 @@
                             <div class="nav">
                                 <img class="logo" src="gallery/logo.png" alt="">
                                 <a class="ar" href="#top">Home</a>
-                                <a class="ar" href="menu.php">Menu</a>
-                                <a class="ar" href="cart.php">Cart</a>
+                                <a class="ar" href="#top">Menu</a>
+                                <a class="ar" href="#top">Cart</a>
                                 <a class="ar" href="#top">About Us</a>
                                 <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
                                     <a class="ar" href="login.php">Login / Register</a>
@@ -85,7 +85,7 @@
                              </div>
                 
                              <div class="login1">
-                                <div class="log blur">
+                                <div class="log">
                                     <h2>Registration</h2><br><br>
                                     <form method="post">
                                         <label for="nm">Nama :</label>
@@ -102,7 +102,7 @@
                                         <input type="text" id="kt" name="kota"><br> 
                                       
                     
-                                        <p>Already have an account? <a style="color: rgb(243, 215, 178);" href="login.php">Login Here</a> </p> 
+                                        <p>Already have an account? <a style="color: rgb(243, 215, 178);" href="login.html">Login Here</a> </p> 
                                         <button type="submit" name="submit">Register</button>
                                     </form>      
                                     
