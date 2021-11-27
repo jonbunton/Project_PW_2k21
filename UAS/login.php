@@ -78,18 +78,16 @@
                              </div>
                 
                              <div class="login1">
-                                <div class="log">
+                                <div class="log blur">
                                     <h2>Login</h2><br><br>
                                     <form action="#" method="post">
                                         <label for="email">Email:</label><br>
                                         <input type="email" name="name" id="email" placeholder="example@example.com"><br>
                                         <label for="pass">Password:</label><br>
                                         <input type="password" name="password" id="pass"><br>
-                                        <p>Don't have account? <a  style="color: rgb(243, 215, 178);" href="regist.html">Register Here</a> </p> 
+                                        <p>Don't have account? <a  style="color: rgb(243, 215, 178);" href="regist.php">Register Here</a> </p> 
                                         <button type="submit" name="submit">Login</button>
                                     </form>    
-                                    
-                                   
                                 </div>
                             </div>
                 
