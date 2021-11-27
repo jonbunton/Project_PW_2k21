@@ -62,12 +62,12 @@
                                 ?>
                              </div>
                 
-                             <div class="product">
+                             <div class="product bgSushi">
                                  <center>
-                                 <div class="htop">
-                                        <p>Pick Your Favorite Sushi</p>
+                                 <div class="htop color">
+                                        <p>Pick Your Sushi</p>
                                  </div>
-                                <div class ="path"></div>
+                                <div class ="path2"></div>
                                 <br>
                                 </center>
                                 <br>
@@ -104,14 +104,14 @@
                                     <!-- tempMakanan -->
                                 </div>
                                  <!-- menu -->
-                                 <form action="" method="post">
-                                    <button name="logout">Logout</button>
-                                </form>
                 
                             </div>
                                         
                              <div class="foot">
                                 <p class="copy">Amazake social media</p>
+                                <form action="" method="post">
+                                    <button name="logout">Logout</button>
+                                </form>
                             </div>
                     </div>
                     </div>

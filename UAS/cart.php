@@ -135,12 +135,10 @@
                     <div class="nav">
                         <img class="logo" src="gallery/logo.png" alt="">
                         <a class="ar" href="#top">Home</a>
-                        <a class="ar" href="sushi.php">Menu</a>
+                        <a class="ar" href="menu.php">Menu</a>
                         <a class="ar" href="cart.php">Cart</a>
                         <a class="ar" href="#top">About Us</a>
-                        <form action="" method="post">
-                            <button name="logout">Logout</button>
-                        </form>
+                       
                         <?php
                             if($user!=null){
                         ?>
@@ -159,16 +157,9 @@
                 </div>
                 
                      <div class="product">
-                     <a href="sushi.php">Back</a>
-                         <center>
-                        <p class="h">Your Cart</p><br>
-                        <hr>
-                        <br>
-                        </center>
-                        <br>
-
                         <!-- menu -->
-                        <div class="tempMenu">
+                        <center>
+                        <div class="cart">
                             <!-- tempMakanan -->
                             <?php
                                 if($carts!=null)
@@ -203,10 +194,14 @@
                             ?>
                             <!-- tempMakanan -->
                         </div>
+                        </center>
                          <!-- menu -->
                         <center>
                         <form action="" method="post">
                             <button name="order">Order</button>
+                        </form>
+                        <form action="" method="post">
+                            <button name="logout">Logout</button>
                         </form>
                         </center>
                     </div> 

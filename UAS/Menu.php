@@ -17,7 +17,7 @@
                                 <a class="ar" href="#top">Home</a>
                                 <a class="ar" href="#top">About Us</a>
                                 <a class="ar" href="#top">Menu</a>
-                                <a class="ar" href="#top">Cart</a>
+                                <a class="ar" href="cart.php">Cart</a>
                                 <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
                                     <a class="ar" href="login.php">Login / Register</a>
                                 </div>
