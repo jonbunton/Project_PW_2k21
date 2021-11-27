@@ -3,10 +3,18 @@
 
     if(isset($_GET["keyword"])){
         
-        $stmt = $pdo->prepare("SELECT * FROM user WHERE email like ?");
+        $stmt = $pdo->prepare("SELECT * FROM user WHERE nama like ?");
+            $keyword = "%".$_GET["keyword"]."%";
+            $stmt->execute([$keyword]);
+            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if(isset($user)){
+            $stmt = $pdo->prepare("SELECT * FROM user WHERE email like ?");
         $keyword = "%".$_GET["keyword"]."%";
         $stmt->execute([$keyword]);
         $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
      }
      else{
        $stmt = $pdo->query("SELECT * FROM user");
@@ -21,7 +29,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazake</title>
-    <link href="mycss.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
+    <link href="mycssadmin.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -33,13 +41,14 @@
                     <a class="ar" href="mUser.php">Master User</a>
                     <a class="ar" href="mProd.php">Master Product</a>
                     <a class="ar" href="Hist_trans.php">Transaction History</a>
+                    <a class="ar" href="top_req.php">TopUp Request</a>
                     <a class="ar" href="Hist_top.php">TopUp History</a>
                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
                         <a class="ar" href="login.php">Login / Register</a>
                 </div>
             </div>
     
-            <div class="product">
+            <div class="product2">
                 <form action="#" method="get">
                     <h2 class="ar">Search User</h2> 
                     <br>
@@ -80,7 +89,7 @@
                                             <td class="cell100 column3"><?= $value['email']?></td>
                                             <td class="cell100 column4"><?= $value['alamat']?></td>
                                             <td class="cell100 column5"><?= $value['kota']?></td>
-                                            <td class="cell100 column6"><?= $value['saldo']?></td>
+                                            <td class="cell100 column6">Rp. <?= $value['saldo']?></td>
                                             
                                         </tr>
                                     <?php
