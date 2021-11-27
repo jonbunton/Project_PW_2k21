@@ -177,7 +177,7 @@ if(isset($_POST['edit']))
                     <a class="ar" href="top_req.php">TopUp Request</a>
                     <a class="ar" href="Hist_top.php">TopUp History</a>
                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                        <a class="ar" href="login.php">Login / Register</a>
+                        <a class="ar" href="index.php">Log Out</a>
                 </div>
             </div>
 
