@@ -21,14 +21,51 @@
      }
 
      if(isset($_GET["detail"])){
+
         $cek=$_GET["detail"];
-        $cek=$_GET["kurang"];
-        $stmt = $pdo->prepare("SELECT * FROM user WHERE id_htrans = ?");
-        $keyword = $cek;
-        $stmt->execute([$keyword]);
-        $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $test=$_GET["detail"];
+        $stmt = $pdo->prepare("DELETE FROM namadb WHERE id = :iddb");
+
+        $result = $stmt->execute([
+        "iddb"=>$cek
+        ]);
+
+        if($result){
+        $_SESSION["message"] = "Berhasil denied ";
+        }else{
+        $_SESSION["message"] = "Gagal denied !";
+        }
+        
+        header("Location: top_req.php");
      }
+
+     if(isset($_GET["detail2"])){
+        $cek=$_GET["detail2"];
+        $cek=$_GET["kurang"];
+
+        $id = $_GET["edit"];
+        $stmt = $pdo->query("SELECT * FROM namadb WHERE id='$cek'");
+        $edi = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $wkt=$edi['waktu'];
+        $tgl=$edi['tanggal'];
+        $sld=$edi['saldo'];
+        $eml=$edi['email'];
+
+        $stmt = $pdo->prepare("INSERT INTO history(waktu,tanggal, saldo, email) VALUES(?,?,?,?)");
+        $result = $stmt->execute([$wkt, $tgl, $sld, $eml]);
+        
+        
+        if($result){
+            $_SESSION["message"] = "Berhasil add nih";
+        }else{
+        $_SESSION["message"] = "Gagal add nih!";
+        }}
+     
+
+     if(isset($_SESSION["message"])){
+        echo "<script>alert('$_SESSION[message]')</script>";
+        unset($_SESSION["message"]);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -66,18 +103,19 @@
                 </form>
                 <br>
             
-                <h2 class="ar">History Top Up</h2>
+                <h2 class="ar">Request Top Up</h2>
                 <br>
                 <div class="table100 ver3 m-b-110">
 					<div class="table100-head">
 						<table>
 							<thead>
 								<tr class="row100 head">
-									<th class="cell100 column1">ID</th>
+									<th class="cell100 column1">No</th>
 									<th class="cell100 column2">Email</th>
 									<th class="cell100 column3">Waktu</th>
                                     <th class="cell100 column4">tanggal</th>
 									<th class="cell100 column5">Saldo</th>
+                                    <th class="cell100 column6">Status</th>
 								</tr>
 							</thead>
 						</table>
@@ -97,6 +135,18 @@
                                             <td class="cell100 column3"><?= $value['waktu']?></td>
                                             <td class="cell100 column4"><?= $value['tanggal']?></td>
                                             <td class="cell100 column5"><?= $value['saldo']?></td>
+                                            <td class="cell100 column6 detailbtn">
+                                                <form action="#" method="get">
+                                                    <input type="hidden" name="detail" value="<?= $value['id_history']?>">
+                                                    <button>Denied</button>
+                                                </form>
+                                                <form action="#" method="get">
+                                                    <input type="hidden" name="detail2" value="<?= $value['id_history']?>">
+                                                    <input type="hidden" name="kurang" value="<?= $value['saldo']?>">
+                                                    <button>Accept</button>
+                                                </form>
+                                            </td>
+                                            
                                         </tr>
                                     <?php
                                     $idx++;
