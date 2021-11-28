@@ -106,97 +106,147 @@
 
 </head>
 <body>
-            <div class="container">
-                
-                <div class="header" id="top">    
-                    <div class="nav">
-                        <img class="logo" src="gallery/logo.png" alt="">
-                        <a class="ar" href="#top">Home</a>
-                        <a class="ar" href="menu.php">Menu</a>
-                        <a class="ar" href="cart.php">Cart</a>
-                        <a class="ar" href="#top">About Us</a>
+    <div class="container">
+
+        <div class="header" id="top">    
+            <div class="nav">
+                <img class="logo" src="gallery/logo.png" alt="">
+                <a class="ar" href="#top">Home</a>
+                <a class="ar" href="menu.php">Menu</a>
+                <a class="ar" href="cart.php">Cart</a>
+                <a class="ar" href="#top">About Us</a>
                        
-                        <?php
-                            if($user!=null){
-                        ?>
-                            <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                            <!-- <p class="h">saldo anda <?= $saldo?></p> -->
+                <?php
+                    if($user!=null){
+                ?>
+                <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
+                <!-- <p class="h">saldo anda <?= $saldo?></p> -->
                             
-                        <?php
-                            }else{
-                        ?>
-                            <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                                <a class="ar" href="login.php">Login / Register</a>
-                            </div>
+                <?php
+                    }else{
+                ?>
+                <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
+                    <a class="ar" href="login.php">Login / Register</a>
+                </div>
+
                         <?php
                             }
                         ?>
-                </div>
+            </div>
+        </div>
                 
-                     <div class="product">
-                        <!-- menu -->
-                        <center>
-                        <div class="cart">
-                            <!-- tempMakanan -->
-                            <?php
-                                if($carts!=null)
-                                {
-                                    foreach($carts as $key => $values)
+        <div class="product bgcart">
+            <!-- cart -->
+            <center>
+                <div class="cart blur2">
+                <!--detail cart -->
+                    <div class="cleft">
+                        <div  class="textCart"><h1>Shopping Cart</h1></div>
+                        <div class="tabCart">
+                            <table>
+                                <thead>
+                                    <th colspan = "2">PRODUCT DETAILS</th>
+                                    <th>QUANTITY</th>
+                                    <th>PRICE</th>
+                                    <th>TOTAL</th>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    if($carts!=null)
                                     {
-                            ?>
-                                <div class="menue">
-                                    <form action="" method="post">
-                                        <input type="hidden" name="id" value=<?=$values[0]["id_product"]?>>
-                                        <div class="mup">ini gambar</div>
-                                        <div class="mdown">
-                                            <div class="mdleft">
-                                                <div class="mname"><?=$values[0]["nama"]?></div>
-                                                <div class="mdes"><?=$values[0]["deskripsi"]?></div>
-                                            </div>
-                                            <div class="mdright">
-                                                <div class="addcart">Jumlah Order: <?=$values[1]?> </div>
-                                                <div class="harga">Total :Rp. <?=$values[0]["harga"]*$values[1]?></div>
-
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <form action="Control.php" method="post">
-                                        <input type="hidden" name="action" value="minorder">
-                                        <input type="hidden" name="key" value="<?=$key?>">
-                                        <button name="btn_cart">-</button>
-                                    </form>
-                                    <form action="Control.php" method="post">
-                                        <input type="hidden" name="action" value="plusorder">
-                                        <input type="hidden" name="key" value="<?=$key?>">
-                                        <button name="btn_cart">+</button>
-                                    </form>
-                                </div> 
-                            <?php
+                                        foreach($carts as $key => $values)
+                                        {
+                                ?>
+                                        <tr>
+                                            <td>gambar</td>
+                                            <td><?=$values[0]["nama"]?> <br> <?=$values[0]["deskripsi"]?></td>
+                                            <td>
+                                                <div style="display: flex; flex-direction: row; justify-content:flex-start;">
+                                                    <form style="width: 20px; height: 20px; margin-right:20px;" action="Control.php" method="post">
+                                                        <input type="hidden" name="action" value="minorder">
+                                                        <input type="hidden" name="key" value="<?=$key?>">
+                                                        <button class="buttoncart" name="btn_cart">-</button>
+                                                    </form>
+                                                    
+                                                    <?=$values[1]?> 
+                                                    
+                                                    <form style="width: 20px; height: 20px; margin-left:20px;" action="Control.php" method="post">
+                                                        <input type="hidden" name="action" value="plusorder">
+                                                        <input type="hidden" name="key" value="<?=$key?>">
+                                                        <button class="buttoncart" name="btn_cart">+</button>
+                                                    </form>
+                                                </div>
+                                          
+                                            </td>
+                                            <td>IDR <?=$values[0]["harga"]?></td>
+                                            <td>IDR <?=$values[0]["harga"]*$values[1]?></td>
+                                            <input type="hidden" name="id" value=<?=$values[0]["id_product"]?>>
+                                        </tr>
+                                        <?php
+                                        }
+                                    }else{
+                                ?>
+                                Your Cart is Empty
+                                <?php
                                     }
-                                }else{
-                            ?>
-                            Your Cart is Empty
-                            <?php
-                                }
-                            ?>
-                            <!-- tempMakanan -->
+                                ?>
+                                </tbody>
+                            </table>
                         </div>
-                        </center>
-                         <!-- menu -->
-                        <center>
-                        <form action="" method="post">
-                            <button name="order">Order</button>
-                        </form>
-                        <form action="" method="post">
-                            <button name="logout">Logout</button>
-                        </form>
-                        </center>
-                    </div> 
-                     <div class="foot">
-                        <p class="copy">Amazake social media</p>
                     </div>
-            </div>
-            </div>
+                            <!-- summary -->
+                    <div class="cright blur2">
+                        <div  class="textCart4">ORDER SUMMARY</div>
+                        <hr>
+                        <div  class="textCart3">
+                            <div class="t1">
+                                4
+                            </div>
+                            <div class="t2">
+                                Items
+                            </div>
+                            <div class="t3">
+                                IDR 20000 <!--tinggal gnt jumlahnya aj pake php IDR-nya biarin -->
+                            </div>
+                        </div>
+                        <div  class="textCart3">
+                            <div class="t1">
+                                Shipping Cost
+                            </div>
+                            <div class="t3">
+                                IDR 15000
+                            </div>
+                        </div>
+                        <hr>
+                        <div  class="textCart3"> 
+                            <div class="t1">
+                                Grand Total
+                            </div>
+                            <div class="t3">
+                                 IDR 15000 <!--tinggal gnt jumlahnya aj pake php IDR-nya biarin -->
+                            </div>
+                        </div>
+                        <br><br><br><br><br><br><br><br><br>
+                        <form action="" method="post">
+                            <button class="buttonco" name="order">Check Out</button>
+                        </form>       
+                    </div>
+                </div>
+            </center>
+                            <!-- DETAIL CART  -->
+        </div>
+
+        <div class="foot">
+            <p class="copy">Amazake social media</p>
+            <!-- <form action="" method="post">
+                <button name="order">Order</button>
+            </form>
+            <form action="" method="post">
+                <button name="logout">Logout</button>
+            </form> -->
+        </div>
+
+    </div>
    
 </body>
 </html>

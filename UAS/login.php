@@ -63,38 +63,38 @@
 
 </head>
 <body>
-                    <div class="container">
+    <div class="container">
+        <div class="header" id="top">    
+            <div class="nav">
+                <img class="logo" src="gallery/logo.png" alt="">
+                <a class="ar" href="#top">Home</a>
+                <a class="ar" href="sushi.php">Menu</a>
+                <a class="ar" href="cart.php">Cart</a>
+                <a class="ar" href="#top">About Us</a>
+                <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
+                    <a class="ar" href="login.php">Login / Register</a>
+                </div>
+            </div>
+        </div>
                 
-                        <div class="header" id="top">    
-                            <div class="nav">
-                                <img class="logo" src="gallery/logo.png" alt="">
-                                <a class="ar" href="#top">Home</a>
-                                <a class="ar" href="sushi.php">Menu</a>
-                                <a class="ar" href="cart.php">Cart</a>
-                                <a class="ar" href="#top">About Us</a>
-                                <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                                    <a class="ar" href="login.php">Login / Register</a>
-                                </div>
-                             </div>
+        <div class="login1">
+            <div class="log blur">
+                <h2>Login</h2><br><br>
+                <form action="#" method="post">
+                    <label for="email">Email:</label><br>
+                    <input type="email" name="name" id="email" placeholder="example@example.com"><br>
+                    <label for="pass">Password:</label><br>
+                    <input type="password" name="password" id="pass"><br>
+                    <p>Don't have account? <a  style="color: rgb(243, 215, 178);" href="regist.php">Register Here</a> </p> 
+                    <button type="submit" name="submit">Login</button>
+                </form>    
+            </div>
+        </div>
                 
-                             <div class="login1">
-                                <div class="log blur">
-                                    <h2>Login</h2><br><br>
-                                    <form action="#" method="post">
-                                        <label for="email">Email:</label><br>
-                                        <input type="email" name="name" id="email" placeholder="example@example.com"><br>
-                                        <label for="pass">Password:</label><br>
-                                        <input type="password" name="password" id="pass"><br>
-                                        <p>Don't have account? <a  style="color: rgb(243, 215, 178);" href="regist.php">Register Here</a> </p> 
-                                        <button type="submit" name="submit">Login</button>
-                                    </form>    
-                                </div>
-                            </div>
-                
-                             <div class="foot">
-                                <p class="copy">Amazake social media</p>
-                            </div>
-                    </div>
-                    </div>
+        <div class="foot">
+            <p class="copy">Amazake social media</p>
+        </div>
+    </div>
+                    
 </body>
 </html>

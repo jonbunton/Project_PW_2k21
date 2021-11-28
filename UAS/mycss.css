@@ -279,35 +279,6 @@ form{
     justify-content: center;
     overflow: hidden;
 }
-/* cart */
-.cart{
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #98825bd0;
-  background-position: center;
-  background-repeat:repeat-y;
-  background-size: auto; 
-  overflow-y: scroll;
-  animation: open 1s ease-in-out alternate;
-  animation-delay: 1s;
-  animation-fill-mode: both;
-  border-left: 2px solid brown;
-  border-right: 2px solid brown;
-}
-
-.cart::-webkit-scrollbar{
-  background:transparent;
-}
-.cart::-webkit-scrollbar-thumb{
-  background-color: rgba(2, 2, 2, 0.554);
-  border-radius: 5px;
-  height: 50px;
-}
-
 
 
 /* cart */
@@ -328,6 +299,7 @@ form{
     animation-delay: 1s;
     animation-fill-mode: both;
 }
+
 .with-border-image {
   border-style: solid;
   border-width: 15px;
@@ -369,6 +341,9 @@ form{
     height: 300px;
     margin: 3vh;
     color: #c7b7a3;
+    animation: fadeIn2 1s ease-in-out alternate;
+    animation-delay: 2s;
+    animation-fill-mode: both;
 }
 
 .mup{
@@ -418,37 +393,187 @@ form{
 /* MENU DI ATAS */
 
 /* CART DI BAWAH */
-.tempCart{
-    width: 100%;
-    height: 60vh;
-    padding: 2vh;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items:flex-start;
-    justify-content: center;
-    background-color: rgb(255, 255, 255);
+.cart{
+  width: 100%;
+  height: 79vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items:flex-start;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.308);
+  background-position: center;
+  background-repeat:repeat-y;
+  background-size: auto; 
+  overflow:hidden;
+  animation: open 1s ease-in-out alternate;
+  animation-delay: 0.3s;
+  animation-fill-mode: both;
+  border-left: 10px solid rgb(80, 70, 53);
+  border-right: 10px solid rgb(80, 70, 53);
 }
-table th{
-    border-bottom:1px solid ;
-    color: gainsboro;
+.bgcart{
+  background-image: url(gallery/bgcart2.jpg);
 }
 
+.cart::-webkit-scrollbar{
+  background:transparent;
+}
+.cart::-webkit-scrollbar-thumb{
+  background-color: rgba(2, 2, 2, 0.554);
+  border-radius: 5px;
+  height: 50px;
+}
+
+
 .cleft{
-    background-color: rgb(100, 95, 96);
-    padding: 5vh;
-    flex-grow: 2;
-    height: 56vh;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 75%;
+    background-color: rgba(214, 191, 171, 0.465);
+    padding: 2vh;
+    height: 79vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    animation: fadeIn2 1s ease-in-out alternate;
+    animation-delay: 1.3s;
+    animation-fill-mode: both;
+}
+
+.blur2 {
+  backdrop-filter: blur(0.5px);  
+}
+
+
+.textCart{
+  color: #774f34;
+  margin-bottom: 2vh;
+  animation: fadeIn2 1s ease-in-out alternate;
+  animation-delay: 1.3s;
+  animation-fill-mode: both;
+}
+.textCart2{
+  color: #ebcdba;
+  margin-bottom: 2vh;
+  animation: fadeIn2 1s ease-in-out alternate;
+  animation-delay: 1.3s;
+  animation-fill-mode: both;
+}
+
+.textCart3{
+  color: #ebcdba;
+  font-size: 20px;
+  margin: 5vh;
+  animation: fadeIn2 1s ease-in-out alternate;
+  animation-delay: 1.3s;
+  animation-fill-mode: both;
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start
+}
+.t1{
+ flex-grow: 3;
+ text-align: left;
+}
+
+.t2{
+  flex-grow: 1;
+  text-align: left;
+}
+
+.t3{
+  flex-grow: 3;
+  text-align: right;
+}
+
+.textCart4{
+  color: #ebcdba;
+  font-size: 50px;
+  margin-bottom: 2vh;
+  animation: fadeIn2 1s ease-in-out alternate;
+  animation-delay: 1.3s;
+  animation-fill-mode: both;
+}
+
+.tabCart{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgba(214, 191, 171, 0.637);
+  padding: 1vh;
+  height: 77vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 2vh;
+}
+
+.tabCart table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tabCart td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid rgb(128, 95, 57);
+}
+.tabCart th{
+    padding: 8px;
+    color: rgba(87, 48, 15, 0.972);
+    font-weight:bolder;
+    text-align: left;
+    border-top: 2px solid rgb(128, 95, 57);;
+    border-bottom: 3px solid rgb(128, 95, 57);;
+}
+
+.buttoncart{
+  background-color: #e4c087;
+  color: #533314;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  width: 20px;
+  height:20px;
+}
+
+.buttonco{
+  background-color: #e4c087;
+  color: #533314;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  width: 150px;
+  height:40px;
 }
 
 .cright{
-    background-color: dimgrey;
-    padding: 1vh;
-    flex-grow: 1;
-    height: 56vh;
+    width: 25%;
+    background-color: rgba(167, 140, 116, 0.246);
+    padding: 2vh;
+    height: 79vh;
+    animation: fadeIn2 1s ease-in-out alternate;
+    animation-delay: 1.3s;
+    animation-fill-mode: both;
 }
 
 /*CART SAMPAI SINI*/
+@keyframes fadeIn2 { 
+  0%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1; 
+  }  
+}
+
 
 .circle{
     border-radius:50px;
