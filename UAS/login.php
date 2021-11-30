@@ -29,7 +29,7 @@
                                 $temp=$value;
                                 $status=1;
                                 break;
-                            }else if($value["username"]==$name)
+                            }else if($value["email"]==$name)
                             {
                                 $status=-1;
                             }
@@ -49,7 +49,11 @@
                 // }
             }
     }
-
+    if(isset( $_SESSION["login"]))
+    {
+        if($_SESSION["login"]=="admin")header("Location: mUser.php");
+        else header("Location: sushi.php");
+    }
 ?>
 
 <!DOCTYPE html>

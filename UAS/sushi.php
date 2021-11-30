@@ -1,7 +1,7 @@
 <?php
     require_once("connection.php");
-
-    $stmt = $pdo->query("SELECT * FROM product");
+    $sushi="1";
+    $stmt = $pdo->query("SELECT * FROM product where id_jenis='$sushi' ");
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_POST["cart"]))
@@ -29,6 +29,7 @@
         $user=$_SESSION["login"];
     }else{
         $user=[];
+        header("Location: login.php");
     }
 ?>
 <!DOCTYPE html>
