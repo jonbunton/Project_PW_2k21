@@ -36,22 +36,28 @@
         unset($_SESSION["cart"]);
         header("location:login.php");
     } 
-    if(isset($_POST["order"]))
+
+    if(isset($_SESSION["cart"]))
     {
-            $size=sizeof($_SESSION["cart"]);
-            $subtot=0;
-            // $subjum=0;
-            for($i=0;$i<$size;$i++){ 
-                $sum=0;
-                
-                $price =$_SESSION["cart"][$i][0]["harga"]; 
-                $jum =  $_SESSION["cart"][$i][1]; 
-                $sum=$price*$jum;
-                // $subjum+=$jum;
-                $subtot+=$sum;
-            }
- 
+        $size=sizeof($_SESSION["cart"]);
+        $subtot=0;
+        $subjum=0;
+        for($i=0;$i<$size;$i++){ 
+            $sum=0;
+
+            $price =$_SESSION["cart"][$i][0]["harga"]; 
+            $jum =  $_SESSION["cart"][$i][1]; 
+            $sum=$price*$jum;
+            $subjum+=$jum;
+            $subtot+=$sum;
+        }
+
+    }
+
+    if(isset($_POST["order"]))
+    { 
             $balance=$user["saldo"];
+            $subtot+=15000;
             if($subtot<$balance)
             { 
                 $carts = $_SESSION['cart'];
@@ -62,10 +68,11 @@
                     $result = $stmt->execute([$email,$subtot]);
                     $h_trans_id = $pdo->lastInsertId();
                     foreach ($carts as $key => $value) {
+                      $ongkir=15000;
                       $nama=$carts[$key][0]["nama"];
                       $harga=$carts[$key][0]["harga"];
                       $jum=$carts[$key][1];
-                      $subtot2=$harga*$jum;
+                      $subtot2=($harga*$jum); 
                       $id_product=$value[0]["id_product"];
                       $stmt = $pdo->prepare("INSERT INTO dtrans(id_htrans,id_product, nama_product,jumlah,subtotal,harga) values(?,?,?,?,?,?)");
                       $result = $stmt->execute([$h_trans_id,$id_product ,$nama,$jum,$subtot2,$harga ]);
@@ -200,13 +207,15 @@
                         <hr>
                         <div  class="textCart3">
                             <div class="t1">
-                                4
+                            <?php if(isset($subjum)) echo $subjum;
+                            else echo "0"?>
                             </div>
                             <div class="t2">
                                 Items
                             </div>
                             <div class="t3">
-                                IDR 20000 <!--tinggal gnt jumlahnya aj pake php IDR-nya biarin -->
+                                IDR <?php if(isset($subtot)) echo $subtot;
+                                else echo "0"?> <!--tinggal gnt jumlahnya aj pake php IDR-nya biarin -->
                             </div>
                         </div>
                         <div  class="textCart3">
@@ -223,7 +232,8 @@
                                 Grand Total
                             </div>
                             <div class="t3">
-                                 IDR 15000 <!--tinggal gnt jumlahnya aj pake php IDR-nya biarin -->
+                                 IDR <?php if(isset($subtot)) echo $subtot+=15000;
+                                else echo "0"?> <!--tinggal gnt jumlahnya aj pake php IDR-nya biarin -->
                             </div>
                         </div>
                         <br><br><br><br><br><br><br><br><br>
