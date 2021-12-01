@@ -1,6 +1,6 @@
 <?php
-    require_once("connection.php"); 
-$action = $_REQUEST["action"];
+  require_once("connection.php"); 
+  $action = $_REQUEST["action"];
   if($action=="plusorder")
   {
     $index=$_POST["key"];

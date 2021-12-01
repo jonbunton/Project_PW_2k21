@@ -11,12 +11,12 @@
             }
             else
             {
-                // if($name=="admin" && $_POST["password"]=="admin"){
-                //     $status=2;
-                //     $_SESSION["login"]="admin";
-                //     header("Location: admin.php");
-                // }
-                // else{
+                if($name=="admin@gmail.com" && $_POST["password"]=="admin"){
+                    $status=2;
+                    // $_SESSION["login"]="admin";
+                    header("Location: mUser.php");
+                }
+                else{
                     $status=0;
                     $temp=[];
                     $stmt = $pdo->query("SELECT * FROM user");
@@ -47,13 +47,17 @@
                         echo "<script>alert('password tidak cocok  ')</script>";
                     }
 
-                // }
+                }
             }
     }
     if(isset( $_SESSION["login"]))
     {
         if($_SESSION["login"]=="admin")header("Location: mUser.php");
         else header("Location: Menu.php");
+    }
+    if(isset($_SESSION["message"])){
+        echo "<script>alert('$_SESSION[message]')</script>";
+        unset($_SESSION["message"]);
     }
 ?>
 
@@ -74,7 +78,7 @@
                             <div class="nav">
                                 <img class="logo" src="gallery/logo.png" alt="">
                                 <a class="ar" href="#top">Home</a>
-                                <a class="ar" href="sushi.php">Menu</a>
+                                <a class="ar" href="Menu.php">Menu</a>
                                 <a class="ar" href="cart.php">Cart</a>
                                 <a class="ar" href="#top">About Us</a>
                                 <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>

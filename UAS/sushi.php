@@ -3,20 +3,23 @@
     $sushi="1";
     $stmt = $pdo->query("SELECT * FROM product where id_jenis='$sushi' ");
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    
+    $stat=0;
     if(isset($_POST["cart"]))
     {
-        if(isset($_SESSION["login"]))
-        {
-            $index=$_POST["cart"];
-            $stmt = $pdo->query("SELECT * FROM product where id_product='$index' ");
-            $product_cart = $stmt->fetch(PDO::FETCH_ASSOC);
-            //index 0 = object product,index 1 = jumlah
-            $_SESSION["cart"][] = array($product_cart,1); 
-        }else{
-            echo "<script>alert('Mohon Login Terlebih dahulu')</script>";
-            unset($_SESSION["cart"]);
-        }
+            if(isset($_SESSION["login"]))
+            {
+                $index=$_POST["cart"];
+                $stmt = $pdo->query("SELECT * FROM product where id_product='$index' ");
+                $product_cart = $stmt->fetch(PDO::FETCH_ASSOC);
+                //index 0 = object product,index 1 = jumlah
+                $_SESSION["cart"][] = array($product_cart,1); 
+            }else{
+                $_SESSION["message"]="Mohon Login Terlebih dahulu"; 
+                unset($_SESSION["cart"]);
+                header("location:login.php");
+            } 
+            
     } 
     if(isset($_POST['logout']))
     {
@@ -28,8 +31,7 @@
     {
         $user=$_SESSION["login"];
     }else{
-        $user=[];
-        header("Location: login.php");
+        $user=[]; 
     }
 ?>
 <!DOCTYPE html>
