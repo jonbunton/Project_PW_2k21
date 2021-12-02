@@ -12,7 +12,9 @@
         $user =$stmt->fetch(PDO::FETCH_ASSOC);
         //$saldo=$user["saldo"];
     }
-    
+    // echo "<pre>";
+    // var_dump($_SESSION["cart"]);
+    // echo "</pre>";
     
    
 
@@ -53,53 +55,60 @@
         }
 
     }
-
+    if(isset($_SESSION["message"])){
+        echo "<script>alert('$_SESSION[message]')</script>";
+        unset($_SESSION["message"]);
+    }
     if(isset($_POST["order"]))
     { 
             $balance=$user["saldo"];
             $subtot+=15000;
             if($subtot<$balance)
             { 
-                $carts = $_SESSION['cart'];
-                $email = $user["email"];
-                try{
-                    $pdo->beginTransaction();  
-                    $stmt = $pdo->prepare("INSERT INTO htrans(email,total) values(?,?)");
-                    $result = $stmt->execute([$email,$subtot]);
-                    $h_trans_id = $pdo->lastInsertId();
-                    foreach ($carts as $key => $value) {
-                      $ongkir=15000;
-                      $nama=$carts[$key][0]["nama"];
-                      $harga=$carts[$key][0]["harga"];
-                      $jum=$carts[$key][1];
-                      $subtot2=($harga*$jum); 
-                      $id_product=$value[0]["id_product"];
-                      $stmt = $pdo->prepare("INSERT INTO dtrans(id_htrans,id_product, nama_product,jumlah,subtotal,harga) values(?,?,?,?,?,?)");
-                      $result = $stmt->execute([$h_trans_id,$id_product ,$nama,$jum,$subtot2,$harga ]);
-                    }
-                    $balance-=$subtot;
-                    $stmt = $pdo->prepare("UPDATE user SET saldo=:saldo WHERE email = :id");
-                    $stmt->bindParam(":saldo", $balance); 
-                    $stmt->bindParam(":id", $email);
-                    $result = $stmt->execute();
+                if($subtot>15000)
+                {
+                    $carts = $_SESSION['cart'];
+                    $email = $user["email"];
+                    try{
+                        $pdo->beginTransaction();  
+                        $stmt = $pdo->prepare("INSERT INTO htrans(email,total) values(?,?)");
+                        $result = $stmt->execute([$email,$subtot]);
+                        $h_trans_id = $pdo->lastInsertId();
+                        foreach ($carts as $key => $value) {
+                          $ongkir=15000;
+                          $nama=$carts[$key][0]["nama"];
+                          $harga=$carts[$key][0]["harga"];
+                          $jum=$carts[$key][1];
+                          $subtot2=($harga*$jum); 
+                          $id_product=$value[0]["id_product"];
+                          $stmt = $pdo->prepare("INSERT INTO dtrans(id_htrans,id_product, nama_product,jumlah,subtotal,harga) values(?,?,?,?,?,?)");
+                          $result = $stmt->execute([$h_trans_id,$id_product ,$nama,$jum,$subtot2,$harga ]);
+                        }
+                        $balance-=$subtot;
+                        $stmt = $pdo->prepare("UPDATE user SET saldo=:saldo WHERE email = :id");
+                        $stmt->bindParam(":saldo", $balance); 
+                        $stmt->bindParam(":id", $email);
+                        $result = $stmt->execute();
 
-                    unset($_SESSION["cart"]);
-                    $pdo->commit();
-                }catch(PDOException $e){
-                  $pdo->rollBack();
-                  throw $e;
-                } 
-                $_SESSION["message"]="Berhasil beli".$subjum." produk ,seharga".$subtot;
+                        unset($_SESSION["cart"]);
+                        $pdo->commit();
+                    }catch(PDOException $e){
+                      $pdo->rollBack();
+                      throw $e;
+                    } 
+                    $_SESSION["message"]="Berhasil beli".$subjum." produk ,seharga".$subtot;
+                }
+                else{
+                    $_SESSION["message"]="Anda Belum memilih item";
+                    echo "<script>alert('$_SESSION[message]')</script>";
+                }
             }
             else{
                 $_SESSION["message"]="saldo tidak cukup";
             }
             header("Location: cart.php");
     }
-    if(isset($_SESSION["message"])){
-        echo "<script>alert('$_SESSION[message]')</script>";
-        unset($_SESSION["message"]);
-    }
+    
     
 ?>
 <!DOCTYPE html>
@@ -161,35 +170,50 @@
                                 <?php
                                     if($carts!=null)
                                     {
+                                        $ctr=0;
                                         foreach($carts as $key => $values)
                                         {
                                 ?>
-                                        <tr>
+                                        <tr id="<?= $ctr?>">
                                             <td>gambar</td>
                                             <td><?=$values[0]["nama"]?> <br> <?=$values[0]["deskripsi"]?></td>
                                             <td>
-                                                <div style="display: flex; flex-direction: row; justify-content:flex-start;">
-                                                    <form style="width: 20px; height: 20px; margin-right:20px;" action="Control.php" method="post">
+                                                <div style="display: flex; flex-direction: row; justify-content:flex-start;" class="value">
+                                                    <!-- <form style="width: 20px; height: 20px; margin-right:20px;" action="Control.php" method="post">
                                                         <input type="hidden" name="action" value="minorder">
                                                         <input type="hidden" name="key" value="<?=$key?>">
-                                                        <button class="buttoncart" name="btn_cart">-</button>
-                                                    </form>
-                                                    
-                                                    <?=$values[1]?> 
-                                                    
-                                                    <form style="width: 20px; height: 20px; margin-left:20px;" action="Control.php" method="post">
+                                                        <button class="buttoncart" name="btn_cart_minus">-</button>
+                                                    </form> -->
+                                                    <form style="width: 20px; height: 20px; margin-right:20px;" action="" method="post" class="minus">
+                                                         <button class="buttoncart btn_cart_minus" name="btn_cart_minus" value="<?=$key?>">-</button>
+                                                    </form>  
+                                                        <p class="val <?= $ctr?>"><?=$values[1]?></p>
+                                                    <!-- <form style="width: 20px; height: 20px; margin-left:20px;" action="Control.php" method="post">
                                                         <input type="hidden" name="action" value="plusorder">
                                                         <input type="hidden" name="key" value="<?=$key?>">
-                                                        <button class="buttoncart" name="btn_cart">+</button>
+                                                        <button class="buttoncart" name="btn_cart_plus">+</button>
+                                                    </form> -->
+                                                    <form style="width: 20px; height: 20px; margin-right:20px;" action="" method="post">
+                                                        <!-- <input type="hidden" name="key" value="<?=$key?>"> -->
+                                                        <button class="buttoncart btn_cart_plus" ctr="<?= $ctr?>" name="btn_cart_plus" value="<?=$key?>">+</button>
                                                     </form>
+                                                    
                                                 </div>
                                           
                                             </td>
-                                            <td>IDR <?=$values[0]["harga"]?></td>
-                                            <td>IDR <?=$values[0]["harga"]*$values[1]?></td>
+                                            <td>IDR 
+                                                <input type="hidden" class="hargahidden<?= $ctr?>" ctrharga="<?= $ctr?>" name="id" value=<?=$values[0]["harga"]?>>
+                                                <p class="harganew<?= $ctr?>"><?=$values[0]["harga"]?></p>
+                                            </td>
+                                            <td>IDR  
+                                                <input type="hidden" class="totalhidden<?= $ctr?>" ctrharga="<?= $ctr?>" name="id" value=<?=$values[0]["harga"]*$values[1]?>>
+                                                <p class="totalnew<?= $ctr?>"><?=$values[0]["harga"]*$values[1]?></p>
+                                        
+                                            </td>
                                             <input type="hidden" name="id" value=<?=$values[0]["id_product"]?>>
                                         </tr>
                                         <?php
+                                            $ctr++;
                                         }
                                     }else{
                                 ?>
@@ -207,15 +231,39 @@
                         <hr>
                         <div  class="textCart3">
                             <div class="t1">
-                            <?php if(isset($subjum)) echo $subjum;
-                            else echo "0"?>
+                            <!-- <?php if(isset($subjum)) echo $subjum;
+                            else echo "0"?> -->
+
+                            <?php if(isset($subjum)){
+                            ?>
+                                <input type="hidden" class="total" name="" value="<?=$subjum?>">
+                                <p class="subjumlah" ><?=$subjum?>
+                            <?php 
+                                }
+                                else{
+                            ?>
+                                <p class="subjumlah">0
+                            <?php }
+                            
+                            ?>
                             </div>
                             <div class="t2">
                                 Items
                             </div>
                             <div class="t3">
-                                IDR <?php if(isset($subtot)) echo $subtot;
-                                else echo "0"?> <!--tinggal gnt jumlahnya aj pake php IDR-nya biarin -->
+                                IDR  
+                                <?php if(isset($subtot)){
+                                ?>
+                                    <input type="hidden" class="total2" name="" value="<?=$subtot?>">
+                                    <p class="subtotal" ><?=$subtot?>
+                                <?php 
+                                    }
+                                    else{
+                                ?>
+                                    <p class="subtotal">0
+                                <?php }
+
+                                ?>
                             </div>
                         </div>
                         <div  class="textCart3">
@@ -232,8 +280,20 @@
                                 Grand Total
                             </div>
                             <div class="t3">
-                                 IDR <?php if(isset($subtot)) echo $subtot+=15000;
-                                else echo "0"?> <!--tinggal gnt jumlahnya aj pake php IDR-nya biarin -->
+                                 IDR  
+                                <?php if(isset($subtot)){
+                                        $subtot+=15000;
+                                ?>
+                                    <input type="hidden" class="total3" name="" value="<?=$subtot?>">
+                                    <p class="grandtotal" ><?=$subtot?>
+                                <?php 
+                                    }
+                                    else{
+                                ?>
+                                    <p class="grandtotal">0
+                                <?php }
+
+                                ?>
                             </div>
                         </div>
                         <br><br><br><br><br><br><br><br><br>
@@ -245,7 +305,9 @@
             </center>
                             <!-- DETAIL CART  -->
         </div>
+        <div id="container">
 
+        </div>
         <div class="foot">
             <p class="copy">Amazake social media</p>
             <!-- <form action="" method="post">
@@ -257,6 +319,106 @@
         </div>
 
     </div>
-   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		 
+        // $(".minus").on("click","form",function(e){
+        //     e.preventDefault();
+        // }); 
+
+		$(".btn_cart_minus").click(function(a){   
+            a.preventDefault(); 
+            var postForm = $(this).val();  
+            var total= $(".total").val();
+            $.ajax({
+                method:"post",
+                url:"ajax_cart_minus.php",
+                data: {idxproduct: postForm},
+                success: function(data){
+                    var temp = data;
+                    var stat=1;
+                    if(temp>0){
+                        $("."+postForm).text(temp);
+                    }else{
+                        stat=0;
+                        
+                    }
+                    var harga= $(".hargahidden"+postForm).val();  
+                    var tot=Number(harga)*Number(temp);
+                    //total
+                    $(".totalnew"+postForm).text(tot);
+                    $(".totalhidden"+postForm).val(tot); 
+
+                    //ORDER SUMMARY
+                    //subtotal= total items di order summary
+                    var subjum= Number(total)-1; 
+                    $(".total").val(subjum);
+                    $(".subjumlah").text(subjum+""); 
+                    
+                    var tempsubtot= $(".total2").val();
+                    var subtot=Number(tempsubtot)-Number(harga);
+                    $(".total2").val(subtot);
+                    $(".subtotal").text(subtot); 
+
+                    //grand total
+                    var tempgrandtot= $(".total3").val();
+                    var grandtot=Number(tempgrandtot)-Number(harga);
+                    $(".total3").val(grandtot);
+                    $(".grandtotal").text(grandtot);
+                    if(stat==0)
+                    {
+                        $("#"+postForm).html("");
+                    }
+
+                    
+                }
+            });   
+		});     
+
+        $(".btn_cart_plus").click(function(a){
+            a.preventDefault(); 
+            var postForm = $(this).val();  
+            var total= $(".total").val();
+            
+            $.ajax({
+                method:"post",
+                url:"ajax_cart_plus.php",
+                data: {idxproduct: postForm},
+                success: function(data){
+                    //CART
+
+                    //qty
+                    //temp=quantity
+                    var temp = data;
+                    $("."+postForm).text(temp); 
+                    var harga= $(".hargahidden"+postForm).val();  
+                    var tot=Number(harga)*Number(temp);
+                    //total
+                    $(".totalnew"+postForm).text(tot);
+                    $(".totalhidden"+postForm).val(tot); 
+
+                    //ORDER SUMMARY
+                    //subtotal= total items di order summary
+                    var subjum= Number(total)+1; 
+                    $(".total").val(subjum);
+                    $(".subjumlah").text(subjum+""); 
+                    
+                    var tempsubtot= $(".total2").val();
+                    var subtot=Number(tempsubtot)+Number(harga);
+                    $(".total2").val(subtot);
+                    $(".subtotal").text(subtot); 
+
+                    //grand total
+                    var tempgrandtot= $(".total3").val();
+                    var grandtot=Number(tempgrandtot)+Number(harga);
+                    $(".total3").val(grandtot);
+                    $(".grandtotal").text(grandtot);
+                }
+            });
+        }); 
+		
+	});
+	</script> 
 </body>
 </html>

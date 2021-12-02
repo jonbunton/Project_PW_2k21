@@ -5,22 +5,22 @@
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     $stat=0;
-    if(isset($_POST["cart"]))
-    {
-            if(isset($_SESSION["login"]))
-            {
-                $index=$_POST["cart"];
-                $stmt = $pdo->query("SELECT * FROM product where id_product='$index' ");
-                $product_cart = $stmt->fetch(PDO::FETCH_ASSOC);
-                //index 0 = object product,index 1 = jumlah
-                $_SESSION["cart"][] = array($product_cart,1); 
-            }else{
-                $_SESSION["message"]="Mohon Login Terlebih dahulu"; 
-                unset($_SESSION["cart"]);
-                header("location:login.php");
-            } 
+    // if(isset($_POST["cart"]))
+    // {
+    //         if(isset($_SESSION["login"]))
+    //         {
+    //             $index=$_POST["cart"];
+    //             $stmt = $pdo->query("SELECT * FROM product where id_product='$index' ");
+    //             $product_cart = $stmt->fetch(PDO::FETCH_ASSOC);
+    //             //index 0 = object product,index 1 = jumlah
+    //             $_SESSION["cart"][] = array($product_cart,1); 
+    //         }else{
+    //             $_SESSION["message"]="Mohon Login Terlebih dahulu"; 
+    //             unset($_SESSION["cart"]);
+    //             header("location:login.php");
+    //         } 
             
-    } 
+    // } 
     if(isset($_POST['logout']))
     {
         unset($_SESSION["login"]);
@@ -32,6 +32,10 @@
         $user=$_SESSION["login"];
     }else{
         $user=[]; 
+    }
+    if(isset($_SESSION["message"])){
+        echo "<script>alert('$_SESSION[message]')</script>";
+        unset($_SESSION["message"]);
     }
 ?>
 <!DOCTYPE html>
@@ -84,38 +88,41 @@
                                 <!-- menu -->
                                 <div class="tempMenu with-border-image">
                                     <!-- tempMakanan -->
-                                    <?php
-                                        if($products!=null)
-                                        {
-                                            foreach($products as $key => $values)
-                                            {
-                                    ?>
-                                        <div class="menue">
-                                        <form action="" method="post">
-                                            <input type="hidden" name="id" value=<?=$values["id_product"]?>>
-                                            <div class="mup">ini gambar</div>
-                                            <div class="mdown">
-                                                <div class="mdleft">
-                                                    <div class="mname"><?=$values["nama"]?></div>
-                                                    <div class="mdes"><?=$values["deskripsi"]?></div>
-                                                </div>
-                                                <div class="mdright">
-                                                    <div class="harga">Rp. <?=$values["harga"]?></div>
-                                                    <div class="addcart"><button name="cart" value=<?=$values["id_product"]?>>Add to cart</button></div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        </div> 
-                                    <?php
-                                            }
-                                        }
-                                    ?>
+                                    
+                                        <?php
+                                                if($products!=null)
+                                                {
+                                                    foreach($products as $key => $values)
+                                                    {
+                                            ?>
+                                                <div class="menue">
+                                                <form action="" method="post">
+                                                    <input type="hidden" name="id" value=<?=$values["id_product"]?>>
+                                                    <div class="mup">ini gambar</div>
+                                                    <div class="mdown">
+                                                        <div class="mdleft">
+                                                            <div class="mname"><?=$values["nama"]?></div>
+                                                            <div class="mdes"><?=$values["deskripsi"]?></div>
+                                                        </div>
+                                                        <div class="mdright">
+                                                            <div class="harga">Rp. <?=$values["harga"]?></div>
+                                                            <div class="addcart"><button class="btn_cart" name="cart" value=<?=$values["id_product"]?>>Add to cart</button></div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                </div> 
+                                            <?php
+                                                    }
+                                                }
+                                            ?> 
                                     <!-- tempMakanan -->
                                 </div>
                                  <!-- menu -->
                 
                             </div>
-                                        
+                            <div id="container">
+                            
+                            </div>
                              <div class="foot">
                                 <p class="copy">Amazake social media</p>
                                 <form action="" method="post">
@@ -124,5 +131,21 @@
                             </div>
                     </div>
                     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		
+	
+		
+		$(".btn_cart").click(function(a){  
+            a.preventDefault();
+            var index = $(this).val(); 
+            $("#container").load("ajax_menu.php?cari="+index); 
+		});  
+		
+		
+	});
+	</script>
 </body>
 </html>
