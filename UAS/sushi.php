@@ -61,13 +61,13 @@
                                 <?php
                                     if($user!=null){
                                 ?>
-                                    <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                                    <p class="h">Welcome <?= $user["nama"]?></p>
-                                    
+                                    <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
+                                        <a class="ar" href="#top">ようこそ, <?= $user["nama"]?></a>
+                                    </div>  
                                 <?php
                                     }else{
                                 ?>
-                                    <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
+                                    <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
                                         <a class="ar" href="login.php">Login / Register</a>
                                     </div>
                                 <?php
@@ -78,7 +78,7 @@
                              <div class="product bgSushi">
                                  <center>
                                  <div class="htop color">
-                                        <p>Pick Your Sushi</p>
+                                        <p>Sushi</p>
                                  </div>
                                 <div class ="path2"></div>
                                 <br>
@@ -124,10 +124,10 @@
                             
                             </div>
                              <div class="foot">
-                                <p class="copy">Amazake social media</p>
-                                <form action="" method="post">
+                             <p class="copy">Copyright 2019 © Amazake</p>
+                                <!-- <form action="" method="post">
                                     <button name="logout">Logout</button>
-                                </form>
+                                </form> -->
                             </div>
                     </div>
                     </div>

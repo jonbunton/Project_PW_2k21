@@ -128,26 +128,24 @@
             <div class="nav">
                 <img class="logo" src="gallery/logo.png" alt="">
                 <a class="ar" href="#top">Home</a>
+                <a class="ar" href="#top">About Us</a>
                 <a class="ar" href="menu.php">Menu</a>
                 <a class="ar" href="cart.php">Cart</a>
-                <a class="ar" href="#top">About Us</a>
-                       
                 <?php
                     if($user!=null){
                 ?>
-                <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                <!-- <p class="h">saldo anda <?= $saldo?></p> -->
-                            
+                    <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
+                        <a class="ar" href="#top">ようこそ, <?= $user["nama"]?></a>
+                    </div>  
                 <?php
                     }else{
                 ?>
-                <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
-                    <a class="ar" href="login.php">Login / Register</a>
-                </div>
-
-                        <?php
-                            }
-                        ?>
+                    <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
+                        <a class="ar" href="login.php">Login/Register</a>
+                    </div>
+                <?php
+                      }
+                ?>
             </div>
         </div>
                 
@@ -175,7 +173,7 @@
                                         {
                                 ?>
                                         <tr id="<?= $ctr?>">
-                                            <td>gambar</td>
+                                            <td><div class="gmbr_cart">Ini gambar</div></td>
                                             <td><?=$values[0]["nama"]?> <br> <?=$values[0]["deskripsi"]?></td>
                                             <td>
                                                 <div style="display: flex; flex-direction: row; justify-content:flex-start;" class="value">
@@ -187,13 +185,13 @@
                                                     <form style="width: 20px; height: 20px; margin-right:20px;" action="" method="post" class="minus">
                                                          <button class="buttoncart btn_cart_minus" name="btn_cart_minus" value="<?=$key?>">-</button>
                                                     </form>  
-                                                        <p class="val <?= $ctr?>"><?=$values[1]?></p>
+                                                        <p class="val <?= $ctr?>" style="width: 30px; height: 20px; text-align: center;"><?=$values[1]?></p>
                                                     <!-- <form style="width: 20px; height: 20px; margin-left:20px;" action="Control.php" method="post">
                                                         <input type="hidden" name="action" value="plusorder">
                                                         <input type="hidden" name="key" value="<?=$key?>">
                                                         <button class="buttoncart" name="btn_cart_plus">+</button>
                                                     </form> -->
-                                                    <form style="width: 20px; height: 20px; margin-right:20px;" action="" method="post">
+                                                    <form style="width: 20px; height: 20px; margin-left:20px;" action="" method="post">
                                                         <!-- <input type="hidden" name="key" value="<?=$key?>"> -->
                                                         <button class="buttoncart btn_cart_plus" ctr="<?= $ctr?>" name="btn_cart_plus" value="<?=$key?>">+</button>
                                                     </form>
@@ -201,13 +199,13 @@
                                                 </div>
                                           
                                             </td>
-                                            <td>IDR 
+                                            <td> 
                                                 <input type="hidden" class="hargahidden<?= $ctr?>" ctrharga="<?= $ctr?>" name="id" value=<?=$values[0]["harga"]?>>
-                                                <p class="harganew<?= $ctr?>"><?=$values[0]["harga"]?></p>
+                                                <p class="harganew<?= $ctr?>"> IDR <span><?=$values[0]["harga"]?></span></p>
                                             </td>
-                                            <td>IDR  
+                                            <td>
                                                 <input type="hidden" class="totalhidden<?= $ctr?>" ctrharga="<?= $ctr?>" name="id" value=<?=$values[0]["harga"]*$values[1]?>>
-                                                <p class="totalnew<?= $ctr?>"><?=$values[0]["harga"]*$values[1]?></p>
+                                                <p class="totalnew<?= $ctr?>">IDR <span><?=$values[0]["harga"]*$values[1]?></span> </p>
                                         
                                             </td>
                                             <input type="hidden" name="id" value=<?=$values[0]["id_product"]?>>
@@ -217,7 +215,9 @@
                                         }
                                     }else{
                                 ?>
-                                Your Cart is Empty
+                                <tr id="<?= $ctr?>">
+                                            <td colspan="5">Your Cart is Empty</td>
+                                    </tr>
                                 <?php
                                     }
                                 ?>
@@ -250,17 +250,16 @@
                             <div class="t2">
                                 Items
                             </div>
-                            <div class="t3">
-                                IDR  
+                            <div class="t3"> 
                                 <?php if(isset($subtot)){
                                 ?>
                                     <input type="hidden" class="total2" name="" value="<?=$subtot?>">
-                                    <p class="subtotal" ><?=$subtot?>
+                                    <p class="subtotal" >IDR  <?=$subtot?></p>
                                 <?php 
                                     }
                                     else{
                                 ?>
-                                    <p class="subtotal">0
+                                    <p class="subtotal">IDR  0</p>
                                 <?php }
 
                                 ?>
@@ -280,23 +279,26 @@
                                 Grand Total
                             </div>
                             <div class="t3">
-                                 IDR  
+                                 
                                 <?php if(isset($subtot)){
                                         $subtot+=15000;
                                 ?>
                                     <input type="hidden" class="total3" name="" value="<?=$subtot?>">
-                                    <p class="grandtotal" ><?=$subtot?>
+                                    <p class="grandtotal" >IDR  <?=$subtot?></p>
                                 <?php 
                                     }
                                     else{
                                 ?>
-                                    <p class="grandtotal">0
+                                    <p class="grandtotal"> IDR  0</p>
                                 <?php }
 
                                 ?>
                             </div>
                         </div>
-                        <br><br><br><br><br><br><br><br><br>
+                        <br><br><br><br><br>
+                        <div class="textC4">
+                            Your Balance is IDR 100,000
+                        </div>
                         <form action="" method="post">
                             <button class="buttonco" name="order">Check Out</button>
                         </form>       
@@ -309,13 +311,10 @@
 
         </div>
         <div class="foot">
-            <p class="copy">Amazake social media</p>
-            <!-- <form action="" method="post">
-                <button name="order">Order</button>
-            </form>
+            <p class="copy">Copyright 2019 © Amazake</p>
             <form action="" method="post">
                 <button name="logout">Logout</button>
-            </form> -->
+            </form> 
         </div>
 
     </div>

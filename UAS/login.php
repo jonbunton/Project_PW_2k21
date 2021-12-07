@@ -78,11 +78,11 @@
                             <div class="nav">
                                 <img class="logo" src="gallery/logo.png" alt="">
                                 <a class="ar" href="#top">Home</a>
+                                <a class="ar" href="#top">About Us</a>
                                 <a class="ar" href="Menu.php">Menu</a>
                                 <a class="ar" href="cart.php">Cart</a>
-                                <a class="ar" href="#top">About Us</a>
                                 <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                                    <a class="ar" href="login.php">Login / Register</a>
+                                    <a class="ar" href="login.php">Login/Register</a>
                                 </div>
                              </div>
                 
@@ -94,7 +94,7 @@
                                         <input type="email" name="name" id="email" placeholder="example@example.com"><br>
                                         <label for="pass">Password:</label><br>
                                         <input type="password" name="password" id="pass"><br>
-                                        <p>Don't have account? <a  style="color: rgb(243, 215, 178);" href="regist.html">Register Here</a> </p> 
+                                        <p>Don't have account? <a  style="color: rgb(243, 215, 178);" href="regist.php">Register Here</a> </p> 
                                         <button type="submit" name="submit">Login</button>
                                     </form>    
                                     
