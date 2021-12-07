@@ -98,7 +98,7 @@
                                                 <div class="menue">
                                                 <form action="" method="post">
                                                     <input type="hidden" name="id" value=<?=$values["id_product"]?>>
-                                                    <div class="mup">ini gambar</div>
+                                                    <div class="mup"><img class="mup" src="gallery/<?=$values["id_product"]?>.jpg" alt=""></div>
                                                     <div class="mdown">
                                                         <div class="mdleft">
                                                             <div class="mname"><?=$values["nama"]?></div>
