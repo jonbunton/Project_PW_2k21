@@ -30,6 +30,11 @@
     if(isset($_SESSION["login"]))
     {
         $user=$_SESSION["login"];
+        // if($_SESSION["login"]="admin"){
+        //     unset($_SESSION["login"]);
+        //     $user=[]; 
+        // }
+        
     }else{
         $user=[]; 
     }

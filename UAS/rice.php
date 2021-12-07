@@ -1,7 +1,7 @@
 <?php
     require_once("connection.php");
-    $sushi="1";
-    $stmt = $pdo->query("SELECT * FROM product where id_jenis='$sushi' ");
+    $rice="5";
+    $stmt = $pdo->query("SELECT * FROM product where id_jenis='$rice' ");
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     $stat=0;
@@ -32,6 +32,9 @@
         $user=$_SESSION["login"];
     }else{
         $user=[]; 
+        $_SESSION["message"]="Mohon Login Terlebih dahulu"; 
+        unset($_SESSION["cart"]);
+        header("location:login.php");
     }
     if(isset($_SESSION["message"])){
         echo "<script>alert('$_SESSION[message]')</script>";
@@ -98,7 +101,7 @@
                                                 <div class="menue">
                                                 <form action="" method="post">
                                                     <input type="hidden" name="id" value=<?=$values["id_product"]?>>
-                                                    <div class="mup">ini gambar</div>
+                                                    <div class="mup"><img class="mup" src="gallery/<?=$values["id_product"]+1?>.jpg" alt=""></div>
                                                     <div class="mdown">
                                                         <div class="mdleft">
                                                             <div class="mname"><?=$values["nama"]?></div>

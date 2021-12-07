@@ -32,6 +32,9 @@
         $user=$_SESSION["login"];
     }else{
         $user=[]; 
+        $_SESSION["message"]="Mohon Login Terlebih dahulu"; 
+        unset($_SESSION["cart"]);
+        header("location:login.php");
     }
     if(isset($_SESSION["message"])){
         echo "<script>alert('$_SESSION[message]')</script>";
@@ -98,7 +101,7 @@
                                                 <div class="menue">
                                                 <form action="" method="post">
                                                     <input type="hidden" name="id" value=<?=$values["id_product"]?>>
-                                                    <div class="mup"><img class="mup" src="gallery/<?=$values["id_product"]?>.jpg" alt=""></div>
+                                                    <div class="mup"><img class="mup" src="gallery/<?=$values["id_product"]+1?>.jpg" alt=""></div>
                                                     <div class="mdown">
                                                         <div class="mdleft">
                                                             <div class="mname"><?=$values["nama"]?></div>
