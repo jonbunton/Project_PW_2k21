@@ -106,7 +106,7 @@ form{
 
 .product{
     width: 100%;
-    height: 140vh;
+    height: 160vh;
     min-width: 800px;
     background-image: url(gallery/Background.jpg);
     background-blend-mode:overlay;
@@ -118,7 +118,7 @@ form{
 
 .product2{
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   min-width: 800px;
   background-image: url(gallery/Background.jpg);
   background-blend-mode:overlay;
@@ -130,7 +130,7 @@ form{
 
 .product3{
   width: 100%;
-  height: 110vh;
+  height: 130vh;
   min-width: 800px;
   background-image: url(gallery/Background.jpg);
   background-blend-mode:overlay;
@@ -142,7 +142,7 @@ form{
 
 .product4{
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   min-width: 800px;
   background-image: url(gallery/Background.jpg);
   background-blend-mode:overlay;
@@ -636,7 +636,7 @@ table th{
     padding-left: 5px;
   }
   .column10 {
-    width: 5%;
+    width: 10%;
     align-self: center;
     padding-left: 10px;
   }
@@ -646,7 +646,7 @@ table th{
     padding-left: 5px;
   }
   .column9 {
-    width: 30%;
+    width: 50%;
     padding-left: 5px;
   }
 

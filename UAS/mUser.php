@@ -36,6 +36,65 @@
         unset($_SESSION["login"]); 
         header("location:login.php");
     } 
+
+    if (isset($_POST['submit'])) {
+        
+        if($_POST['urut']=="turun"){
+            if ($_POST['urut2']=="nama") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY nama DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else if ($_POST['urut2']=="email") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY email DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="alm") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY alamat DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="kota") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY kota DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="saldo") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY saldo DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            
+        }
+        else if($_POST['urut']=="naik"){
+            if ($_POST['urut2']=="nama") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY nama DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else if ($_POST['urut2']=="email") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY email DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="alm") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY alamat DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="kota") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY kota DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="saldo") {
+                $stmt = $pdo->prepare("SELECT * FROM user ORDER BY saldo DESC");
+                $stmt->execute();
+                $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -51,22 +110,16 @@
 <body>
         <div class="container">
     
-            <div class="header" id="top">    
+        <div class="header" id="top">    
                 <div class="nav">
                     <img class="logo" src="gallery/logo.png" alt="">
-                    <a class="ar" href="mUser.php">Master User</a>
+                    <a class="ar" href="mUser.php">List User</a>
                     <a class="ar" href="mProd.php">Master Product</a>
                     <a class="ar" href="Hist_trans.php">Transaction History</a>
                     <a class="ar" href="top_req.php">TopUp Request</a>
                     <a class="ar" href="Hist_top.php">TopUp History</a>
                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                    <!--  -->
-                    <div>
-                        <form action="" method="post">
-                            <button class="logout-btn" name="logout">Log Out</button>
-                        </form>
-                    </div>
-                    <!-- <a class="ar" href="Menu.php">Log Out</a>  -->
+                        <a class="ar" href="index.php">Log Out</a>
                 </div>
             </div>
     
@@ -76,6 +129,26 @@
                     <br>
                     <input type="text" name="keyword" id="" class="search"> <br>
                     <button  class="searchbtn">Search</button>
+                </form>
+                <br>
+                <form action="" method="post">
+                <h2 class="ar">Sort</h2> 
+                    <select name="urut" class="search">
+                        <option value="" disabled selected>Choose Sort Order</option>
+                        <option value="turun">Descending</option>
+                        <option value="naik">Ascending</option>
+                    </select>
+                    <br>
+                    <select name="urut2" class="search">
+                        <option value="" disabled selected>Choose Sort Header</option>
+                        <option value="nama">Nama</option>
+                        <option value="email">Email</option>
+                        <option value="alm">Alamat</option>
+                        <option value="kota">Kota</option>
+                        <option value="saldo">Saldo</option>
+                    </select>
+                    <br>
+                    <input type="submit" name="submit" vlaue="Sort Product" class="searchbtn">
                 </form>
                 <br>
             
