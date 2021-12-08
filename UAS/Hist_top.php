@@ -29,6 +29,24 @@
         $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $test=$_GET["detail"];
      }
+
+
+     if(isset($_SESSION["login"]))
+    {
+        $login=$_SESSION["login"];
+        if($login!="admin"){
+            header("location:Menu.php");
+        }
+    }
+    else{
+        header("location:Menu.php");
+    }
+    if(isset($_POST['logout']))
+    {
+        unset($_SESSION["login"]);
+        unset($_SESSION["cart"]);
+        header("location:login.php");
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +71,11 @@
                     <a class="ar" href="top_req.php">TopUp Request</a>
                     <a class="ar" href="Hist_top.php">TopUp History</a>
                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                        <a class="ar" href="index.php">Log Out</a>
+                    <div>
+                        <form action="" method="post">
+                            <button class="logout-btn" name="logout">Log Out</button>
+                        </form>
+                    </div>
                 </div>
             </div>
     

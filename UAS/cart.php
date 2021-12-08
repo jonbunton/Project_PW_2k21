@@ -29,8 +29,10 @@
     if(isset($_SESSION["login"]))
     {
         $user=$_SESSION["login"];
+        $balance=$user["saldo"];
     }else{
         $user=[];
+        $balance=0;
     }
     if(isset($_POST['logout']))
     {
@@ -173,7 +175,7 @@
                                         {
                                 ?>
                                         <tr id="<?= $ctr?>">
-                                            <td><div class="gmbr_cart">Ini gambar</div></td>
+                                            <td><div class="gmbr_cart"><img class="gmbr_cart" src="gallery/<?=$values[0]["id_product"]+1?>.jpg" alt=""></div></td>
                                             <td><?=$values[0]["nama"]?> <br> <?=$values[0]["deskripsi"]?></td>
                                             <td>
                                                 <div style="display: flex; flex-direction: row; justify-content:flex-start;" class="value">
@@ -205,7 +207,7 @@
                                             </td>
                                             <td>
                                                 <input type="hidden" class="totalhidden<?= $ctr?>" ctrharga="<?= $ctr?>" name="id" value=<?=$values[0]["harga"]*$values[1]?>>
-                                                <p class="totalnew<?= $ctr?>">IDR <span><?=$values[0]["harga"]*$values[1]?></span> </p>
+                                                IDR<p class="totalnew<?= $ctr?>"> <span><?=$values[0]["harga"]*$values[1]?></span> </p>
                                         
                                             </td>
                                             <input type="hidden" name="id" value=<?=$values[0]["id_product"]?>>
@@ -254,12 +256,12 @@
                                 <?php if(isset($subtot)){
                                 ?>
                                     <input type="hidden" class="total2" name="" value="<?=$subtot?>">
-                                    <p class="subtotal" >IDR  <?=$subtot?></p>
+                                    IDR<p class="subtotal" >  <?=$subtot?></p>
                                 <?php 
                                     }
                                     else{
                                 ?>
-                                    <p class="subtotal">IDR  0</p>
+                                    IDR<p class="subtotal">  0</p>
                                 <?php }
 
                                 ?>
@@ -284,12 +286,12 @@
                                         $subtot+=15000;
                                 ?>
                                     <input type="hidden" class="total3" name="" value="<?=$subtot?>">
-                                    <p class="grandtotal" >IDR  <?=$subtot?></p>
+                                    IDR<p class="grandtotal" >  <?=$subtot?></p>
                                 <?php 
                                     }
                                     else{
-                                ?>
-                                    <p class="grandtotal"> IDR  0</p>
+                                ?> 
+                                    IDR<p class="grandtotal">   0</p>
                                 <?php }
 
                                 ?>
@@ -297,7 +299,7 @@
                         </div>
                         <br><br><br><br><br>
                         <div class="textC4">
-                            Your Balance is IDR 100,000
+                            Your Balance is IDR <?=$balance?>
                         </div>
                         <form action="" method="post">
                             <button class="buttonco" name="order">Check Out</button>
@@ -346,7 +348,7 @@
                     var harga= $(".hargahidden"+postForm).val();  
                     var tot=Number(harga)*Number(temp);
                     //total
-                    $(".totalnew"+postForm).text(tot);
+                    $(".totalnew"+postForm).text(+tot);
                     $(".totalhidden"+postForm).val(tot); 
 
                     //ORDER SUMMARY

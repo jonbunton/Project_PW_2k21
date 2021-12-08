@@ -3,7 +3,11 @@
     padding: 0px;
     box-sizing: border-box;
 }
-
+.logout-btn{
+  width: 150px;
+  height: 30px; 
+  margin-top: 20px; 
+}
 .container
 {
     width: 100%;

@@ -13,7 +13,7 @@
             {
                 if($name=="admin@gmail.com" && $_POST["password"]=="admin"){
                     $status=2;
-                    // $_SESSION["login"]="admin";
+                    $_SESSION["login"]="admin";
                     header("Location: mUser.php");
                 }
                 else{
