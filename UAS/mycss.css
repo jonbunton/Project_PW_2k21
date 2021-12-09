@@ -165,6 +165,162 @@ form{
     align-items: center;
     justify-content: center;
 }
+
+.Bprofile{
+    width: 100%;
+    height: 94vh;
+    min-width: 800px;
+    background-color: rgb(143, 112, 77);
+    background-blend-mode:overlay;
+    background-size:100%, 100%;
+    background-repeat:repeat-y;
+    padding: 6vh;
+    padding-top: 12vh;
+    display: flex;
+    flex-direction: row;
+    color: #98825b;
+}
+
+.inprofile{
+    width: 100%;
+    height: 100%;
+    min-width: 800px;
+    background-color: rgba(139, 135, 139, 0.5);
+    background-blend-mode:overlay;
+    background-size:100%, 100%;
+    background-repeat:repeat-y;
+    display: flex;
+    flex-direction: row;
+    color: #98825b;
+}
+
+.pleft{
+  height: 100%;
+  width: 70%;
+  background-color:rgba(245, 222, 179, 0.459);
+  display: flex;
+  flex-direction: row;
+}
+
+.pct_profile{
+  width: 400px;
+  padding: 5vh;
+}
+.d_profile{
+  width: 100%;
+  padding: 3vh;
+  background-color: rgb(43, 104, 104);
+  overflow:auto;
+}
+.prfl{
+  background-image: url(gallery/profile.jpg);
+  background-size: cover;
+  width: 300px;
+  height: 425px;
+}
+.namepf{
+  width: 300px;
+  overflow: hidden;
+  color: #774f34;
+  font-size: 40px;
+  text-align: center;
+}
+
+.pright{
+  color: #f5eee5ef;
+  padding: 3vh;
+  height: 100%;
+  width: 30%;
+  background-color: rgba(146, 123, 93, 0.5);
+}
+
+
+.htrans{
+  width: 100%;
+  height: 38vh;
+  overflow-y: auto;
+  background-color: #ebdeca24;
+  margin-bottom: 2vh;
+}
+
+.htrans:-webkit-scrollbar{
+  background:transparent;
+}
+.htrans::-webkit-scrollbar-thumb{
+  background-color: rgba(2, 2, 2, 0.554);
+  border-radius: 5px;
+  height: 50px;
+}
+
+.htrans table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.htrans td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid rgb(128, 95, 57);
+}
+.htrans th{
+    padding: 8px;
+    color: rgba(87, 48, 15, 0.972);
+    font-weight:bolder;
+    text-align: left;
+    border-top: 2px solid rgb(128, 95, 57);;
+    border-bottom: 3px solid rgb(128, 95, 57);;
+}
+
+.buttonlo{
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color: #533314;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  width: 80px;
+  height:40px;
+}
+
+.buttonto{
+  background-color: #e4c087;
+  border: none;
+  text-decoration:none;
+  color: #533314;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  width: 80px;
+  height:20px;
+}
+
+.buttonlo:hover{
+  color: #b88e57;
+  animation: bounce 1s alternate infinite;
+}
+
+.logout{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout form{
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.topupp form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 .log{
     width: 40%;
     background-color: rgba(0, 0, 0, 0.698);
@@ -275,10 +431,21 @@ form{
     height: 60vh;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    align-items: flex-start;
+    justify-content:space-evenly;
+    overflow-x: auto;
 }
+
+.cards:-webkit-scrollbar{
+  background:transparent;
+}
+.cards::-webkit-scrollbar-thumb{
+  background-color: rgba(255, 255, 255, 0.554);
+  border-radius: 5px;
+  height: 20px;
+}
+
+
 
 
 /* cart */
@@ -521,6 +688,8 @@ form{
 .t3{
   flex-grow: 3;
   text-align: right;
+  display:flex;
+  justify-content: flex-end;
 }
 
 .textCart4{
@@ -652,27 +821,31 @@ form{
   }  
 }
 
+.circle:hover{
+  backdrop-filter: blur(5px);
+  background-color: thistle;
+}
 .p1{
     background-image: url(gallery/sushic.jpg);
-    background-repeat: no-repeat;
+    background-repeat:repeat;
 }
 
 .p2{
-    background-image: url(gallery/ramenc.jpg);
-    background-repeat: no-repeat;
+  background-image: url(gallery/ramenc.jpg);
+  background-repeat: repeat;
 }
 
 .p3{
     background-image: url(gallery/ricec.jpg);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 .p4{
     background-image: url(gallery/sakec.jpg);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 .p5{
     background-image: url(gallery/mochir.jpg);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 
 .tag{

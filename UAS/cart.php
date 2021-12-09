@@ -137,7 +137,7 @@
                     if($user!=null){
                 ?>
                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
-                        <a class="ar" href="#top">ようこそ, <?= $user["nama"]?></a>
+                        <a class="ar" href="profile.php">ようこそ, <?= $user["nama"]?></a>
                     </div>  
                 <?php
                     }else{
@@ -239,7 +239,7 @@
                             <?php if(isset($subjum)){
                             ?>
                                 <input type="hidden" class="total" name="" value="<?=$subjum?>">
-                                <p class="subjumlah" ><?=$subjum?>
+                                <p class="subjumlah" ><?=$subjum?></p>
                             <?php 
                                 }
                                 else{
@@ -253,15 +253,18 @@
                                 Items
                             </div>
                             <div class="t3"> 
+                                <div>
+                                IDR &nbsp;
+                                </div>
                                 <?php if(isset($subtot)){
                                 ?>
                                     <input type="hidden" class="total2" name="" value="<?=$subtot?>">
-                                    IDR<p class="subtotal" >  <?=$subtot?></p>
+                                    <p class="subtotal" >  <?=$subtot?></p>
                                 <?php 
                                     }
                                     else{
                                 ?>
-                                    IDR<p class="subtotal">  0</p>
+                                    <p class="subtotal">  0</p>
                                 <?php }
 
                                 ?>
@@ -272,7 +275,7 @@
                                 Shipping Cost
                             </div>
                             <div class="t3">
-                                IDR 15000
+                                IDR&nbsp;&nbsp;&nbsp; 15000
                             </div>
                         </div>
                         <hr>
@@ -281,23 +284,23 @@
                                 Grand Total
                             </div>
                             <div class="t3">
-                                 
+                                IDR&nbsp;
                                 <?php if(isset($subtot)){
                                         $subtot+=15000;
                                 ?>
                                     <input type="hidden" class="total3" name="" value="<?=$subtot?>">
-                                    IDR<p class="grandtotal" >  <?=$subtot?></p>
+                                    <p class="grandtotal" >  <?=$subtot?></p>
                                 <?php 
                                     }
                                     else{
                                 ?> 
-                                    IDR<p class="grandtotal">   0</p>
+                                    <p class="grandtotal">IDR 0</p>
                                 <?php }
 
                                 ?>
                             </div>
                         </div>
-                        <br><br><br><br><br>
+                        <br><br><br>
                         <div class="textC4">
                             Your Balance is IDR <?=$balance?>
                         </div>
@@ -314,9 +317,6 @@
         </div>
         <div class="foot">
             <p class="copy">Copyright 2019 © Amazake</p>
-            <form action="" method="post">
-                <button name="logout">Logout</button>
-            </form> 
         </div>
 
     </div>
