@@ -432,8 +432,7 @@ form{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content:space-evenly;
-    overflow-x: auto;
+    justify-content:center;
 }
 
 .cards:-webkit-scrollbar{
