@@ -5,22 +5,6 @@
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     $stat=0;
-    // if(isset($_POST["cart"]))
-    // {
-    //         if(isset($_SESSION["login"]))
-    //         {
-    //             $index=$_POST["cart"];
-    //             $stmt = $pdo->query("SELECT * FROM product where id_product='$index' ");
-    //             $product_cart = $stmt->fetch(PDO::FETCH_ASSOC);
-    //             //index 0 = object product,index 1 = jumlah
-    //             $_SESSION["cart"][] = array($product_cart,1); 
-    //         }else{
-    //             $_SESSION["message"]="Mohon Login Terlebih dahulu"; 
-    //             unset($_SESSION["cart"]);
-    //             header("location:login.php");
-    //         } 
-            
-    // } 
     if(isset($_POST['logout']))
     {
         unset($_SESSION["login"]);
@@ -30,13 +14,26 @@
     if(isset($_SESSION["login"]))
     {
         $user=$_SESSION["login"];
+        $balance=$user["saldo"];
     }else{
         $user=[]; 
+        $balance=0;
     }
+    if(isset($_POST["topup"])){
+        $username= $_SESSION["login"]["email"];
+        $tot=$_POST["jum"];
+        $stmt = $pdo->prepare("INSERT INTO pending(jumlah,email) values(?,?)");
+        $stmt->execute([$tot,$username]);
+        header("Location:profile.php");
+    }
+    
     if(isset($_SESSION["message"])){
         echo "<script>alert('$_SESSION[message]')</script>";
         unset($_SESSION["message"]);
     }
+    $email=$user['email'];
+    $stmt = $pdo->query("SELECT * FROM htrans where email='$email'");
+    $history = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -96,13 +93,16 @@
 
                                         <div class="d_profile">
                                             <!-- data user -->
-                                            namaaaa
+                                            <h1>Name<span style="padding-left:45px;">: <?=$user["nama"]?></span></h1><br>
+                                            <h1>Email<span style="padding-left:45px;">: <?=$user["email"]?></span></h1><br>
+                                            <h1>Address<span style="padding-left:15px;">: <?=$user["alamat"]?> </span></h1><br>
+                                            <h1>City <span style="padding-left:60px;">: <?=$user["kota"]?></span></h1><br>
                                         </div>
 
                                     </div>
 
                                     <div class="pright">
-                                        <h2 style="color: #ffffff;">Your Balance is IDR .......</h2><br>
+                                        <h2 style="color: #ffffff;">Your Balance is IDR <?=$balance?></h2><br>
                                         <div class="topupp">
                                             <h4>Masukan jumlah topup</h4>
                                              <br>
@@ -114,7 +114,7 @@
                                         </div>
                                       <br><br>
                                       <center>
-                                        <h3>History</h3>
+                                        <h3>Purchase History</h3>
                                       </center>
                                       
                                        <br>
@@ -126,10 +126,25 @@
                                                     <th>Amount</th>
                                                 </thead>
                                                 <tbody>
+                                                    <?php
+                                                    if ($history !== null) {
+                                                        $idx=1;
+                                                        foreach ($history as $key => $value) {
+                                                    ?>
                                                     <tr id="<?= $ctr?>">
-                                                        <td>12 Desember 2021</td>
-                                                        <td>300000</td>
+                                                        <td><?= $value['tanggal']?></td>
+                                                        <td>IDR <?= $value['total']?></td>
                                                     </tr>
+                                                    <?php
+                                                    $idx++;
+                                                        }
+                                                    }
+                                                    if($idx == 1){
+                                                    ?>
+                                                    <td colspan="2">You don't have any transaction history</td>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>

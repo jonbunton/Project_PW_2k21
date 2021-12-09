@@ -33,8 +33,9 @@
         $stmt = $pdo->prepare("INSERT INTO history(waktu,tanggal,saldo,email) VALUES(?,?,?,?)");
         $result = $stmt->execute([$waktu, $tanggal, $saldo, $email]);
 
-        $stmt = $pdo->prepare("INSERT INTO history(waktu,tanggal,saldo,email) VALUES(?,?,?,?)");
-        $result = $stmt->execute([$waktu, $tanggal, $saldo, $email]);
+        //code ini bikin keinsert 2x di bagian history
+        // $stmt = $pdo->prepare("INSERT INTO history(waktu,tanggal,saldo,email) VALUES(?,?,?,?)");
+        // $result = $stmt->execute([$waktu, $tanggal, $saldo, $email]);
         
 
         $stmt = $pdo->prepare("DELETE FROM pending WHERE id_pending = :Nama_org");
