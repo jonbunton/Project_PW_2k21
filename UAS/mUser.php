@@ -94,6 +94,13 @@
                 $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
         }
+
+    }
+
+    if(isset($_GET["status"])){
+        unset($_SESSION["login"]);
+            
+        header("Location: index.php");
     }
 ?>
 
@@ -119,7 +126,7 @@
                     <a class="ar" href="top_req.php">TopUp Request</a>
                     <a class="ar" href="Hist_top.php">TopUp History</a>
                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                        <a class="ar" href="index.php">Log Out</a>
+                    <a class="ar" href="mUser.php?status=log">Log Out</a>
                 </div>
             </div>
     
