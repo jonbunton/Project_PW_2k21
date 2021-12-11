@@ -3,7 +3,7 @@
     $sushi="1";
     $stmt = $pdo->query("SELECT * FROM product where id_jenis='$sushi' ");
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+     var_dump ($_SESSION);
     $stat=0;
     // if(isset($_POST["cart"]))
     // {

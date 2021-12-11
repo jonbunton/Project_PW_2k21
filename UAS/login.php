@@ -53,7 +53,8 @@
     if(isset( $_SESSION["login"]))
     {
         if($_SESSION["login"]=="admin")header("Location: mUser.php");
-        else header("Location: Menu.php");
+        else if($_SESSION["login"]!="admin") header("Location: Menu.php");
+        else header("Location: login.php");
     }
     if(isset($_SESSION["message"])){
         echo "<script>alert('$_SESSION[message]')</script>";
