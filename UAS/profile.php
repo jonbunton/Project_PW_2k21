@@ -77,7 +77,11 @@
                 }   
             }
         }	
-            
+        $id2=$user["email"];
+        $stmt = $pdo->query("SELECT * FROM user WHERE email='$id2'");
+        $edi2 = $stmt->fetch(PDO::FETCH_ASSOC);
+        unset($_SESSION["login"]);
+        $_SESSION["login"]=$edi2;   
         header("Location: profile.php");
             
     }
@@ -93,15 +97,7 @@
         $stmt = $pdo->query("SELECT * FROM history");
         $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
-
-    if(isset($_POST["edit"]))
-    {
-        $id2=$user["email"];
-        $stmt = $pdo->query("SELECT * FROM user WHERE email='$id2'");
-        $edi2 = $stmt->fetch(PDO::FETCH_ASSOC);
-        unset($_SESSION["login"]);
-        $_SESSION["login"]=$edi2;
-    }
+ 
 ?>
 
 <!DOCTYPE html>
