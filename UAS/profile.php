@@ -54,6 +54,7 @@
                                 <img class="logo" src="gallery/logo.png" alt="">
                                 <a class="ar" href="#top">Home</a>
                                 <a class="ar" href="#top">About Us</a>
+                                <a class="ar" href="#top">Location</a>
                                 <a class="ar" href="menu.php">Menu</a>
                                 <a class="ar" href="cart.php">Cart</a>
                                 <?php
@@ -75,7 +76,7 @@
                         </div>
                 
                              <div class="Bprofile">
-                                <div class ="inprofile">
+                                <div class ="inprofile blur2">
 
                                      <div class="pleft">
 
@@ -150,7 +151,7 @@
                                         </div>
                                         <div class="logout">
                                             <form action="" method="post">
-                                                <button class="buttonlo"name="logout">Logout</button>
+                                                <button class="buttonlo"name="logout"> Logout</button>
                                             </form> 
                                         </div>
                                    

@@ -170,7 +170,7 @@ form{
     width: 100%;
     height: 94vh;
     min-width: 800px;
-    background-color: rgb(143, 112, 77);
+    background-image: url(gallery/bgpf.jpg);
     background-blend-mode:overlay;
     background-size:100%, 100%;
     background-repeat:repeat-y;
@@ -179,6 +179,7 @@ form{
     display: flex;
     flex-direction: row;
     color: #98825b;
+    min-width: 1000;
 }
 
 .inprofile{
@@ -187,17 +188,18 @@ form{
     min-width: 800px;
     background-color: rgba(139, 135, 139, 0.5);
     background-blend-mode:overlay;
-    background-size:100%, 100%;
     background-repeat:repeat-y;
     display: flex;
     flex-direction: row;
     color: #98825b;
+    animation: fadeIn2 1.5s ease-in-out alternate;
+    min-width:min-content;
 }
 
 .pleft{
   height: 100%;
   width: 70%;
-  background-color:rgba(245, 222, 179, 0.459);
+  background-color:rgba(245, 222, 179, 0.37);
   display: flex;
   flex-direction: row;
 }
@@ -207,10 +209,9 @@ form{
   padding: 5vh;
 }
 .d_profile{
-  width: 100%;
-  padding: 3vh;
-  background-color: rgb(43, 104, 104);
-  overflow:auto;
+  width: 70%;
+  padding: 5vh;
+  min-width: min-content;
 }
 .prfl{
   background-image: url(gallery/profile.jpg);
@@ -243,11 +244,12 @@ form{
   margin-bottom: 2vh;
 }
 
-.htrans:-webkit-scrollbar{
+.htrans::-webkit-scrollbar{
+  width: 5px;
   background:transparent;
 }
 .htrans::-webkit-scrollbar-thumb{
-  background-color: rgba(2, 2, 2, 0.554);
+  background-color: rgba(82, 52, 18, 0.554);
   border-radius: 5px;
   height: 50px;
 }
@@ -298,20 +300,22 @@ form{
 }
 
 .buttonlo:hover{
-  color: #b88e57;
+  color: #997b55;
   animation: bounce 1s alternate infinite;
 }
 
 .logout{
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
 }
 
 .logout form{
   width: 80px;
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  flex-direction: row;
   align-items: stretch;
+  justify-content: center;
 }
 
 .topupp form{
@@ -428,14 +432,16 @@ form{
 
 .cards{
     width: 100%;
-    height: 60vh;
+    height: 62vh;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items:stretch;
     justify-content:center;
+    overflow-x: auto;
+    min-height: 320px;
 }
 
-.cards:-webkit-scrollbar{
+.cards::-webkit-scrollbar{
   background:transparent;
 }
 .cards::-webkit-scrollbar-thumb{
@@ -767,6 +773,30 @@ form{
   height:40px;
 }
 
+.btn_cart{
+  background-color:beige;
+  border: none;
+  text-decoration: none;
+  color: #533314;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  width: 80px;
+  height:23px;
+  border-radius: 5px;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, beige 50%, #533314 50%);
+  -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  transition: background-position 1s;
+}
+
+.btn_cart:hover{
+  background-position: -100% 100%;
+  color: beige;
+}
+
 .cright{
     width: 25%;
     background-color: rgba(167, 140, 116, 0.246);
@@ -796,9 +826,7 @@ form{
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 5vh;
-    padding: 10px;
     display: flex;
-    padding-top:7vh ;
     flex-direction: column;
     z-index: 0;
     align-items: center;
@@ -807,6 +835,26 @@ form{
     animation-delay: 1s;
     animation-fill-mode:both;
     overflow: hidden;
+}
+.circlen{
+  border-radius:50px;
+  width: 250px;
+  min-width: 90px;
+  height: 50vh;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5vh;
+  padding: 10px;
+  display: flex;
+  padding-top:7vh ;
+  flex-direction: column;
+  z-index: 0;
+  align-items: center;
+  animation: fadeIn 1.5s alternate;
+  animation-delay: 1s;
+  animation-fill-mode:both;
+  overflow: hidden;
+  z-index: 1;
 }
 
 @keyframes fadeIn { 
@@ -820,41 +868,57 @@ form{
   }  
 }
 
-.circle:hover{
-  backdrop-filter: blur(5px);
-  background-color: thistle;
-}
-.p1{
-    background-image: url(gallery/sushic.jpg);
-    background-repeat:repeat;
+img{
+  object-fit:cover;  
 }
 
-.p2{
-  background-image: url(gallery/ramenc.jpg);
-  background-repeat: repeat;
+.overlay {
+  position: absolute;
+  top:0vh;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  background-image: url(gallery/stamp.png);
+  background-repeat:repeat;
+  opacity: 0;
+}
+.overlay h2{
+  margin-top: 25vh;
+}
+@-webkit-keyframes one {
+  0% {
+    letter-spacing: 2em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: 0.5em;
+    opacity: 1;
+  }
 }
 
-.p3{
-    background-image: url(gallery/ricec.jpg);
-    background-repeat: repeat;
-}
-.p4{
-    background-image: url(gallery/sakec.jpg);
-    background-repeat: repeat;
-}
-.p5{
-    background-image: url(gallery/mochir.jpg);
-    background-repeat: repeat;
+.circle:hover img {
+  -webkit-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -ms-filter: blur(1px);
+  -o-filter: blur(1px);
+  filter: blur(2px);
+  transform: scale(1.05);
 }
 
-.tag{
-    width: 20%;
-    height: 30px;
-    font-size:30px;
-    color: #ffffff;
-   text-align: center;
-    font-weight: bold;
+.circle:hover .overlay {
+  -webkit-opacity: 1;
+  opacity: 1;
+  -webkit-animation: one 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	animation: one 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
+
 .tag1{
     width: 20%;
     height: 30px;
@@ -862,30 +926,6 @@ form{
     color: #ffffff;
    text-align: center;
     font-weight: bold;
-}
-
-.circle p{
-    background-color: rgba(92, 92, 92, 0.376);
-    color: white;
-    font-size: larger;
-    text-align: center; 
-    z-index: 1;
-    /* border-radius: 2%; */
-}
-.circle a{
-    font-size: 15px; 
-    background-color: rgba(255, 255, 255, 1); 
-    text-decoration: none; 
-    width: 50%; 
-    text-align: center; 
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-    
-}
-
-.circle a:hover{
-    text-decoration: underline;
-    animation: bounce 1s alternate infinite;
 }
 
 .isi{

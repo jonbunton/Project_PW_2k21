@@ -62,6 +62,7 @@
                                 <img class="logo" src="gallery/logo.png" alt="">
                                 <a class="ar" href="#top">Home</a>
                                 <a class="ar" href="#top">About Us</a>
+                                <a class="ar" href="#top">Location</a>
                                 <a class="ar" href="#top">Menu</a>
                                 <a class="ar" href="cart.php">Cart</a>
                                 <?php
@@ -80,6 +81,7 @@
                                     }
                                 ?>
                              </div>
+                        </div>
                 
                              <div class="product">
                                  <center>
@@ -88,78 +90,43 @@
                                      </div>
                                     <div class ="path"></div>
                                     
-                                <div class="cards">
-                                    <a href="sushi.php" style="text-decoration:none;">
-                                        <div class="circle p1">
-                                        
-                                        <div class="tag">S</div>
-                                        <div class="tag">U</div>
-                                        <div class="tag">S</div>
-                                        <div class="tag">H</div>
-                                        <div class="tag">I</div>
-                                        <div class="tag1"></div>
-                                        <div class="tag1"></div>
-                                        
-                                        </div>
-                                    </a>
+                                    <div class="cards">
+                                        <a class="circle"href="sushi.php">
+                                            <img src="gallery/sushic.jpg" alt="">
+                                            <div class="overlay">
+                                                <h2>Sushi</h2>
+                                            </div>
+                                        </a>
 
-                                    <a href="ramen.php" style="text-decoration:none;">
-                                        <div class="circle p2">
-                                            <div class="tag">R</div>
-                                            <div class="tag">A</div>
-                                            <div class="tag">M</div>
-                                            <div class="tag">E</div>
-                                            <div class="tag">N</div>
-                                            <div class="tag1"></div>
-                                            <div class="tag1"></div>
-                                            
-                                            
-                                        </div>
-                                    </a>
+                                        <a class="circle"href="sushi.php">
+                                            <img src="gallery/ramenc.jpg" alt="">
+                                            <div class="overlay">
+                                                <h2>Ramen</h2>
+                                            </div>
+                                        </a>
 
-                                    <a href="rice.php" style="text-decoration:none;">
-                                        <div class="circle p3">
-                                            
-                                            <div class="tag">R</div>
-                                            <div class="tag">I</div>
-                                            <div class="tag">C</div>
-                                            <div class="tag">E</div>
-                                            <div class="tag1"></div>
-                                            <div class="tag1"></div>
-                                            <div class="tag1"></div>
-                                            
-                                            
-                                        </div> 
-                                    </a>
-                                    <a href="drink.php" style="text-decoration:none;">
-                                        <div class="circle p4">
-                                            
-                                            <div class="tag">D</div>
-                                            <div class="tag">R</div>
-                                            <div class="tag">I</div>
-                                            <div class="tag">N</div>
-                                            <div class="tag">K</div>
-                                            <div class="tag1"></div>
-                                            <div class="tag1"></div>
-                                            
-                                        </div>
-                                    </a>
-                                    <a href="dessert.php" style="text-decoration:none;">
-                                        <div class="circle p5">
-                                            
-                                            <div class="tag">D</div>
-                                            <div class="tag">E</div>
-                                            <div class="tag">S</div>
-                                            <div class="tag">S</div>
-                                            <div class="tag">E</div>
-                                            <div class="tag">R</div>
-                                            <div class="tag">T</div>
+                                        <a class="circle"href="sushi.php">
+                                            <img src="gallery/ricec.jpg" alt="">
+                                            <div class="overlay">
+                                                <h2>Rice</h2>
+                                            </div>
+                                        </a>
 
-                                            
-                                        </div>
-                                    </a>
-                
-                                </div>
+                                        <a class="circle"href="sushi.php">
+                                            <img src="gallery/sakec.jpg" alt="">
+                                            <div class="overlay">
+                                                <h2>Drink</h2>
+                                            </div>
+                                        </a>
+                                    
+                                        <a class="circle"href="dessert.php" style="text-decoration:none;display:block;">
+                                            <img src="gallery/mochir.jpg" alt="">   
+                                            <div class="overlay">
+                                                <h2>Dessert</h2>
+                                            </div>
+                                        </a>
+
+                                    </div>
                                 </center>
                             </div>
                 
