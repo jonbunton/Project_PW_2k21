@@ -170,6 +170,55 @@ if(isset($_POST['logout']))
         unset($_SESSION["cart"]);
         header("location:login.php");
     } 
+
+    if (isset($_POST['submit2'])) {
+        if($_POST['urut']=="turun"){
+            if ($_POST['urut2']=="id") {
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY id_product DESC");
+                $stmt->execute();
+                $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="nama") {
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY id_jenis DESC");
+                $stmt->execute();
+                $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="jenis") {
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY nama DESC");
+                $stmt->execute();
+                $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="hrg") {
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY harga DESC");
+                $stmt->execute();
+                $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            
+        }
+        else if($_POST['urut']=="naik"){
+            if ($_POST['urut2']=="id") {
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY id_product ASC");
+                $stmt->execute();
+                $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="nama") {
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY id_jenis ASC");
+                $stmt->execute();
+                $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="jenis") {
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY nama ASC");
+                $stmt->execute();
+                $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="hrg") {
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY harga ASC");
+                $stmt->execute();
+                $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -185,20 +234,16 @@ if(isset($_POST['logout']))
 <body>
         <div class="container">
     
-            <div class="header" id="top">    
+        <div class="header" id="top">    
                 <div class="nav">
                     <img class="logo" src="gallery/logo.png" alt="">
-                    <a class="ar" href="mUser.php">Master User</a>
+                    <a class="ar" href="mUser.php">List User</a>
                     <a class="ar" href="mProd.php">Master Product</a>
                     <a class="ar" href="Hist_trans.php">Transaction History</a>
                     <a class="ar" href="top_req.php">TopUp Request</a>
                     <a class="ar" href="Hist_top.php">TopUp History</a>
                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                    <div>
-                        <form action="" method="post">
-                            <button class="logout-btn" name="logout">Log Out</button>
-                        </form>
-                    </div>
+                        <a class="ar" href="index.php">Log Out</a>
                 </div>
             </div>
 
@@ -210,10 +255,10 @@ if(isset($_POST['logout']))
                 <form method="post" enctype="multipart/form-data">
                 
                     <label for="nama"><b>Nama</b></label>
-                    <input type="text" placeholder="Enter Nama Product" name="Nama" id="Nama"  >
+                    <input type="text" placeholder="Enter Nama Product" name="Nama" id="Nama" class="search" >
 
                     <label for="email"><b>Jenis</b></label>
-                    <select name="genre_id" id="">
+                    <select name="genre_id" id="" class="search">
                     <?php
                             if ($kate !== null) {
                                 foreach ($kate as $key => $values) {
@@ -226,10 +271,10 @@ if(isset($_POST['logout']))
                     </select>
 
                     <label for="psw"><b>Harga (Dalam Rupiah)</b></label>
-                    <input type="text" placeholder="Enter Harga" name="hrg" id="hrg" >
+                    <input type="text" placeholder="Enter Harga" name="hrg" id="hrg"class="search" >
 
                     <label for="psw-repeat"><b>Deskripsi</b></label>
-                    <input type="text" placeholder="Deskripsi" name="des" id="des" ><br>
+                    <input type="text" placeholder="Deskripsi" name="des" id="des" class="search" ><br>
 
                     Select image to upload:
                     <input type="file" name="fileToUpload" id="fileToUpload"><br>
@@ -243,6 +288,26 @@ if(isset($_POST['logout']))
                     <br>
                     <input type="text" name="keyword" id="" class="search"> <br>
                     <button  class="searchbtn">Search</button>
+                </form>
+                <br>
+
+                <form action="" method="post">
+                <h2 class="ar">Sort</h2> 
+                    <select name="urut" class="search">
+                        <option value="" disabled selected>Choose Sort Order</option>
+                        <option value="turun">Descending</option>
+                        <option value="naik">Ascending</option>
+                    </select>
+                    <br>
+                    <select name="urut2" class="search">
+                        <option value="" disabled selected>Choose Sort Header</option>
+                        <option value="id">ID</option>
+                        <option value="nama">Nama</option>
+                        <option value="jenis">Jenis</option>
+                        <option value="hrg">Harga</option>
+                    </select>
+                    <br>
+                    <input type="submit" name="submit2" vlaue="Sort Product" class="searchbtn">
                 </form>
                 <br>
                 <h2 class="ar">List Product</h2>
@@ -286,8 +351,8 @@ if(isset($_POST['logout']))
                                                 <input type="hidden" name="edit" value="<?= $value['id_product']?>">
                                                 <button onclick="myFunction()">Edit</button>
                                             </form>
-                                            </a>
                                             </td>
+
                                         </tr>
                                     <?php
                                     $idx++;

@@ -49,6 +49,66 @@
         unset($_SESSION["cart"]);
         header("location:login.php");
     } 
+
+    if (isset($_POST['submit'])) {
+        
+        if($_POST['urut']=="turun"){
+            if ($_POST['urut2']=="id") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY id_htrans DESC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="email") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY email DESC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="total") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY total DESC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="tgl") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY tanggal DESC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="wkt") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY waktu DESC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            
+        }
+        else if($_POST['urut']=="naik"){
+            if ($_POST['urut2']=="id") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY id_htrans ASC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="email") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY email ASC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="total") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY total ASC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="tgl") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY tanggal ASC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif ($_POST['urut2']=="wkt") {
+                $stmt = $pdo->prepare("SELECT * FROM htrans ORDER BY waktu ASC");
+                $stmt->execute();
+                $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -65,20 +125,16 @@
 
         <div class="container">
     
-            <div class="header" id="top">    
+        <div class="header" id="top">    
                 <div class="nav">
                     <img class="logo" src="gallery/logo.png" alt="">
-                    <a class="ar" href="mUser.php" >Master User</a>
-                    <a class="ar" href="mProd.php" >Master Product</a>
-                    <a class="ar" href="Hist_trans.php" >Transaction History</a>
+                    <a class="ar" href="mUser.php">List User</a>
+                    <a class="ar" href="mProd.php">Master Product</a>
+                    <a class="ar" href="Hist_trans.php">Transaction History</a>
                     <a class="ar" href="top_req.php">TopUp Request</a>
-                    <a class="ar" href="Hist_top.php" >TopUp History</a>
+                    <a class="ar" href="Hist_top.php">TopUp History</a>
                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-                    <div>
-                        <form action="" method="post">
-                            <button class="logout-btn" name="logout">Log Out</button>
-                        </form>
-                    </div>
+                        <a class="ar" href="index.php">Log Out</a>
                 </div>
             </div>
     
@@ -94,7 +150,27 @@
                     <button  class="searchbtn">Search</button>
                 </form>
                 <br>
-            
+
+                <form action="" method="post">
+                <h2 class="ar">Sort</h2> 
+                    <select name="urut" class="search">
+                        <option value="" disabled selected>Choose Sort Order</option>
+                        <option value="turun">Descending</option>
+                        <option value="naik">Ascending</option>
+                    </select>
+<br>
+                    <select name="urut2" class="search">
+                        <option value="" disabled selected>Choose Sort Header</option>
+                        <option value="id">ID</option>
+                        <option value="email">Email</option>
+                        <option value="total">Total</option>
+                        <option value="tgl">Tanggal</option>
+                        <option value="wkt">Waktu</option>
+                    </select>
+<br>
+                    <input type="submit" name="submit" vlaue="Sort Product" class="searchbtn">
+                </form>
+            <br>
                 <h2 class="ar">History Transaksi</h2>
                 <br>
                 <div class="table100 ver3 m-b-110">

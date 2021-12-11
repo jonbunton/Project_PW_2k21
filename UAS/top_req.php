@@ -30,40 +30,91 @@
             $saldo=$value['jumlah'];
         }
 
+        $stmt = $pdo->prepare("SELECT * FROM user WHERE email = :Nama_org");
+        $result = $stmt->execute(["Nama_org"=>$email]);
+        $user2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($user2 as $key => $value) {
+            $saldo2=$value['saldo'];
+        }
+        $saldo3=$saldo+$saldo2;
+
         $stmt = $pdo->prepare("INSERT INTO history(waktu,tanggal,saldo,email) VALUES(?,?,?,?)");
         $result = $stmt->execute([$waktu, $tanggal, $saldo, $email]);
 
-        //code ini bikin keinsert 2x di bagian history
-        // $stmt = $pdo->prepare("INSERT INTO history(waktu,tanggal,saldo,email) VALUES(?,?,?,?)");
-        // $result = $stmt->execute([$waktu, $tanggal, $saldo, $email]);
+        $stmt = $pdo->prepare("UPDATE user SET saldo='$saldo3' WHERE email = '$email'");
+        $result = $stmt->execute();
         
-
         $stmt = $pdo->prepare("DELETE FROM pending WHERE id_pending = :Nama_org");
         $result = $stmt->execute(["Nama_org"=>$Nama_org]);
 
         header("Location: top_req.php");
 
-    } 
+    }
+    
     if(isset($_SESSION["message"])){
         echo "<script>alert('$_SESSION[message]')</script>";
-        unset($_SESSION["message"]);
-    }
-    if(isset($_SESSION["login"]))
-    {
-        $login=$_SESSION["login"];
-        if($login!="admin"){
-            header("location:Menu.php");
+        unset($_SESSION["message"]);}
+
+        if (isset($_POST['submit'])) {
+        
+            if($_POST['urut']=="turun"){
+                if ($_POST['urut2']=="id") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY id_pending DESC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                else if ($_POST['urut2']=="email") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY email DESC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                elseif ($_POST['urut2']=="wkt") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY waktu DESC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                elseif ($_POST['urut2']=="tgl") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY tanggal DESC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                elseif ($_POST['urut2']=="saldo") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY jumlah DESC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                
+            }
+            else if($_POST['urut']=="naik"){
+                if ($_POST['urut2']=="id") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY id_pending ASC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                else if ($_POST['urut2']=="email") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY email ASC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                elseif ($_POST['urut2']=="wkt") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY waktu ASC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                elseif ($_POST['urut2']=="tgl") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY tanggal ASC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                elseif ($_POST['urut2']=="saldo") {
+                    $stmt = $pdo->prepare("SELECT * FROM pending ORDER BY jumlah ASC");
+                    $stmt->execute();
+                    $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+            }
+            
         }
-    }
-    else{
-        header("location:Menu.php");
-    }
-    if(isset($_POST['logout']))
-    {
-        unset($_SESSION["login"]);
-        unset($_SESSION["cart"]);
-        header("location:login.php");
-    } 
 ?>
 
 <!DOCTYPE html>
@@ -82,17 +133,13 @@
             <div class="header" id="top">    
                 <div class="nav">
                     <img class="logo" src="gallery/logo.png" alt="">
-                    <a class="ar" href="mUser.php">Master User</a>
+                    <a class="ar" href="mUser.php">List User</a>
                     <a class="ar" href="mProd.php">Master Product</a>
                     <a class="ar" href="Hist_trans.php">Transaction History</a>
                     <a class="ar" href="top_req.php">TopUp Request</a>
                     <a class="ar" href="Hist_top.php">TopUp History</a>
-                    <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div> 
-                    <div>
-                        <form action="" method="post">
-                            <button class="logout-btn" name="logout">Log Out</button>
-                        </form>
-                    </div>
+                    <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
+                        <a class="ar" href="index.php">Log Out</a>
                 </div>
             </div>
     
@@ -102,6 +149,26 @@
                     <br>
                     <input type="text" name="keyword" id="" class="search"> <br>
                     <button  class="searchbtn">Search</button>
+                </form>
+                <br>
+                <form action="" method="post">
+                <h2 class="ar">Sort</h2> 
+                    <select name="urut" class="search">
+                        <option value="" disabled selected>Choose Sort Order</option>
+                        <option value="turun">Descending</option>
+                        <option value="naik">Ascending</option>
+                    </select>
+                    <br>
+                    <select name="urut2" class="search">
+                        <option value="" disabled selected>Choose Sort Header</option>
+                        <option value="id">ID</option>
+                        <option value="email">Email</option>
+                        <option value="wkt">Waktu</option>
+                        <option value="tgl">Tanggal</option>
+                        <option value="saldo">Saldo</option>
+                    </select>
+                    <br>
+                    <input type="submit" name="submit" vlaue="Sort Product" class="searchbtn">
                 </form>
                 <br>
             
