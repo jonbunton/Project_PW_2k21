@@ -75,7 +75,7 @@
                         </div>
                 
                              <div class="Bprofile">
-                                <div class ="inprofile">
+                                <div class ="inprofile blur2">
 
                                      <div class="pleft">
 
@@ -150,7 +150,7 @@
                                         </div>
                                         <div class="logout">
                                             <form action="" method="post">
-                                                <button class="buttonlo"name="logout">Logout</button>
+                                                <button class="buttonlo"name="logout"> Logout</button>
                                             </form> 
                                         </div>
                                    
