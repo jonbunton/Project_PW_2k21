@@ -244,11 +244,14 @@
                                 <p class="copy">Copyright 2019 © Amazake</p>
                             </div>
                     </div>
+
                     <!-- Untuk pop up box detail -->
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
                         <!-- Modal content -->
+
                         <div class="modal-content">
+                        <span class="close">&times;</span>
                             <h1>Detail Transaction</h1>
                             <div class="table100 ver3 m-b-110">
                                 <div class="table100-head">
@@ -298,6 +301,7 @@
             <div id="myModal2" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
+                <span class="close2">&times;</span>
                     <h1>Edit User <?php echo $_GET["edit"] ?></h1>
                     <form method="post" enctype="multipart/form-data">
                 
@@ -326,6 +330,7 @@
             <div id="myModal3" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
+                <span class="close3">&times;</span>
                     <h1>Detail Transaction</h1>
                     <div class="table100 ver3 m-b-110">
                         <div class="table100-head">
@@ -408,7 +413,7 @@
                         function myFunction3() {
                             var modal2 = document.getElementById("myModal2");
                             modal2.style.display = "block";
-                            var span2 = document.getElementsByClassName("close")[0];
+                            var span2 = document.getElementsByClassName("close2")[0];
                             span2.onclick = function() {
                             modal2.style.display = "none";
                             }
@@ -422,7 +427,7 @@
                         function myFunction4() {
                             var modal3 = document.getElementById("myModal3");
                             modal3.style.display = "block";
-                            var span3 = document.getElementsByClassName("close")[0];
+                            var span3 = document.getElementsByClassName("close3")[0];
                             span3.onclick = function() {
                             modal3.style.display = "none";
                             }
