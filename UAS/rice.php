@@ -65,7 +65,7 @@
                                     if($user!=null){
                                 ?>
                                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
-                                        <a class="ar" href="#top">ようこそ, <?= $user["nama"]?></a>
+                                        <a class="ar" href="profile.php">ようこそ, <?= $user["nama"]?></a>
                                     </div>  
                                 <?php
                                     }else{
