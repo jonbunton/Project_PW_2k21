@@ -82,6 +82,18 @@
             
     }
 
+    if(isset($_GET["detail3"])){
+        $cek=$_GET["detail3"];
+        $stmt = $pdo->prepare("SELECT * FROM dtrans WHERE id_htrans = ?");
+        $keyword = $cek;
+        $stmt->execute([$keyword]);
+        $det2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
+     else{
+        $stmt = $pdo->query("SELECT * FROM history");
+        $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
+
     $id2=$user["email"];
     $stmt = $pdo->query("SELECT * FROM user WHERE email='$id2'");
     $edi2 = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -188,6 +200,7 @@
                                                 <thead>
                                                     <th>Date</th>
                                                     <th>Amount</th>
+                                                    <th>Detail</th>
                                                 </thead>
                                                 <tbody>
                                                     <?php
@@ -198,6 +211,10 @@
                                                     <tr id="<?= $ctr?>">
                                                         <td><?= $value['tanggal']?></td>
                                                         <td>IDR <?= $value['total']?></td>
+                                                        <td><form action="#" method="get">
+                                                            <input type="hidden" name="detail3" value="<?= $value['id_htrans']?>">
+                                                            <button onclick="myFunction()">Detail</button>
+                                                        </form></td>
                                                     </tr>
                                                     <?php
                                                     $idx++;
@@ -232,7 +249,6 @@
                     <div id="myModal" class="modal">
                         <!-- Modal content -->
                         <div class="modal-content">
-                            <span class="close">&times;</span>
                             <h1>Detail Transaction</h1>
                             <div class="table100 ver3 m-b-110">
                                 <div class="table100-head">
@@ -303,6 +319,56 @@
                     <input type="submit" value="Edit User" name="edit" class="searchbtn">
                 </form>
                 </div>
+
+            </div>
+            <!-- Untuk pop up box detail -->
+            <!-- The Modal -->
+            <div id="myModal3" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <h1>Detail Transaction</h1>
+                    <div class="table100 ver3 m-b-110">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">ID </th>
+                                        <th class="cell100 column3">Nama</th>
+                                        <th class="cell100 column4">Jumlah</th>
+                                        <th class="cell100 column5">Sub Total</th>
+                                        <th class="cell100 column6">Harga</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <?php
+                                        if ($det !== null) {
+                                            $idx=1;
+                                            foreach ($det2 as $key => $values) {
+                                        ?>
+                                            <tr class="row100 body">
+                                                <td class="cell100 column1"><?= $values['id_htrans']?></td>
+                                                <td class="cell100 column3"><?= $values['nama_product']?></td>
+                                                <td class="cell100 column4"><?= $values['jumlah']?></td>
+                                                <td class="cell100 column5">Rp. <?= $values['subtotal']?></td>
+                                                <td class="cell100 column6">Rp. <?= $values['harga']?></td>    
+                                                
+                                            </tr>
+                                        <?php
+                                        $idx++;
+                                            }
+                                        }
+                                    ?>
+                                    
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
 
                     </div>
@@ -315,6 +381,9 @@
                             }
                             else if(params.has('edit')== true){
                                 myFunction3();     
+                            }
+                            else if(params.has('detail3')== true){
+                                myFunction4();     
                             } 
                         };
 
@@ -346,6 +415,20 @@
                             window.onclick = function(event) {
                                 if (event.target == modal2) {
                                     modal2.style.display = "none";
+                                }
+                            }
+                        }
+
+                        function myFunction4() {
+                            var modal3 = document.getElementById("myModal3");
+                            modal3.style.display = "block";
+                            var span3 = document.getElementsByClassName("close")[0];
+                            span3.onclick = function() {
+                            modal3.style.display = "none";
+                            }
+                            window.onclick = function(event) {
+                                if (event.target == modal3) {
+                                    modal3.style.display = "none";
                                 }
                             }
                         }
