@@ -34,6 +34,59 @@
     $email=$user['email'];
     $stmt = $pdo->query("SELECT * FROM htrans where email='$email'");
     $history = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if(isset($_GET["detail"])){
+        $cek=$_GET["detail"];
+        $stmt = $pdo->prepare("SELECT * FROM history WHERE email = ?");
+        $keyword = $cek;
+        $stmt->execute([$keyword]);
+        $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $test=$_GET["detail"];
+     }
+     else{
+        $stmt = $pdo->query("SELECT * FROM history");
+        $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
+
+     if(isset($_GET["edit"])){
+        $id = $_GET["edit"];
+      $stmt = $pdo->query("SELECT * FROM user WHERE email='$id'");
+      $edi = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    if(isset($_POST['edit']))
+    {
+        $id = $_GET["edit"];
+        $nama = $_POST["Nama"];
+        $psw = $_POST["psw"];
+        $alm = $_POST["alm"];
+        $psw2 = $_POST["psw2"];
+        $kota = $_POST["kota"];
+        
+        $result =false;
+        if(isset($nama) && $nama!=""){
+            if(isset($alm) && $alm!=""){
+                if(isset($kota) && $kota!=""){
+                    if ($psw==$psw2) {
+                        $stmt = $pdo->prepare("UPDATE user SET password='$psw', nama='$nama', alamat='$alm', kota='$kota' WHERE email = '$id'");
+                        $result = $stmt->execute();
+
+                        
+                    }
+                    
+                }   
+            }
+        }	
+            
+        header("Location: profile.php");
+            
+    }
+
+    $id2=$user["email"];
+    $stmt = $pdo->query("SELECT * FROM user WHERE email='$id2'");
+    $edi2 = $stmt->fetch(PDO::FETCH_ASSOC);
+    unset($_SESSION["login"]);
+    $_SESSION["login"]=$edi2;
 ?>
 
 <!DOCTYPE html>
@@ -98,6 +151,10 @@
                                             <h1>Email<span style="padding-left:45px;">: <?=$user["email"]?></span></h1><br>
                                             <h1>Address<span style="padding-left:15px;">: <?=$user["alamat"]?> </span></h1><br>
                                             <h1>City <span style="padding-left:60px;">: <?=$user["kota"]?></span></h1><br>
+                                            <form action="#" method="get">
+                                                <input type="hidden" name="edit" value="<?= $user["email"]?>">
+                                                <button onclick="myFunction()" class="buttonto2">Edit User</button>
+                                            </form>
                                         </div>
 
                                     </div>
@@ -112,8 +169,14 @@
                                                 <br>
                                                 <button class="buttonto" name="topup">Top Up</button>
                                             </form>
+                                            <br>
+                                            <form action="#" method="get">
+                                                <input type="hidden" name="detail" value="<?= $user["email"]?>">
+                                                <button onclick="myFunction()" class="buttonto2">History Top Up</button>
+                                            </form>
                                         </div>
-                                      <br><br>
+                                        
+                                      <br>
                                       <center>
                                         <h3>Purchase History</h3>
                                       </center>
@@ -164,6 +227,129 @@
                                 <p class="copy">Copyright 2019 © Amazake</p>
                             </div>
                     </div>
+                    <!-- Untuk pop up box detail -->
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h1>Detail Transaction</h1>
+                            <div class="table100 ver3 m-b-110">
+                                <div class="table100-head">
+                                    <table>
+                                        <thead>
+                                            <tr class="row100 head">
+                                                <th class="cell100 column1">ID</th>
+                                                <th class="cell100 column2">Email</th>
+                                                <th class="cell100 column3">Waktu</th>
+                                                <th class="cell100 column4">Tanggal </th>
+                                                <th class="cell100 column5">Saldo</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+
+                                <div class="table100-body js-pscroll">
+                                    <table>
+                                        <tbody>
+                                            <?php
+                                                if ($det !== null) {
+                                                    $idx=1;
+                                                    foreach ($det as $key => $values) {
+                                                ?>
+                                                    <tr class="row100 body">
+                                                        <td class="cell100 column1"><?= $values['id_history']?></td>
+                                                        <td class="cell100 column2"><?= $values['email']?></td>
+                                                        <td class="cell100 column3"><?= $values['waktu']?></td>
+                                                        <td class="cell100 column4"><?= $values['tanggal']?></td>
+                                                        <td class="cell100 column5"><?= $values['saldo']?></td>
+                                                        
+                                                    </tr>
+                                                <?php
+                                                $idx++;
+                                                    }
+                                                }
+                                            ?>
+                                            
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Untuk pop up box edit -->
+            <div id="myModal2" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <h1>Edit User <?php echo $_GET["edit"] ?></h1>
+                    <form method="post" enctype="multipart/form-data">
+                
+                    <label for="nama"><b>Nama</b></label>
+                    <input type="text" placeholder="Enter Nama Product" name="Nama" id="Nama" value="<?=$edi['nama']?>">
+
+                    <label for="pass"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw" value="<?=$edi['password']?>">
+                    
+                    <label for="pass"><b>Confirm Password</b></label>
+                    <input type="password" placeholder="Confirm Password" name="psw2" id="psw2"value="<?=$edi['password']?>">
+
+                    <label for="alam"><b>Alamat</b></label>
+                    <input type="text" placeholder="Enter Alamat" name="alm" id="alm" value="<?=$edi['alamat']?>" >
+
+                    <label for="Kota"><b>Kota</b></label>
+                    <input type="text" placeholder="Enter Kota" name="kota" id="kota" value="<?=$edi['kota']?>" ><br>
+
+                    <input type="submit" value="Edit User" name="edit" class="searchbtn">
+                </form>
+                </div>
+            </div>
+
+                    </div>
+
+                    <script>
+                        window.onload = function() {
+                            let params = new URLSearchParams(location.search);
+                            if(params.has('detail')== true){
+                                myFunction2();     
+                            }
+                            else if(params.has('edit')== true){
+                                myFunction3();     
+                            } 
+                        };
+
+                        function myFunction() {
+                            location.reload();
+                            
+                        }
+                        function myFunction2() {
+                            var modal = document.getElementById("myModal");
+                            modal.style.display = "block";
+                            var span = document.getElementsByClassName("close")[0];
+                            span.onclick = function() {
+                            modal.style.display = "none";
+                            }
+                            window.onclick = function(event) {
+                                if (event.target == modal) {
+                                    modal.style.display = "none";
+                                }
+                            }
+                        }
+
+                        function myFunction3() {
+                            var modal2 = document.getElementById("myModal2");
+                            modal2.style.display = "block";
+                            var span2 = document.getElementsByClassName("close")[0];
+                            span2.onclick = function() {
+                            modal2.style.display = "none";
+                            }
+                            window.onclick = function(event) {
+                                if (event.target == modal2) {
+                                    modal2.style.display = "none";
+                                }
+                            }
+                        }
+                        
+                    </script>
 </body>
 </html>
