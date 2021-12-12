@@ -113,6 +113,8 @@ form{
     color: #98825b;
 }
 
+
+
 .bgSushi{
   background-image: url(gallery/bgsushi2.jpg);
   background-blend-mode:overlay;
@@ -581,10 +583,14 @@ form{
 .mname{
     background-color: rgba(36, 36, 36, 0.431);
     height: 35%;
+    padding: 0.5vh;
+    font-size: 23px;
+    font-weight: bold;
 }
 .mdes{
     background-color: rgba(36, 36, 36, 0.431);
     height: 65%;
+    padding: 0.5vh;
 }
 
 .mdright{
@@ -597,6 +603,7 @@ form{
 .harga{
     background-color: rgba(36, 36, 36, 0.431);
     height: 60%;
+    padding: 0.5vh;
 }
 .addcart{
     background-color: rgba(36, 36, 36, 0.431);
@@ -626,8 +633,21 @@ form{
   border-left: 10px solid rgb(80, 70, 53);
   border-right: 10px solid rgb(80, 70, 53);
 }
+
+.cartbg{
+  width: 100%;
+  height: 94vh;
+  min-width: 800px;
+  background-size:100%, 100%;
+  background-repeat:repeat-y;
+  padding: 13vh;
+  padding-top: 12vh;
+  color: #98825b;
+}
+
 .bgcart{
   background-image: url(gallery/bgcart2.jpg);
+  background-repeat:repeat-y ;
 }
 
 .gmbr_cart{
@@ -762,7 +782,7 @@ form{
 }
 
 .buttoncart{
-  background-color: #e4c087;
+  background-color: #d1bc9a;
   color: #533314;
   border: none;
   text-align: center;
@@ -785,6 +805,11 @@ form{
   cursor: pointer;
   width: 150px;
   height:40px;
+}
+
+.buttonco:hover{
+  background-color: #533314;
+  color: #e4c087;
 }
 
 .btn_cart{

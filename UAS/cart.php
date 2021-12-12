@@ -158,7 +158,7 @@
             </div>
         </div>
                 
-        <div class="product bgcart">
+        <div class="cartbg bgcart">
             <!-- cart -->
             <center>
                 <div class="cart blur2">
@@ -322,7 +322,7 @@
 
         </div>
         <div class="foot">
-            <p class="copy">Copyright 2019 © Amazake</p>
+            <p class="copy">Copyright 2021 © Amazake</p>
         </div>
 
     </div>
