@@ -98,7 +98,13 @@
                       $pdo->rollBack();
                       throw $e;
                     } 
-                    $_SESSION["message"]="Berhasil beli".$subjum." produk ,seharga".$subtot;
+                    $_SESSION["message"]="Berhasil beli ".$subjum." produk ,seharga IDR".$subtot;
+                    $id2=$user["email"];
+                    $stmt = $pdo->query("SELECT * FROM user WHERE email='$id2'");
+                    $edi2 = $stmt->fetch(PDO::FETCH_ASSOC);
+                    unset($_SESSION["login"]);
+                    $_SESSION["login"]=$edi2; 
+
                 }
                 else{
                     $_SESSION["message"]="Anda Belum memilih item";
@@ -301,7 +307,6 @@
                                 ?>
                             </div>
                         </div>
-                        <br><br><br>
                         <div class="textC4">
                             Your Balance is IDR <?=$balance?>
                         </div>
