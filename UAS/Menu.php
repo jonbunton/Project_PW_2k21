@@ -3,7 +3,6 @@
     $sushi="1";
     $stmt = $pdo->query("SELECT * FROM product where id_jenis='$sushi' ");
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-     var_dump ($_SESSION);
     $stat=0;
     // if(isset($_POST["cart"]))
     // {
@@ -98,21 +97,21 @@
                                             </div>
                                         </a>
 
-                                        <a class="circle"href="sushi.php">
+                                        <a class="circle"href="ramen.php">
                                             <img src="gallery/ramenc.jpg" alt="">
                                             <div class="overlay">
                                                 <h2>Ramen</h2>
                                             </div>
                                         </a>
 
-                                        <a class="circle"href="sushi.php">
+                                        <a class="circle"href="rice.php">
                                             <img src="gallery/ricec.jpg" alt="">
                                             <div class="overlay">
                                                 <h2>Rice</h2>
                                             </div>
                                         </a>
 
-                                        <a class="circle"href="sushi.php">
+                                        <a class="circle"href="drink.php">
                                             <img src="gallery/sakec.jpg" alt="">
                                             <div class="overlay">
                                                 <h2>Drink</h2>
