@@ -108,7 +108,8 @@ form{
     background-blend-mode:overlay;
     background-size:100%, 100%;
     background-repeat:repeat-y;
-    padding: 12vh;
+    padding: 13vh;
+    padding-top: 15vh;
     color: #98825b;
 }
 
@@ -835,10 +836,10 @@ form{
     border-radius:50px;
     width: 250px;
     min-width: 90px;
-    height: 50vh;
+    height: 46vh;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 5vh;
+    margin-top: 7vh;
     display: flex;
     flex-direction: column;
     z-index: 0;
@@ -881,8 +882,8 @@ form{
   }  
 }
 
-img{
-  object-fit:cover;  
+.img{
+  object-fit: cover;  
 }
 
 .overlay {

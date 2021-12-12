@@ -91,7 +91,7 @@
                                     
                                     <div class="cards">
                                         <a class="circle"href="sushi.php">
-                                            <img src="gallery/sushic.jpg" alt="">
+                                            <img class="img" src="gallery/sushic.jpg" alt="">
                                             <div class="overlay">
                                                 <h2>Sushi</h2>
                                             </div>
