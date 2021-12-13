@@ -59,9 +59,9 @@
                         <div class="header" id="top">    
                             <div class="nav">
                                 <img class="logo" src="gallery/logo.png" alt="">
-                                <a class="ar" href="#top">Home</a>
-                                <a class="ar" href="#top">About Us</a>
-                                <a class="ar" href="#top">Location</a>
+                                <a class="ar" href="index.php#top">Home</a>
+                                <a class="ar" href="index.php#about">About Us</a>
+                                <a class="ar" href="index.php#low">Reach Us</a>
                                 <a class="ar" href="#top">Menu</a>
                                 <a class="ar" href="cart.php">Cart</a>
                                 <?php
@@ -130,7 +130,7 @@
                             </div>
                 
                              <div class="foot">
-                                <p class="copy">Copyright 2019 © Amazake</p>
+                                <p class="copy">Copyright 2021 © Amazake</p>
                             </div>
                     </div>
                     </div>

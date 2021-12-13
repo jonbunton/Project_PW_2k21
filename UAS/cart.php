@@ -139,9 +139,9 @@
         <div class="header" id="top">    
             <div class="nav">
                 <img class="logo" src="gallery/logo.png" alt="">
-                <a class="ar" href="#top">Home</a>
-                <a class="ar" href="#top">About Us</a>
-                <a class="ar" href="#top">Location</a>
+                <a class="ar" href="index.php">Home</a>
+                <a class="ar" href="index.php#about">About Us</a>
+                <a class="ar" href="index.php#low">Reach Us</a>
                 <a class="ar" href="menu.php">Menu</a>
                 <a class="ar" href="cart.php">Cart</a>
                 <?php

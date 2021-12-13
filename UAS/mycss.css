@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
+@font-face {
+  font-family: myhtop;
+  src: url(gallery/sujoka/SUJOKA-PersonalUse.otf);
+}
+
+@font-face {
+  font-family: myeu;
+  src: url(gallery/eu-alonira/Eu\ Alonira.otf);
+}
+
 .container
 {
     width: 100%;
@@ -359,11 +369,12 @@ form{
 
 
 .htop{
-    font-size: 35px;
+    font-size: 50px;
     height: 50px;
     line-height: 50px;
-    color: #ffffffbe;
+    color: #ffffff;
     overflow: hidden;
+    font-family: myhtop;
 }
 .color{
   color: #31302dbe;
@@ -377,11 +388,11 @@ form{
 
 @keyframes muncul{
   from{
-    transform: translateY(60px);
+    transform: translateY(70px);
     opacity: 0;
   }
     to{
-      transform: translateY( 0px);
+      transform: translateY( -10px);
       opacity: 1;
     }
 }

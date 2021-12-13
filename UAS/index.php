@@ -123,15 +123,16 @@
                                        </div>
                                     </div>
                                 </div>
+                                <br>
                                 <center>
-                                <h1>-Our History Food-</h1>
+                                <h1>----------------- Our Historical Food -----------------</h1>
                                 </center>
                                 
                                 <div class="up1">
                                
                                     
                                     <div class="bcard" >
-                                        <div class="card" >
+                                        <div class="card cbg1" >
                                             
                                         </div>
                                         <div class="text">
@@ -141,8 +142,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="bcard">
-                                            <div class="card">
+                                    <div class="bcard ">
+                                            <div class="card cbg2">
                                             
                                             </div>
                                         <div class="text">
@@ -151,8 +152,8 @@
                                         qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                         </div>
                                     </div>
-                                    <div class="bcard">
-                                            <div class="card">
+                                    <div class="bcard ">
+                                            <div class="card cbg3">
                                             
                                             </div>
                                         <div class="text">
@@ -161,8 +162,8 @@
                                         qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                         </div>
                                     </div>
-                                    <div class="bcard">
-                                            <div class="card">
+                                    <div class="bcard ">
+                                            <div class="card cbg4">
                                             
                                             </div>
                                         <div class="text">
@@ -171,8 +172,8 @@
                                         qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                         </div>
                                     </div>
-                                    <div class="bcard">
-                                            <div class="card">
+                                    <div class="bcard ">
+                                            <div class="card cbg5">
                                             
                                             </div>
                                         <div class="text">
@@ -181,8 +182,8 @@
                                         qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.</div>
                                     </div>
 
-                                    <div class="bcard">
-                                        <div class="card">
+                                    <div class="bcard ">
+                                        <div class="card cbg6">
                                             
                                             </div>
                                         <div class="text">
@@ -195,7 +196,32 @@
                             </div>
 
                             <div class="product3" id="low">
-                                
+                                <div class="p31">
+                                <img class="logo" src="gallery/logo2.png" alt="" style="width:400px; height:100px;" >
+                                <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia corrupti cum consectetur quae, amet corporis reiciendis reprehenderit beatae debitis deserunt ut ad mollitia architecto. Blanditiis quis itaque earum laborum nisi?
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, asperiores suscipit ullam aliquid rerum eligendi facilis consequuntur ab sapiente ea quaerat porro vero tenetur odit totam vel accusamus aspernatur temporibus.
+                                    <br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia corrupti cum consectetur quae, amet corporis reiciendis reprehenderit beatae debitis deserunt ut ad mollitia architecto. Blanditiis quis itaque earum laborum nisi?
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, asperiores suscipit ullam aliquid.
+                                </p>
+                                </div>
+
+                                    <!-- 2 -->
+                                <div class="p32">
+                                    <center>
+                                        <h1>Opening Hours</h1>
+                                    </center>
+                                    
+                                </div>
+
+                                    <!-- 3 -->
+                                <div class="p33">
+                                    <center>
+                                        <h1>Social Media</h1>
+                                    </center>
+                                    
+
+                                </div>
                                 
 
                             </div>
