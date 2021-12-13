@@ -112,7 +112,11 @@
                 }
             }
             else{
-                $_SESSION["message"]="saldo tidak cukup";
+                if(isset($_SESSION["login"])){
+                    $_SESSION["message"]="saldo tidak cukup";
+                }else{
+                    $_SESSION["message"]="Mohon Login Terlebih Dahulu";
+                }
             }
             header("Location: cart.php");
     }
