@@ -15,6 +15,9 @@
     if(isset($_SESSION["login"]))
     {
         $user=$_SESSION["login"];
+        if($_SESSION["login"]=="admin"){
+            header("location:muser.php");
+        }
     }else{
         $user=[]; 
         $_SESSION["message"]="Mohon Login Terlebih dahulu"; 

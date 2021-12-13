@@ -179,12 +179,12 @@ if(isset($_POST['logout']))
                 $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             elseif ($_POST['urut2']=="nama") {
-                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY id_jenis DESC");
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY nama DESC");
                 $stmt->execute();
                 $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             elseif ($_POST['urut2']=="jenis") {
-                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY nama DESC");
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY id_jenis DESC");
                 $stmt->execute();
                 $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
@@ -202,12 +202,12 @@ if(isset($_POST['logout']))
                 $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             elseif ($_POST['urut2']=="nama") {
-                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY id_jenis ASC");
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY nama ASC");
                 $stmt->execute();
                 $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             elseif ($_POST['urut2']=="jenis") {
-                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY nama ASC");
+                $stmt = $pdo->prepare("SELECT * FROM product ORDER BY id_jenis ASC");
                 $stmt->execute();
                 $prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }

@@ -9,12 +9,8 @@
         $user_login=$_SESSION["login"];
         $stmt = $pdo->prepare("SELECT * FROM user WHERE email = ?");
         $stmt->execute([$user_login["email"]]);
-        $user =$stmt->fetch(PDO::FETCH_ASSOC);
-        //$saldo=$user["saldo"];
-    }
-    // echo "<pre>";
-    // var_dump($_SESSION["cart"]);
-    // echo "</pre>";
+        $user =$stmt->fetch(PDO::FETCH_ASSOC); 
+    } 
     
    
 
@@ -29,7 +25,13 @@
     if(isset($_SESSION["login"]))
     {
         $user=$_SESSION["login"];
-        $balance=$user["saldo"];
+        if($_SESSION["login"]=="admin"){
+            header("location:muser.php");
+        }else{
+            $balance=$user["saldo"];
+        }
+        
+        
     }else{
         $user=[];
         $balance=0;

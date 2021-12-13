@@ -14,7 +14,12 @@
     if(isset($_SESSION["login"]))
     {
         $user=$_SESSION["login"];
-        $balance=$user["saldo"];
+        if($_SESSION["login"]=="admin"){
+            header("location:muser.php");
+        }else{
+            $balance=$user["saldo"];
+        }
+        
     }else{
         $user=[]; 
         $balance=0;
@@ -94,8 +99,10 @@
         $det2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
      else{
-        $stmt = $pdo->query("SELECT * FROM history");
-        $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // $stmt = $pdo->query("SELECT * FROM history");
+        // $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // $stmt = $pdo->query("SELECT * FROM history");
+        // $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
  
 ?>
