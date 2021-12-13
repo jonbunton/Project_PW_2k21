@@ -60,9 +60,9 @@
                             <div class="nav">
                                 <img class="logo" src="gallery/logo.png" alt="">
                                 <a class="ar" href="#top">Home</a>
-                                <a class="ar" href="#about">About Us</a>
-                                <a class="ar" href="#low">Reach Us</a>
-                                <a class="ar" href="menu.php">Menu</a>
+                                <a class="ar" href="#top">About Us</a>
+                                <a class="ar" href="#top">Location</a>
+                                <a class="ar" href="#top">Menu</a>
                                 <a class="ar" href="cart.php">Cart</a>
                                 <?php
                                     if($user!=null){
@@ -82,18 +82,18 @@
                              </div>
                         </div>
                 
-                             <div class="product">
+                        <div class="product">
 
-                                 <div class="judul">
-                                     <center>
-                                     <div class="a1">Welcome To</div>
-                                     <div class="a2">Amazake</div>
-                                     </center>
-                                    
-                                 </div>
-                            </div>
+                            <div class="judul">
+                                <center>
+                                <div class="a1">Welcome To</div>
+                                <div class="a2">Amazake</div>
+                                </center>
                             
-                            <div class="product2" id="about">
+                            </div>
+                        </div>
+
+                        <div class="product2" id="about">
                             <div class="arrow">
                                             <span></span>
                                             <span></span>
@@ -115,7 +115,7 @@
                                        <div>
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis necessitatibus veritatis veniam esse quo saepe fugit quis ipsum cupiditate repellat minus impedit harum, architecto a reprehenderit at quos. Ad, maiores!
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id corrupti quam laborum deserunt eveniet ducimus saepe. Laudantium ducimus hic ab, ratione corporis accusantium delectus corrupti sit soluta qui nobis quibusdam.
-                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis aspernatur explicabo dolore voluptate architecto commodi sit minus molestiae mollitia ipsum? Nemo hic laboriosam, earum quasi perspiciatis animi voluptatem reiciendis nulla.
+                                        
 
                                             <br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis necessitatibus veritatis veniam esse quo saepe fugit quis ipsum cupiditate repellat minus impedit harum, architecto a reprehenderit at quos. Ad, maiores!
@@ -127,86 +127,13 @@
                                 <h1>-Our History Food-</h1>
                                 </center>
                                 
-                                <div class="up1">
                                
-                                    
-                                    <div class="bcard" >
-                                        <div class="card" >
-                                            
-                                        </div>
-                                        <div class="text">
-                                            <h2>Edo Period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
-                                        </div>
-                                    </div>
-
-                                    <div class="bcard">
-                                            <div class="card">
-                                            
-                                            </div>
-                                        <div class="text">
-                                            <h2>Meiji Period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
-                                        </div>
-                                    </div>
-                                    <div class="bcard">
-                                            <div class="card">
-                                            
-                                            </div>
-                                        <div class="text">
-                                            <h2>Taishō period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
-                                        </div>
-                                    </div>
-                                    <div class="bcard">
-                                            <div class="card">
-                                            
-                                            </div>
-                                        <div class="text">
-                                            <h2>Shōwa period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
-                                        </div>
-                                    </div>
-                                    <div class="bcard">
-                                            <div class="card">
-                                            
-                                            </div>
-                                        <div class="text">
-                                            <h2>Heisei period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.</div>
-                                    </div>
-
-                                    <div class="bcard">
-                                        <div class="card">
-                                            
-                                            </div>
-                                        <div class="text">
-                                            <h2>Reiwa period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.</div>
-                                    </div>
-            
-                                </div>
-                            </div>
-
-                            <div class="product3" id="low">
-                                
-                                
-
-                            </div>
+                        </div>
                 
                              <div class="foot">
-                                <p class="copy">Copyright 2021 © Amazake</p>
+                                <p class="copy">Copyright 2019 © Amazake</p>
                             </div>
                     </div>
-                    
-<script language :"javascript">
-
-</script>
+                    </div>
 </body>
 </html>
