@@ -53,7 +53,7 @@
                                     if($user!=null){
                                 ?>
                                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
-                                        <a class="ar" href="profile.php">ようこそ, <?= $user["nama"]?></a>
+                                        <a class="ar title99" href="profile.php">ようこそ, <?= $user["nama"]?></a>
                                     </div>  
                                 <?php
                                     }else{
@@ -92,7 +92,7 @@
                                                     <div class="mup"><img class="mup" src="gallery/<?=$values["id_product"]+1?>.jpg" alt=""></div>
                                                     <div class="mdown">
                                                         <div class="mdleft">
-                                                            <div class="mname"><?=$values["nama"]?></div>
+                                                            <div class="mname title99"><?=$values["nama"]?></div>
                                                             <div class="mdes"><?=$values["deskripsi"]?></div>
                                                         </div>
                                                         <div class="mdright">

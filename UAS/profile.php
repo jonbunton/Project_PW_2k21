@@ -132,7 +132,7 @@
                                     if($user!=null){
                                 ?>
                                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
-                                        <a class="ar" href="#top">ようこそ, <?= $user["nama"]?></a>
+                                        <a class="ar title99" href="#top">ようこそ, <?= $user["nama"]?></a>
                                     </div>  
                                 <?php
                                     }else{
@@ -196,7 +196,7 @@
                                         
                                       <br>
                                       <center>
-                                        <h3>Purchase History</h3>
+                                        <h2 class="title99">Purchase History</h2>
                                       </center>
                                       
                                        <br>

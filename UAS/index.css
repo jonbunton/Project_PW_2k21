@@ -19,7 +19,9 @@
   font-family: myeu;
   src: url(gallery/eu-alonira/Eu\ Alonira.otf);
 }
-
+.title99{
+  font-family: myFirstFont;
+}
 .container
 {
     width: 100%;
@@ -235,6 +237,7 @@ form{
 .a1{
 	font-size: 60px;
 	color: rgb(0, 0, 0);
+  font-family: myFirstFont;
 }
 
 .a2{

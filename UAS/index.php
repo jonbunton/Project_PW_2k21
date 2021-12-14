@@ -71,7 +71,7 @@
                                     if($user!=null){
                                 ?>
                                     <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
-                                        <a class="ar" href="profile.php">ようこそ, <?= $user["nama"]?></a>
+                                        <a class="ar title99" href="profile.php">ようこそ, <?= $user["nama"]?></a>
                                     </div>  
                                 <?php
                                     }else{
@@ -141,7 +141,8 @@
                                             <div class="text">
                                                 <h2>Edo Period</h2>
                                                 <br>
-                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
+                                                <!-- is the period between 1603 and 1867 in the history of Japan, when Japan was under the rule of the Tokugawa shogunate and the country's 300 regional daimyo. -->
+                                                qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                             </div>
                                         </div>
                                     </div>
@@ -154,7 +155,8 @@
                                             <div class="text">
                                                 <h2>Meiji Period</h2>
                                                 <br>
-                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
+                                                <!-- is an era of Japanese history that extended from October 23, 1868 to July 30, 1912. -->
+                                                qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +169,8 @@
                                             <div class="text">
                                                 <h2>Taishou Period</h2>
                                                 <br>
-                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
+                                                <!-- is a period in the history of Japan dating from 30 July 1912 to 25 December 1926, coinciding with the reign of the Emperor Taishō. -->
+                                                qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +183,8 @@
                                             <div class="text">
                                                 <h2>Shōwa Period</h2>
                                                 <br>
-                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
+                                                <!-- The Shōwa era refers to the period of Japanese history corresponding to the reign of Emperor Shōwa (Hirohito) from December 25, 1926 until his death on January 7, 1989. -->
+                                                qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                             </div>
                                         </div>
                                     </div>
@@ -192,6 +196,7 @@
                                             <div class="text">
                                                 <h2>Heisei Period</h2>
                                                 <br>
+                                            <!-- is the period of Japanese history corresponding to the reign of Emperor Akihito from 8 January 1989 until his abdication on 30 April 2019. -->
                                             qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                             </div>
                                         </div>

@@ -13,7 +13,10 @@
   font-family: myeu;
   src: url(gallery/eu-alonira/Eu\ Alonira.otf);
 }
-
+@font-face {
+  font-family: myFirstFont;
+  src: url(gallery/fujimaru/Fujimaru-Regular.ttf);
+}
 .container
 {
     width: 100%;
@@ -238,8 +241,11 @@ form{
   color: #774f34;
   font-size: 40px;
   text-align: center;
+  font-family: myFirstFont;
 }
-
+.title99{
+  font-family: myFirstFont;
+} 
 .pright{
   color: #f5eee5ef;
   padding: 3vh;
@@ -692,6 +698,7 @@ form{
   animation: fadeIn2 1s ease-in-out alternate;
   animation-delay: 1.3s;
   animation-fill-mode: both;
+  font-family:myFirstFont ;
 }
 .textCart2{
   color: #ebcdba;
@@ -749,6 +756,7 @@ form{
   animation: fadeIn2 1s ease-in-out alternate;
   animation-delay: 1.3s;
   animation-fill-mode: both;
+  font-family: myFirstFont;
 }
 
 .tabCart{
