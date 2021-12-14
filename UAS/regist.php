@@ -19,39 +19,46 @@
             $kota=$_POST['kota']; 
             $status=1;
             // var_dump($_SESSION['list_user']);
-           if( $_POST['email']!="admin@gmail.com" ) 
-           {
-                if($_POST["pass"] != $_POST["cpass"])
-                {
-                    echo "<script>alert('Password Tidak Sama')</script>";
-                }
-                else{ 
-                    $status=true;
-                    $stmt = $pdo->query("SELECT * FROM user");
-                    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    if($users != null){
-                        foreach($users as $key =>$value)
-                        { 
-                            if($value["email"]==$email)
-                            {
-                                echo "<script>alert('Email Sudah Ada ')</script>";
-                                $status=false;
-                                break;
-                            }
-                        }
-                    }
-                    if($status==true)
-                    {
-                        $stmt = $pdo->prepare("INSERT INTO user(email,password, nama,saldo,alamat,kota) VALUES(?,?,?,?,?,?)");
-                        $result = $stmt->execute([
-                          $email, $pass,$name,0,$alamat,$kota
-                        ]);
-                    }
-                }  
+           if($name!=""&& $email!=""&&$pass!=""&&$cpass!=""&&$alamat!=""&&$kota!=""){
+            if( $_POST['email']!="admin@gmail.com" ) 
+            {
+                 if($_POST["pass"] != $_POST["cpass"])
+                 {
+                     echo "<script>alert('Password Tidak Sama')</script>";
+                 }
+                 else{ 
+                     $status=true;
+                     $stmt = $pdo->query("SELECT * FROM user");
+                     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                     if($users != null){
+                         foreach($users as $key =>$value)
+                         { 
+                             if($value["email"]==$email)
+                             {
+                                 echo "<script>alert('Email Sudah Ada ')</script>";
+                                 $status=false;
+                                 break;
+                             }
+                         }
+                     }
+                     if($status==true)
+                     {
+                         $stmt = $pdo->prepare("INSERT INTO user(email,password, nama,saldo,alamat,kota) VALUES(?,?,?,?,?,?)");
+                         $result = $stmt->execute([
+                           $email, $pass,$name,0,$alamat,$kota
+                         ]);
+                         header("Location:login.php");
+                     }
+                 }  
+            }
+            else{
+                echo "<script>alert(' email tidak boleh admin@gmail.com !')</script>";
+               }
+
            }
            else{
-            echo "<script>alert(' email tidak boleh admin@gmail.com !')</script>";
-           }
+            echo "<script>alert('Semua input harus diisi !')</script>";
+            } 
         }
         else{
             echo "<script>alert('Semua input harus diisi !')</script>";
