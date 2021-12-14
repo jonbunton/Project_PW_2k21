@@ -89,7 +89,7 @@
 
                                  <div class="judul">
                                      <center>
-                                     <div class="a1">Welcome To</div>
+                                     <div class="a1"> いらっしゃいませ</div>
                                      <div class="a2">Amazake</div>
                                      </center>
                                     
@@ -128,71 +128,85 @@
                                 </div>
                                 <br>
                                 <center>
-                                <h1>----------------- Our Historical Food -----------------</h1>
+                                <h1 style="font-family: myFt; height: 80px; margin-top: 20px;">Our Historical Food</h1>
                                 </center>
                                 
                                 <div class="up1">
-                               
                                     
-                                    <div class="bcard" >
-                                        <div class="card cbg1" >
+                                    <div class="coba">
+                                        <div class="card cbg1" ></div>
+                                        
+                                        <div class="bcard" >
                                             
-                                        </div>
-                                        <div class="text">
-                                            <h2>Edo Period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
+                                            <div class="text">
+                                                <h2>Edo Period</h2>
+                                                <br>
+                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="bcard ">
-                                            <div class="card cbg2">
+                                    <div class="coba">
+                                        <div class="card cbg2" ></div>
+                                        
+                                        <div class="bcard" >
                                             
+                                            <div class="text">
+                                                <h2>Meiji Period</h2>
+                                                <br>
+                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                             </div>
-                                        <div class="text">
-                                            <h2>Meiji Period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                         </div>
-                                    </div>
-                                    <div class="bcard ">
-                                            <div class="card cbg3">
-                                            
-                                            </div>
-                                        <div class="text">
-                                            <h2>Taishō period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
-                                        </div>
-                                    </div>
-                                    <div class="bcard ">
-                                            <div class="card cbg4">
-                                            
-                                            </div>
-                                        <div class="text">
-                                            <h2>Shōwa period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
-                                        </div>
-                                    </div>
-                                    <div class="bcard ">
-                                            <div class="card cbg5">
-                                            
-                                            </div>
-                                        <div class="text">
-                                            <h2>Heisei period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.</div>
                                     </div>
 
-                                    <div class="bcard ">
-                                        <div class="card cbg6">
+                                    <div class="coba">
+                                        <div class="card cbg3" ></div>
+                                        
+                                        <div class="bcard" >
                                             
+                                            <div class="text">
+                                                <h2>Taishou Period</h2>
+                                                <br>
+                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
                                             </div>
-                                        <div class="text">
-                                            <h2>Reiwa period</h2>
-                                            <br>
-                                        qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="coba">
+                                        <div class="card cbg4" ></div>
+                                        
+                                        <div class="bcard" >
+                                            
+                                            <div class="text">
+                                                <h2>Shōwa Period</h2>
+                                                <br>
+                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="coba">
+                                        <div class="card cbg5" ></div>
+                                        
+                                        <div class="bcard" >
+                                            
+                                            <div class="text">
+                                                <h2>Heisei Period</h2>
+                                                <br>
+                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="coba">
+                                        <div class="card cbg6" ></div>
+                                        
+                                        <div class="bcard" >
+                                            
+                                            <div class="text">
+                                                <h2>Reiwa Period</h2>
+                                                <br>
+                                            qui veritatis. Fugit quaerat sit porro, facere minus eaque consequuntur distinctio.
+                                            </div>
+                                        </div>
                                     </div>
             
                                 </div>
@@ -203,9 +217,11 @@
                                 <img class="logo" src="gallery/logo2.png" alt="" style="width:400px; height:100px;" >
                                 <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia corrupti cum consectetur quae, amet corporis reiciendis reprehenderit beatae debitis deserunt ut ad mollitia architecto. Blanditiis quis itaque earum laborum nisi?
                                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, asperiores suscipit ullam aliquid rerum eligendi facilis consequuntur ab sapiente ea quaerat porro vero tenetur odit totam vel accusamus aspernatur temporibus.
+                                   </p>
                                     <br><br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia corrupti cum consectetur quae, amet corporis reiciendis reprehenderit beatae debitis deserunt ut ad mollitia architecto. Blanditiis quis itaque earum laborum nisi?
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, asperiores suscipit ullam aliquid.
+                                    <P style="font-family: myFt;">Thank you our loyal customer</P> 
+                                    <br><br>
+
                                 </p>
                                 </div>
 
@@ -213,6 +229,14 @@
                                 <div class="p32">
                                     <center>
                                         <h1>Opening Hours</h1>
+                                        <br><br>
+                                        Monday to Friday <br><br>
+                                        08:00 until 15:00 <br>
+                                        16:00 until 21:00 <br><br><br>
+
+                                        Saturday to Sunday <br><br>
+                                        08:00 until 15:00 <br>
+                                        16:00 until 23:00 <br>
                                     </center>
                                     
                                 </div>
@@ -220,8 +244,23 @@
                                     <!-- 3 -->
                                 <div class="p33">
                                     <center>
-                                        <h1>Social Media</h1>
-                                    </center>
+                                        <h1>Contact Us</h1>
+                                    </center> 
+                                        <br><br>
+                                        <img src="gallery/ig.png" alt="">
+                                        &nbsp;&nbsp;&nbsp;Amazake.ig <br>
+                                        <img src="gallery/TW.png" alt="">
+                                        &nbsp;&nbsp;&nbsp;Amazake.twt <br>
+                                        <img src="gallery/fb.png" alt="">
+                                        &nbsp;&nbsp;&nbsp;Amazake Indonesia <br><br>
+                                        <hr><br>
+                                        <center>
+                                            Contact Person <br>
+                                            Jonathan  +62123123123 <br>
+                                            Kevin S +62123123123 <br>
+                                            Veronica +62123123123 <br>
+                                        </center>
+                                       
                                     
 
                                 </div>

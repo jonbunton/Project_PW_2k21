@@ -10,6 +10,12 @@
 }
 
 @font-face {
+  font-family: myFt;
+  src: url(gallery/violableness-demo/ViolablenessDemoRegular.ttf);
+}
+
+
+@font-face {
   font-family: myeu;
   src: url(gallery/eu-alonira/Eu\ Alonira.otf);
 }
@@ -42,7 +48,7 @@
     margin: 0;
     position:fixed;
     background: rgba(0, 0, 0, 0.7);
-    z-index: 1
+    z-index: 2;
 }
 
 .header a {
@@ -123,7 +129,7 @@ form{
 
 .product2{
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     min-width: 800px;
    background-color: rgb(218, 186, 156);
     background-size:100%, 100%;
@@ -157,6 +163,7 @@ form{
   padding-top: 5vh;
   padding-left: 2vh;
   padding-right: 2vh;
+  color: white;
 }
 .p33{
   width: 33%;
@@ -164,6 +171,15 @@ form{
   padding-top: 5vh;
   padding-left: 2vh;
   padding-right: 2vh;
+  color: white;
+  vertical-align: middle;
+  line-height: 20px;
+}
+
+.p33 img{
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
 }
 
 .split{
@@ -282,23 +298,44 @@ form{
 }
 
 .upb{
-	height: 50vh;
+	height: 60vh;
 	width: 50%;
 	color: black;
 	padding: 5vh;
   padding-top: 0vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
+.coba{
+  height: 45vh;
+  width: 150px;
+  margin: 10px;
+}
+
+.coba:hover .bcard{
+  animation: one 1.5s alternate both;
+}
+.coba:hover .card{
+  animation: one1 1s alternate both;
+}
+
+.coba:hover .text{
+  animation-delay: 3s;
+  animation: one2 1s alternate both;
+}
 
 .bcard{
     width: 150px;
-    height: 45vh;
     background-color: rgba(0, 0, 0, 0.247);
-    margin: 30px;
-    margin-bottom: 0px;
-	border-radius: 80px;
-	position: relative;
+    border-radius: 80px;
+    display: flex;
+    top: 70px;
+    position: relative;
+    flex-direction: column;
+    visibility: hidden;
   }
+
 .card{
     background-color:#b67950 ;
     width: 150px;
@@ -306,51 +343,83 @@ form{
     border-radius: 50%;
     justify-content: center;
     line-height: 150px;
-    box-sizing: border-box;
-	position: absolute;
+    position: absolute;
+    z-index: 1;
+    transform: translateY(50%);
 }
 
 .text{
-    margin-top: 10px;
     width: 150px;
-    height: 150px;
+    height: 45vh;
     text-align: center;
     font-size: smaller;
-    box-sizing: border-box;
     line-height: 25px;
-    padding: 5px;
-	color: rgb(145, 103, 70);
-	margin-top: 180px;
-  position: relative;
-	
+    padding-top: 180px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: rgb(151, 87, 38);
+	  visibility: hidden;
+    animation-delay: 3s;
 }
 @-webkit-keyframes one {
 	0% {
-	  height: 0%;
+	  height: 20vh;
 	  opacity: 0;
 	}
 	40% {
 	  opacity: 0.6;
 	}
 	100% {
-	  height: 45vh;
+    visibility: visible;
+    top: 0;
+	  height: 50vh;
 	  opacity: 1;
 	}
   }
+  
+
+  @-webkit-keyframes one1 {
+    0% {
+      transform: translateY(50%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+    }
+    
+    @-webkit-keyframes one2 {
+      0% {
+        visibility:visible;
+        opacity: 0;
+      }
+      70%{
+        opacity: 0;
+      }
+      100% {
+        visibility:visible;
+        opacity: 1;
+      }
+      }
+
+
+
   
   .move{
     width: 150px;
     background-color: rgba(0, 0, 0, 0.247);
     margin: 30px;
     margin-bottom: 0px;
-	border-radius: 80px;
-	position: relative;
+    border-radius: 80px;
+    position: relative;
     height: 45vh;
-	opacity: 1;  
+    opacity: 1;  
   }
   .hst{
-    height: 70px;
+    display: inline-block;
+    height:fit-content;
+    line-height: 70px;
     width: 100px;
+    top: 0;
     position: relative;
     font-size: 40px;
     left: 30%;
@@ -391,9 +460,9 @@ form{
 
 .cbg2{
   background-image: url(gallery/bgc2.jpg);
-background-size:120% 120%;
+background-size:150% 150%;
 background-position-x:-20px ;
-background-position-y:-10px ;
+background-position-y:-50px ;
 }
 
 .cbg3{
@@ -427,7 +496,7 @@ background-position-y:-10px ;
 
 .arrow{
   position: absolute;
-  top: 95%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%,-50%);
 }
@@ -460,3 +529,4 @@ background-position-y:-10px ;
       transform: rotate(45deg) translate(20px,20px);
   }
 }
+
