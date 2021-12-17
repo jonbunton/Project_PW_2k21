@@ -114,6 +114,10 @@
             
         header("Location: index.php");
     }
+    function rupiah($angka){
+	    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah; 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -205,7 +209,7 @@
                                         <tr class="row100 body">
                                             <td class="cell100 column1"><?= $value['id_htrans']?></td>
                                             <td class="cell100 column2"><?= $value['email']?></td>
-                                            <td class="cell100 column3"><?= $value['total']?></td>
+                                            <td class="cell100 column3"><?=rupiah( $value['total'])?></td>
                                             <td class="cell100 column4"><?= $value['tanggal']?></td>
                                             <td class="cell100 column5"><?= $value['waktu']?></td>
                                             <td class="cell100 column6 detailbtn">
@@ -267,9 +271,9 @@
                                                 <td class="cell100 column1"><?= $values['id_htrans']?></td>
                                                 <td class="cell100 column2"><?= $values['id_product']?></td>
                                                 <td class="cell100 column3"><?= $values['nama_product']?></td>
-                                                <td class="cell100 column4"><?= $values['jumlah']?></td>
-                                                <td class="cell100 column5"><?= $values['subtotal']?></td>
-                                                <td class="cell100 column6"><?= $values['harga']?></td>    
+                                                <td class="cell100 column4"><?= ($values['jumlah'])?></td>
+                                                <td class="cell100 column5"><?= rupiah($values['subtotal'])?></td>
+                                                <td class="cell100 column6"><?= rupiah($values['harga'])?></td>    
                                                 
                                             </tr>
                                         <?php

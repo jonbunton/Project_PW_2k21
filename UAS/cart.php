@@ -122,7 +122,10 @@
             }
             header("Location: cart.php");
     }
-    
+    function rupiah($angka){
+	    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah; 
+    }
     
 ?>
 <!DOCTYPE html>
@@ -216,11 +219,11 @@
                                             </td>
                                             <td> 
                                                 <input type="hidden" class="hargahidden<?= $ctr?>" ctrharga="<?= $ctr?>" name="id" value=<?=$values[0]["harga"]?>>
-                                                <p class="harganew<?= $ctr?>"> IDR <span><?=$values[0]["harga"]?></span></p>
+                                                <p class="harganew<?= $ctr?>">  <span><?=rupiah($values[0]["harga"])?></span></p>
                                             </td>
                                             <td>
                                                 <input type="hidden" class="totalhidden<?= $ctr?>" ctrharga="<?= $ctr?>" name="id" value=<?=$values[0]["harga"]*$values[1]?>>
-                                                IDR<p class="totalnew<?= $ctr?>"> <span><?=$values[0]["harga"]*$values[1]?></span> </p>
+                                                <p class="totalnew<?= $ctr?>">Rp. <span><?=$values[0]["harga"]*$values[1]?></span> </p>
                                         
                                             </td>
                                             <input type="hidden" name="id" value=<?=$values[0]["id_product"]?>>
@@ -267,7 +270,7 @@
                             </div>
                             <div class="t3"> 
                                 <div>
-                                IDR &nbsp;
+                                Rp. &nbsp;
                                 </div>
                                 <?php if(isset($subtot)){
                                 ?>
@@ -277,7 +280,7 @@
                                     }
                                     else{
                                 ?>
-                                    <p class="subtotal">  0</p>
+                                    <p class="subtotal"> Rp 0</p>
                                 <?php }
 
                                 ?>
@@ -288,7 +291,7 @@
                                 Shipping Cost
                             </div>
                             <div class="t3">
-                                IDR&nbsp;&nbsp;&nbsp; 15000
+                                Rp.&nbsp;&nbsp;&nbsp; 15.000,00
                             </div>
                         </div>
                         <hr>
@@ -297,7 +300,7 @@
                                 Grand Total
                             </div>
                             <div class="t3">
-                                IDR&nbsp;
+                                Rp.&nbsp;
                                 <?php if(isset($subtot)){
                                         $subtot+=15000;
                                 ?>
@@ -307,14 +310,14 @@
                                     }
                                     else{
                                 ?> 
-                                    <p class="grandtotal">IDR 0</p>
+                                    <p class="grandtotal">Rp 0</p>
                                 <?php }
 
                                 ?>
                             </div>
                         </div>
                         <div class="textC4">
-                            Your Balance is IDR <?=$balance?>
+                            Your Balance is <?=rupiah($balance)?>
                         </div>
                         <form action="" method="post">
                             <button class="buttonco" name="order">Check Out</button>
@@ -360,7 +363,7 @@
                     var harga= $(".hargahidden"+postForm).val();  
                     var tot=Number(harga)*Number(temp);
                     //total
-                    $(".totalnew"+postForm).text(+tot);
+                    $(".totalnew"+postForm).text("Rp. "+tot);
                     $(".totalhidden"+postForm).val(tot); 
 
                     //ORDER SUMMARY
@@ -408,7 +411,7 @@
                     var harga= $(".hargahidden"+postForm).val();  
                     var tot=Number(harga)*Number(temp);
                     //total
-                    $(".totalnew"+postForm).text(tot);
+                    $(".totalnew"+postForm).text("Rp."+tot);
                     $(".totalhidden"+postForm).val(tot); 
 
                     //ORDER SUMMARY

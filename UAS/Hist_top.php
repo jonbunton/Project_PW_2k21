@@ -105,6 +105,10 @@
             
         header("Location: index.php");
     }
+    function rupiah($angka){
+	    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah; 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -193,7 +197,7 @@
                                             <td class="cell100 column2"><?= $value['email']?></td>
                                             <td class="cell100 column3"><?= $value['waktu']?></td>
                                             <td class="cell100 column4"><?= $value['tanggal']?></td>
-                                            <td class="cell100 column5"><?= $value['saldo']?></td>
+                                            <td class="cell100 column5"><?= rupiah($value['saldo'])?></td>
                                         </tr>
                                     <?php
                                     $idx++;

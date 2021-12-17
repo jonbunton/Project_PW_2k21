@@ -28,6 +28,10 @@
         echo "<script>alert('$_SESSION[message]')</script>";
         unset($_SESSION["message"]);
     }
+    function rupiah($angka){
+	    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah; 
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +101,7 @@
                                                             <div class="mdes"><?=$values["deskripsi"]?></div>
                                                         </div>
                                                         <div class="mdright">
-                                                            <div class="harga">Rp. <?=$values["harga"]?></div>
+                                                            <div class="harga"><?=rupiah($values["harga"])?></div>
                                                             <div class="addcart"><button class="btn_cart" name="cart" value=<?=$values["id_product"]?>>Add to cart</button></div>
                                                         </div>
                                                     </div>

@@ -7,13 +7,36 @@
 
     if(isset($_GET["detail"])){
         $Nama_org = $_GET["detail"];
-            $stmt = $pdo->prepare("DELETE FROM pending WHERE id_pending = :Nama_org");
+    
+        $stmt = $pdo->prepare("SELECT * FROM pending WHERE id_pending = :Nama_org");
+        $result = $stmt->execute(["Nama_org"=>$Nama_org]);
+        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $result = $stmt->execute([
-            "Nama_org"=>$Nama_org
-            ]);
+        foreach ($user as $key => $value) {
+            $email=$value['email'];
+            $waktu=$value['waktu'];
+            $tanggal=$value['tanggal'];
+            $saldo=$value['jumlah'];
+        }
 
-            header("Location: top_req.php");
+        $stmt = $pdo->prepare("SELECT * FROM user WHERE email = :Nama_org");
+        $result = $stmt->execute(["Nama_org"=>$email]);
+        $user2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($user2 as $key => $value) {
+            $saldo2=$value['saldo'];
+        }
+        $saldo3=$saldo+$saldo2;
+
+        $stmt = $pdo->prepare("INSERT INTO denied(waktu,tanggal,jumlah,email) VALUES(?,?,?,?)");
+        $result = $stmt->execute([$waktu, $tanggal, $saldo, $email]);
+
+        $stmt = $pdo->prepare("DELETE FROM pending WHERE id_pending = :Nama_org");
+        $result = $stmt->execute([
+        "Nama_org"=>$Nama_org
+        ]);
+
+        header("Location: top_req.php");
     }
 
     if(isset($_GET["detail2"])){
@@ -119,6 +142,10 @@
             unset($_SESSION["login"]);
                 
             header("Location: index.php");
+        }
+        function rupiah($angka){
+            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+            return $hasil_rupiah; 
         }
 ?>
 

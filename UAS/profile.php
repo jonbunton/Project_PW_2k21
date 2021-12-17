@@ -3,7 +3,12 @@
     $sushi="1";
     $stmt = $pdo->query("SELECT * FROM product where id_jenis='$sushi' ");
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+    function rupiah($angka){
+	
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+     
+    }
     $stat=0;
     if(isset($_POST['logout']))
     {
@@ -29,6 +34,8 @@
         $tot=$_POST["jum"];
         $stmt = $pdo->prepare("INSERT INTO pending(jumlah,email) values(?,?)");
         $stmt->execute([$tot,$username]);
+
+        $_SESSION["message"]="Berhasil Request Topup sebesar Rp.".$tot;
         header("Location:profile.php");
     }
     
@@ -47,6 +54,16 @@
         $stmt->execute([$keyword]);
         $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $test=$_GET["detail"];
+
+        $stmt = $pdo->prepare("SELECT * FROM denied WHERE email = ?");
+        $keyword = $cek;
+        $stmt->execute([$keyword]);
+        $denied = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $stmt = $pdo->prepare("SELECT * FROM pending WHERE email = ?");
+        $keyword = $cek;
+        $stmt->execute([$keyword]);
+        $pending = $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
      else{
         $stmt = $pdo->query("SELECT * FROM history");
@@ -178,7 +195,7 @@
                                     </div>
 
                                     <div class="pright">
-                                        <h2 style="color: #ffffff;">Your Balance is IDR <?=$balance?></h2><br>
+                                        <h2 style="color: #ffffff;">Your Balance is <?=rupiah($balance)?></h2><br>
                                         <div class="topupp">
                                             <h4>Masukan jumlah topup</h4>
                                              <br>
@@ -216,7 +233,7 @@
                                                     ?>
                                                     <tr id="<?= $ctr?>">
                                                         <td><?= $value['tanggal']?></td>
-                                                        <td>IDR <?= $value['total']?></td>
+                                                        <td> <?= rupiah($value['total'])?></td>
                                                         <td><form action="#" method="get">
                                                             <input type="hidden" name="detail3" value="<?= $value['id_htrans']?>">
                                                             <button onclick="myFunction()">Detail</button>
@@ -269,6 +286,7 @@
                                                 <th class="cell100 column3">Waktu</th>
                                                 <th class="cell100 column4">Tanggal </th>
                                                 <th class="cell100 column5">Saldo</th>
+                                                <th class="cell100 column6">Payment Status</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -278,24 +296,56 @@
                                     <table>
                                         <tbody>
                                             <?php
-                                                if ($det !== null) {
+                                                if ($det != null) {
                                                     $idx=1;
                                                     foreach ($det as $key => $values) {
                                                 ?>
                                                     <tr class="row100 body">
-                                                        <td class="cell100 column1"><?= $values['id_history']?></td>
+                                                        <!-- <td class="cell100 column1"><?= $values['id_history']?></td> -->
+                                                        <td class="cell100 column1"><?= $idx?></td>
                                                         <td class="cell100 column2"><?= $values['email']?></td>
                                                         <td class="cell100 column3"><?= $values['waktu']?></td>
                                                         <td class="cell100 column4"><?= $values['tanggal']?></td>
-                                                        <td class="cell100 column5"><?= $values['saldo']?></td>
-                                                        
+                                                        <td class="cell100 column5"><?= rupiah($values['saldo'])?></td>
+                                                        <td class="cell100 column5">Payment Success</td>
                                                     </tr>
                                                 <?php
                                                 $idx++;
                                                     }
                                                 }
+                                                if($pending != null){
+                                                    foreach ($pending as $key => $values) {
                                             ?>
-                                            
+                                                    <tr class="row100 body">
+                                                        <!-- <td class="cell100 column1"><?= $values['id_pending']?></td> -->
+                                                        <td class="cell100 column1"><?= $idx?></td>
+                                                        <td class="cell100 column2"><?= $values['email']?></td>
+                                                        <td class="cell100 column3"><?= $values['waktu']?></td>
+                                                        <td class="cell100 column4"><?= $values['tanggal']?></td>
+                                                        <td class="cell100 column5"><?= rupiah($values['jumlah'])?></td>
+                                                        <td class="cell100 column5">Payment Pending</td>
+                                                    </tr>
+                                            <?php
+                                                    $idx++;
+                                                    }
+                                                }
+                                                if($denied != null){
+                                                    foreach ($denied as $key => $values) {
+                                            ?>
+                                                    <tr class="row100 body">
+                                                        <!-- <td class="cell100 column1"><?= $values['id_denied']?></td> -->
+                                                        <td class="cell100 column1"><?= $idx?></td>
+                                                        <td class="cell100 column2"><?= $values['email']?></td>
+                                                        <td class="cell100 column3"><?= $values['waktu']?></td>
+                                                        <td class="cell100 column4"><?= $values['tanggal']?></td>
+                                                        <td class="cell100 column5"><?= rupiah($values['jumlah'])?></td>
+                                                        <td class="cell100 column5">Payment Denied</td>
+                                                    </tr>
+                                            <?php
+                                                    $idx++;
+                                                    }
+                                                }
+                                            ?>
                                             </tbody>
                                     </table>
                                 </div>
@@ -357,7 +407,7 @@
                             <table>
                                 <tbody>
                                     <?php
-                                        if ($det !== null) {
+                                        if ($det2 != null) {
                                             $idx=1;
                                             foreach ($det2 as $key => $values) {
                                         ?>
@@ -365,8 +415,8 @@
                                                 <td class="cell100 column1"><?= $values['id_htrans']?></td>
                                                 <td class="cell100 column3"><?= $values['nama_product']?></td>
                                                 <td class="cell100 column4"><?= $values['jumlah']?></td>
-                                                <td class="cell100 column5">Rp. <?= $values['subtotal']?></td>
-                                                <td class="cell100 column6">Rp. <?= $values['harga']?></td>    
+                                                <td class="cell100 column5"><?= rupiah($values['subtotal'])?></td>
+                                                <td class="cell100 column6"><?= rupiah($values['harga'])?></td>    
                                                 
                                             </tr>
                                         <?php

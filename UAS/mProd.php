@@ -224,6 +224,10 @@ if(isset($_POST['logout']))
             
         header("Location: index.php");
     }
+    function rupiah($angka){
+	    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah; 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -349,7 +353,7 @@ if(isset($_POST['logout']))
                                             <td class="cell100 column1"><?= $value['id_product']?></td>
                                             <td class="cell100 column2"><?= $value['nama']?></td>
                                             <td class="cell100 column7"><?= $namas?></td>
-                                            <td class="cell100 column8"><?= $value['harga']?></td>
+                                            <td class="cell100 column8"><?= rupiah($value['harga'])?></td>
                                             <td class="cell100 column9"><?= $value['deskripsi']?></td>
                                             <td class="cell100 column10 detailbtn">
                                             <form action="#" method="get">
