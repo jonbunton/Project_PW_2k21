@@ -257,7 +257,7 @@ form{
 
 .htrans{
   width: 100%;
-  height: 38vh;
+  height: 34vh;
   overflow-y: auto;
   background-color: #ebdeca24;
   margin-bottom: 2vh;
@@ -1299,8 +1299,16 @@ form{
   float: right;
   font-size: 28px;
   font-weight: bold;
+  
 }
 .close3 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close4 {
   color: #aaaaaa;
   float: right;
   font-size: 28px;

@@ -121,6 +121,24 @@
         // $stmt = $pdo->query("SELECT * FROM history");
         // $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
+
+     if(isset($_GET["status"])){
+        $cek=$_GET["status"];
+        $stmt = $pdo->prepare("SELECT * FROM pending WHERE email = ?");
+        $keyword = $cek;
+        $stmt->execute([$keyword]);
+        $pend = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $stmt = $pdo->prepare("SELECT * FROM history WHERE email = ?");
+        $keyword = $cek;
+        $stmt->execute([$keyword]);
+        $hist = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $stmt = $pdo->prepare("SELECT * FROM denied WHERE email = ?");
+        $keyword = $cek;
+        $stmt->execute([$keyword]);
+        $den = $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
  
 ?>
 
@@ -206,6 +224,11 @@
                                             </form>
                                             <br>
                                             <form action="#" method="get">
+                                                <input type="hidden" name="status" value="<?= $user["email"]?>">
+                                                <button onclick="myFunction()" class="buttonto2">Status Top Up</button>
+                                            </form>
+                                            <br>
+                                            <form action="#" method="get">
                                                 <input type="hidden" name="detail" value="<?= $user["email"]?>">
                                                 <button onclick="myFunction()" class="buttonto2">History Top Up</button>
                                             </form>
@@ -216,7 +239,7 @@
                                         <h2 class="title99">Purchase History</h2>
                                       </center>
                                       
-                                       <br>
+                                       
                                         <div class="htrans">
                                             
                                             <table>
@@ -432,7 +455,92 @@
                 </div>
             </div>
 
+            <div id="myModal4" class="modal">
+            <div class="modal-content">
+                <span class="close4">&times;</span>
+                    <h1>Status Top Up</h1>
+                    <div class="table100 ver3 m-b-110">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">ID </th>
+                                        <th class="cell100 column3">Email</th>
+                                        <th class="cell100 column5">Waktu</th>
+                                        <th class="cell100 column5">Tanggal</th>
+                                        <th class="cell100 column6">Saldo</th>
+                                        <th class="cell100 column6">Status</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                    <?php
+                                        if ($pend != null) {
+                                            $idx=1;
+                                            foreach ($pend as $key => $values) {
+                                        ?>
+                                            <tr class="row100 body">
+                                                <td class="cell100 column1"><?=$idx?></td>
+                                                <td class="cell100 column3"><?= $values['email']?></td>
+                                                <td class="cell100 column5"><?= $values['waktu']?></td>
+                                                <td class="cell100 column5"><?= $values['tanggal']?></td>
+                                                <td class="cell100 column6"><?= rupiah($values['jumlah'])?></td>    
+                                                <td class="cell100 column6">Pending</td>    
+                                                
+                                            </tr>
+                                        <?php
+                                        $idx++;
+                                            }
+                                        }
+                                    ?>
+                                    <?php
+                                        if ($hist != null) {                                            
+                                            foreach ($hist as $key => $values) {
+                                        ?>
+                                            <tr class="row100 body">
+                                                <td class="cell100 column1"><?=$idx?></td>
+                                                <td class="cell100 column3"><?= $values['email']?></td>
+                                                <td class="cell100 column5"><?= $values['waktu']?></td>
+                                                <td class="cell100 column5"><?= $values['tanggal']?></td>
+                                                <td class="cell100 column6"><?= rupiah($values['saldo'])?></td>    
+                                                <td class="cell100 column6"><p style="color: green;">Success</p></td>    
+                                                
+                                            </tr>
+                                        <?php
+                                        $idx++;
+                                            }
+                                        }
+                                    ?>
+                                    <?php
+                                        if ($den != null) {
+                                            foreach ($den as $key => $values) {
+                                        ?>
+                                            <tr class="row100 body">
+                                                <td class="cell100 column1"><?=$idx?></td>
+                                                <td class="cell100 column3"><?= $values['email']?></td>
+                                                <td class="cell100 column5"><?= $values['waktu']?></td>
+                                                <td class="cell100 column5"><?= $values['tanggal']?></td>
+                                                <td class="cell100 column6"><?= rupiah($values['jumlah'])?></td>    
+                                                <td class="cell100 column6"><p style="color: red;">Denied</p></td>    
+                                                
+                                            </tr>
+                                        <?php
+                                        $idx++;
+                                            }
+                                        }
+                                    ?>
+                                    
+                                    </tbody>
+                            </table>
+                        </div>
                     </div>
+                </div>
+
+            </div>
 
                     <script>
                         window.onload = function() {
@@ -446,6 +554,9 @@
                             else if(params.has('detail3')== true){
                                 myFunction4();     
                             } 
+                            else if(params.has('status')== true){
+                                myFunction5();     
+                            }
                         };
 
                         function myFunction() {
@@ -490,6 +601,20 @@
                             window.onclick = function(event) {
                                 if (event.target == modal3) {
                                     modal3.style.display = "none";
+                                }
+                            }
+                        }
+
+                        function myFunction5() {
+                            var modal4 = document.getElementById("myModal4");
+                            modal4.style.display = "block";
+                            var span4 = document.getElementsByClassName("close4")[0];
+                            span4.onclick = function() {
+                            modal4.style.display = "none";
+                            }
+                            window.onclick = function(event) {
+                                if (event.target == modal4) {
+                                    modal4.style.display = "none";
                                 }
                             }
                         }

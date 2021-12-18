@@ -32,6 +32,14 @@
 	    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
         return $hasil_rupiah; 
     }
+    if(isset($_GET["desk"])){
+        $cek=$_GET["desk"];
+        $stmt = $pdo->prepare("SELECT * FROM product WHERE id_product = ?");
+        $keyword = $cek;
+        $stmt->execute([$keyword]);
+        $det = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +102,7 @@
                                                 <div class="menue">
                                                 <form action="" method="post">
                                                     <input type="hidden" name="id" value=<?=$values["id_product"]?>>
-                                                    <div class="mup"><img class="mup" src="gallery/<?=$values["id_product"]+1?>.jpg" alt=""></div>
+                                                    <div class="mup"><img onclick="myFunction2(<?=$values['id_product']?>)" class="mup" src="gallery/<?=$values["id_product"]+1?>.jpg" alt=""></div>
                                                     <div class="mdown">
                                                         <div class="mdleft">
                                                             <div class="mname title99"><?=$values["nama"]?></div>
@@ -102,7 +110,7 @@
                                                         </div>
                                                         <div class="mdright">
                                                             <div class="harga"><?=rupiah($values["harga"])?></div>
-                                                            <div class="addcart"><button class="btn_cart" name="cart" value=<?=$values["id_product"]?>>Add to cart</button></div>
+                                                            <div class="addcart"><button onclick="myFunction()" class="btn_cart" name="cart" value=<?=$values["id_product"]?>>Add to cart</button></div>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -127,6 +135,34 @@
                             </div>
                     </div>
                     </div>
+                    <div id="myModal" class="modal">
+                        <!-- Modal content -->
+
+                        <div class="modal-content">
+                        <span class="close">&times;</span>
+                            <h1>Menu Has Been Added To Cart</h1>
+                            
+                        </div>
+                    </div>
+                    </div>
+
+                    <div id="myModal2" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                <span class="close2">&times;</span>
+                    <h1>Deskripsi Produk</h1>
+                    <?php
+                        foreach($det as $key => $values)
+                        {
+                    ?>
+                    <img class="mup" src="gallery/<?=$values["id_product"]+1?>.jpg" alt="">
+                    <h2><?=$values["deskripsi"]?></h2>
+                    <?php
+                        }
+                    ?> 
+                </div>
+
+            </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
@@ -142,6 +178,47 @@
 		
 		
 	});
+
+    window.onload = function() {
+        let params = new URLSearchParams(location.search);
+        if(params.has('desk')== true){
+            myFunction3();     
+        }
+        
+    };
+    function myFunction() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+        } 
+        function myFunction2(x) {
+            window.location.href="dessert.php?desk="+x;
+
+        }
+
+        function myFunction3() {
+            var modal2 = document.getElementById("myModal2");
+            modal2.style.display = "block";
+            var span2 = document.getElementsByClassName("close2")[0];
+            span2.onclick = function() {
+            modal2.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal2) {
+                    modal2.style.display = "none";
+                }
+            }
+
+        }
 	</script>
 </body>
 </html>
